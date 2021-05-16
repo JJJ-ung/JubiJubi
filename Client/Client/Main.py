@@ -1,3 +1,3 @@
-from Client import *
+from AppGUI import MainGUI
 
-MainGUI()
+MainGUI.MainGUI()
