@@ -1,5 +1,5 @@
 from tkinter import *
-#from . import HomeWnd
+from . import MenuFrame
 
 class MainGUI :
     def __init__(self) :
@@ -38,12 +38,6 @@ class MainGUI :
 
         self.test = Menu(self.menu)
 
+        self.tmp = MenuFrame.Menu(self.menu)
+
         window.mainloop()
-
-
-class Menu():
-    def __init__(self, parent):
-        self.frame = Frame(parent, width = 60, height = 768);
-        self.image_auto_idle = PhotoImage(file='Resources/buttons/auto_0.png')
-        self.button_auto = Button(parent, image = self.image_auto_idle, borderwidth = 0, relief = FLAT)
-        self.button_auto.pack(side = TOP)

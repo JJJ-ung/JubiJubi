@@ -21,10 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppGUI\HomeWnd.py">
+    <Compile Include="AppGUI\BitcoinFrame.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppGUI\MainGUI.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\MenuFrame.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\StatusFrame.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Main.py">
