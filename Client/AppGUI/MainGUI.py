@@ -1,43 +1,26 @@
 from tkinter import *
 from . import MenuFrame
+from . import StatusFrame
 
 class MainGUI :
     def __init__(self) :
-        #window = Tk()
-        #self.image = PhotoImage(file='Image/pichu2.png')
-        #self.lbl = Label(image=self.image)
-        #self.lbl.pack()
-        #frame = Frame(window)
-        #frame.pack()
-        #window.mainloop()
-
-        #root = Tk()
-        #root.geometry("1280x720+100+100")
-        #self.image = PhotoImage(file='Image/pichu2.png')
-        #frame = Frame(root)
-        #frame.pack(side="right")
-        #Pichu = Label(frame, image = self.image)
-        #Pichu.pack()
-
-        #root.mainloop()
-        
         window = Tk()
         window.geometry("1024x768")
 
         self.menu = Frame(window, relief = RIDGE, width = 60, background = '#525967')
-        self.menu.pack(side = LEFT, fill = BOTH, expand = YES)
+        self.menu.pack(side = LEFT, fill = BOTH)
 
-        self.main = Frame(window, width = 964, height = 768)
-        self.main.pack(side = RIGHT)
+        self.main = Frame(window)
+        self.main.pack(side = RIGHT, fill = BOTH, expand = YES)
 
-        self.status = Frame(self.main, width = 964, height = 60, background = '#4d95dc')
-        self.status.pack(side = TOP)
+        self.status = Frame(self.main, height = 60, background = '#4d95dc')
+        self.status.pack(side = TOP, fill = BOTH)
 
-        self.page = Frame(self.main, width = 964, height = 708, background = 'white')
-        self.page.pack(side = BOTTOM)
+        self.page = Frame(self.main, background = 'white')
+        self.page.pack(fill = BOTH, expand = YES)
 
-        self.test = Menu(self.menu)
-
-        self.tmp = MenuFrame.Menu(self.menu)
+        self.MenuGUI = MenuFrame.Menu(self.menu)
+        self.StatusGUI = StatusFrame.Status(self.status)
 
         window.mainloop()
+        
