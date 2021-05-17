@@ -1,5 +1,5 @@
 from tkinter import *
-from . import HomeWnd
+#from . import HomeWnd
 
 class MainGUI :
     def __init__(self) :
@@ -24,8 +24,8 @@ class MainGUI :
         window = Tk()
         window.geometry("1024x768")
 
-        self.menu = Frame(window, width = 60, height = 768, background = '#525967')
-        self.menu.pack(side = LEFT)
+        self.menu = Frame(window, relief = RIDGE, width = 60, background = '#525967')
+        self.menu.pack(side = LEFT, fill = BOTH, expand = YES)
 
         self.main = Frame(window, width = 964, height = 768)
         self.main.pack(side = RIGHT)
@@ -36,6 +36,14 @@ class MainGUI :
         self.page = Frame(self.main, width = 964, height = 708, background = 'white')
         self.page.pack(side = BOTTOM)
 
-        #self.homewnd = HomeWnd(self.main)
+        self.test = Menu(self.menu)
 
         window.mainloop()
+
+
+class Menu():
+    def __init__(self, parent):
+        self.frame = Frame(parent, width = 60, height = 768);
+        self.image_auto_idle = PhotoImage(file='Resources/buttons/auto_0.png')
+        self.button_auto = Button(parent, image = self.image_auto_idle, borderwidth = 0, relief = FLAT)
+        self.button_auto.pack(side = TOP)
