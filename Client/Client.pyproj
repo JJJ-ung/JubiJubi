@@ -21,7 +21,16 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AppGUI\BitcoinFrame.py">
+    <Compile Include="AppGUI\AutoPage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\BitcoinPage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\DevelopersPage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\FavoritesPage.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppGUI\MainGUI.py">
@@ -30,7 +39,19 @@
     <Compile Include="AppGUI\MenuFrame.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppGUI\NewsPage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\ProfilePage.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\SettingsPage.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AppGUI\StatusFrame.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppGUI\StockPage.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Main.py">

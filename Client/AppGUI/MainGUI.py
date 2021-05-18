@@ -1,6 +1,16 @@
 from tkinter import *
 from . import MenuFrame
 from . import StatusFrame
+from . import BitcoinPage
+from . import StockPage
+from . import NewsPage
+from . import FavoritesPage
+from . import ProfilePage
+from . import DevelopersPage
+from . import SettingsPage
+from . import AutoPage
+
+Color_Page = '#333333'
 
 class MainGUI :
     def __init__(self) :
@@ -13,14 +23,55 @@ class MainGUI :
         self.main = Frame(window)
         self.main.pack(side = RIGHT, fill = BOTH, expand = YES)
 
-        self.status = Frame(self.main, height = 60, background = '#4d95dc')
+        self.status = Frame(self.main, height = 60, background = '#eb6148')
         self.status.pack(side = TOP, fill = BOTH)
 
-        self.page = Frame(self.main, background = 'white')
-        self.page.pack(fill = BOTH, expand = YES)
+        self.page = Frame(self.main, bg=Color_Page)
+        self.page.pack(side=BOTTOM, fill=BOTH, expand=YES)
 
-        self.MenuGUI = MenuFrame.Menu(self.menu)
+        self.SetUp_Frames(self.page)
+
+        self.MenuGUI = MenuFrame.Menu(self.menu, self)
         self.StatusGUI = StatusFrame.Status(self.status)
 
+        self.Pages = dict()
+        self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'])
+        self.Pages['stock'] = StockPage.Page(self.Frames['stock'])
+        self.Pages['news'] = NewsPage.Page(self.Frames['news'])
+        self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'])
+        self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'])
+        self.Pages['developers'] = DevelopersPage.Page(self.Frames['developers'])
+        self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'])
+        self.Pages['settings'] = AutoPage.Page(self.Frames['auto'])
+
+        self.Show_Frame('favorites')
+
         window.mainloop()
-        
+
+
+    def Show_Frame(self, page_name):
+        frame=self.Frames[page_name]
+        frame.tkraise()
+
+
+    def SetUp_Frames(self, parent):
+        self.Frames = dict()
+        self.Frames['home'] = Frame(parent, background = Color_Page)
+        self.Frames['home'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['bitcoin'] = Frame(parent, background = Color_Page)
+        self.Frames['bitcoin'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['stock'] = Frame(parent, background = Color_Page)
+        self.Frames['stock'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['news'] = Frame(parent, background = Color_Page)
+        self.Frames['news'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['favorites'] = Frame(parent, background = Color_Page)
+        self.Frames['favorites'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['profile'] = Frame(parent, background = Color_Page)
+        self.Frames['profile'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['developers'] = Frame(parent, background = Color_Page)
+        self.Frames['developers'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['settings'] = Frame(parent, background = Color_Page)
+        self.Frames['settings'].grid(row=0, column=0, sticky='nsew')
+        self.Frames['auto'] = Frame(parent, background = Color_Page)
+        self.Frames['auto'].grid(row=0, column=0, sticky='nsew')
+

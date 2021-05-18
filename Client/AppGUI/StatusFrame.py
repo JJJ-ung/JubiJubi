@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter.font
 
-Color_Back = '#4d95dc'
+Color_Back = '#eb6148'
 
 class Status(object):
     def __init__(self, parent):
@@ -10,7 +10,7 @@ class Status(object):
         self.Images=dict()
         self.Images['logo'] = PhotoImage(file='Resources/menu/logo.png')
         self.Images['searchbar'] = PhotoImage(file='Resources/menu/searchbar.png')
-        self.Images['search'] = PhotoImage(file='Resources/menu/search.png')
+        self.Images['search'] = PhotoImage(file='Resources/icons/search.png')
         self.Images['toggle0'] = PhotoImage(file='Resources/menu/toggle_0.png')
         self.Images['toggle1'] = PhotoImage(file='Resources/menu/toggle_1.png')
 
@@ -33,6 +33,7 @@ class Status(object):
                            width = 100, height=60, borderwidth=0, highlightthickness=0,
                            bg=Color_Back, activebackground=Color_Back, anchor='center', command=self.Click_Toggle)
         self.Toggle.pack(side=RIGHT)
+
 
     def Click_Toggle(self):
         if self.AutoON :
