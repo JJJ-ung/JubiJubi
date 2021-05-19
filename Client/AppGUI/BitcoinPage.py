@@ -1,28 +1,30 @@
 from tkinter import *
+import tkinter.font
+from . import GUIHelper
 
-Col_border = '#4e4e4e'
 Col_title = '#3f3f3f'
+Col_titleR = '#4a4a4a'
 Col_back = '#333333'
 Col_line0 = '#3b3b3b'
 Col_line1 = '#353535'
 Col_red = '#eb6148'
 Col_blue = '#008dd2'
+Col_SubFont = '#bbbbbb'
 
 class Page:
     def __init__(self, parent):
-        self.Parent = parent
-        self.Setup_Frame()
-
-    def Setup_Frame(self):
         self.Frames = dict()
-        #self.menu = Frame(window, relief = RIDGE, width = 60, background = '#525967')
         #self.menu.pack(side = LEFT, fill = BOTH)
-        self.Frames['Left'] = Frame(self.Parent, relief = RIDGE, width=610, height = 708, bg='red')
-        self.Frames['Left'].pack(side=LEFT, fill=BOTH, expand = YES)
-        self.Frames['Right'] = Frame(self.Parent, width=353, bg=Col_back)
-        self.Frames['Right'].pack(side=RIGHT, fill=BOTH, expand = YES)
+        self.Frames['Left'] = GUIHelper.PackFix(Frame(parent, width = 610, bg='red'), LEFT, BOTH, NO)
+        self.Frames['Right'] = GUIHelper.PackFix(Frame(parent, width = 355, bg='blue'), RIGHT, BOTH, NO)
+        
+        P = self.Frames['Left']
+        self.Frames['Name'] = GUIHelper.PackFix(Frame(P, height = 88, bg = 'yellow'), TOP, BOTH, NO)
+        self.Frames['Graph'] = GUIHelper.PackFix(Frame(P, height = 380, bg = 'green'), TOP, BOTH, NO)
+        self.Frames['Daily'] = GUIHelper.PackFix(Frame(P, bg = 'red'), TOP, BOTH, YES)
 
-        #leftside
-        self.Parent = self.Frames['Left']
-        self.Frames['CoinTitle'] = Frame(self.Parent, height=88, bg=Col_title)
-        self.Frames['CoinTitle'].pack(side=TOP, fill=BOTH)
+        P = self.Frames['Right']
+        self.Frames['Compare'] = GUIHelper.PackFix(Frame(P, height = 468, bg = 'white'), TOP, BOTH, NO)
+        self.Frames['Functions'] = GUIHelper.PackFix(Frame(P, bg = 'blue'), TOP, BOTH, YES)
+
+        P = self.Frames
