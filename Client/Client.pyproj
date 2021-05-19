@@ -54,7 +54,7 @@
     <Compile Include="AppGUI\StockPage.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppGUI\GUIHelper.py">
+    <Compile Include="AppGUI\UIMaker.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Main.py">

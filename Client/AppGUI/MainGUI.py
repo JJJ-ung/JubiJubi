@@ -45,7 +45,7 @@ class MainGUI :
         self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'])
         self.Pages['settings'] = AutoPage.Page(self.Frames['auto'])
 
-        self.Show_Frame('bitcoin')
+        self.Show_Frame('stock')
 
         window.mainloop()
 

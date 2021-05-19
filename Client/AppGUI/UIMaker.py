@@ -37,3 +37,9 @@ def PackFix(frame, side, fill, expand):
             frame.pack(side = side, fill = fill, expand = expand)
             frame.pack_propagate(0)
             return frame
+
+def ImageLabel(parent, image, bg):
+            return Label(parent, image = image, bg = bg, bd = 0)
+
+def TextLabel(parent, text, font, col, bg):
+            return Label(parent, text = text, font = font, fg = col, bg = bg, bd = 0)
