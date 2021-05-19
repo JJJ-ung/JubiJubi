@@ -187,15 +187,16 @@ class Page:
         D['Auto'].grid(row = 0, column = 1)
         D['Dice'] = Button(P, width = 118, height = 81, image = self.I('Dice_On'), bg = Col_back, bd=0, relief = FLAT,
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
-                                           command =lambda: self.DiceFunction())
+                                           command =lambda: self.ChangeFunction('Dice'))
         D['Dice'].grid(row = 0, column = 2)
         self.Frames['Curr'] = self.Frames['Function_Dice']
         self.Frames['Curr'].pack(side = TOP, fill = BOTH)
 
         P = self.F('Function_Dice')
-        D['DiceImg'] = Label(P, width = 74, height = 74, image = self.I('Dice_1'))
+        D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('Dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
+                                                 command =lambda: self.DiceFunction())
         D['DiceImg'].place(relx = 0.1, rely = 0.5, anchor = W)
-        D['DiceResult'] = Label(P, text = '도지 주사위 !', font = self.Fo('TitleMS'), fg = 'white', bg = Col_back)
+        D['DiceResult'] = Label(P, text = '운세 주사위 !', font = self.Fo('TitleMS'), fg = 'white', bg = Col_back)
         D['DiceResult'].place(relx = 0.9, rely = 0.5, anchor = SE)
         D['DiceComment'] = Label(P, text = '주사위를 굴려보세요', font = self.Fo('Items'), fg = 'white', bg = Col_back)
         D['DiceComment'].place(relx = 0.9, rely = 0.5, anchor = NE)
@@ -211,7 +212,6 @@ class Page:
         self.Frames['Curr'].pack(side = TOP, fill = BOTH)
 
     def DiceFunction(self):
-        self.ChangeFunction('Dice')
         result = random.randint(1, 6)
         D = self.W('Functions')
         D['DiceImg']['image'] = self.I('Dice_' + str(result))
