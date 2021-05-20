@@ -136,7 +136,7 @@ class Page:
             D[str(i)+'Real'].place(relx = 0.20 + len(L[i].KRW) * 0.017, rely = 0.5, anchor = W)
             D[str(i)+'Percent'] = UIMaker.TextLabel(P, L[i].last, self.Fo('Items'), Col_F, Col)
             D[str(i)+'Percent'].place(relx = 0.43, rely = 0.5, anchor = W)
-            D[str(i)+'MarketPrice'] = UIMaker.TextLabel(P, L[i].marketprice, self.Fo('Items'), Col_F, Col)
+            D[str(i)+'MarketPrice'] = UIMaker.TextLabel(P, L[i].marketprice, self.Fo('Items'), 'white', Col)
             D[str(i)+'MarketPrice'].place(relx = 0.62, rely = 0.5, anchor = W)
             D[str(i)+'Buy'] = UIMaker.TextLabel(P, L[i].buy, self.Fo('Items'), 'white', Col)
             D[str(i)+'Buy'].place(relx = 0.79, rely = 0.5, anchor = W)
