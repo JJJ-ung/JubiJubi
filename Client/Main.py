@@ -1,3 +1,3 @@
 from AppGUI import MainGUI
 
-MainGUI.MainGUI()
+MainUI = MainGUI.MainGUI()

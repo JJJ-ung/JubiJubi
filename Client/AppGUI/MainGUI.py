@@ -32,8 +32,7 @@ class MainGUI :
 
         self.SetUp_Frames(self.page)
 
-        self.MenuGUI = MenuFrame.Menu(self.menu, self)
-        self.StatusGUI = StatusFrame.Status(self.status)
+        self.CurrFrame = ''
 
         self.Pages = dict()
         self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'])
@@ -45,14 +44,25 @@ class MainGUI :
         self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'])
         self.Pages['settings'] = AutoPage.Page(self.Frames['auto'])
 
+        self.MenuGUI = MenuFrame.Menu(self.menu, self)
+        self.StatusGUI = StatusFrame.Status(self.status, self, self.Pages['stock'], self.Pages['bitcoin'])
+
         self.Show_Frame('stock')
 
         window.mainloop()
 
 
+    def Get_CurrFrame(self):
+        return self.CurrFrame
+
+
     def Show_Frame(self, page_name):
-        frame=self.Frames[page_name]
-        frame.tkraise()
+        self.CurrFrame = page_name
+        if page_name == 'bitcoin' or page_name == 'stock':
+            self.StatusGUI.Searchbar.config(state = 'normal')
+        else :
+            self.StatusGUI.Searchbar.config(state = 'disabled')
+        self.Frames[page_name].tkraise()
 
 
     def SetUp_Frames(self, parent):

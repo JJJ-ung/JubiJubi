@@ -23,20 +23,47 @@ class DailyData :
         self.IsUp = IsUp
 
 class Page:
-    def Fo(self, name):
-        return self.Fonts[name]
-    def I(self, name):
-        return self.Images[name]
-    def F(self, name):
-        return self.Frames[name]
-    def W(self, name):
-        return self.Widgets[name]
+
+    def Change_Name(self, name):
+        self.Coin = name
+        self.Update_Name()
+
+    def Change_Percent(self, percent):
+        self.Percent = percent
+        self.Update_Name()
+
+    def Change_Tiker(self, tiker):
+        self.Tiker = tiker
+        self.Update_Name()
+
+    def Change_CurrPrice(self, curr):
+        self.CurrPrice = curr
+        self.Update_Name()
+
+    def Update_Name(self):
+        D = self.W('Name')
+        D['Name']['text'] = self.Coin
+        D['Tiker']['text'] = self.Tiker + '/KRW'
+        D['Curr']['text'] = self.CurrPrice
+        D['Percent']['text'] = self.Percent
+
+
+    ##################################################################################################################
+    #   이니셜라이즈
+    ##################################################################################################################
+
 
     def __init__(self, parent):
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
+        self.DailyData = list()
 
-        #fonts
+
+    ##################################################################################################################
+    #  폰트 로드
+    ##################################################################################################################
+
+
         self.Fonts = dict()
         self.Fonts['Title'] = tkinter.font.Font(family='NanumSquareEB', size=20, weight='bold')
         self.Fonts['TitleS'] = tkinter.font.Font(family='NanumSquareEB', size=10, weight='bold')
@@ -46,7 +73,12 @@ class Page:
         self.Fonts['Items'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')    
         self.Fonts['Menu'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')    
 
-        #images
+
+    ##################################################################################################################
+    #   이미지 로드
+    ##################################################################################################################
+
+
         self.pixelVirtual = PhotoImage(width = 1, height = 1)
         self.Images = dict()
         self.Images['SampleCoin'] = PhotoImage(file = 'Image/sample.png')        
@@ -63,12 +95,16 @@ class Page:
         self.Images['Dice_5'] = PhotoImage(file = 'Resources/dogedice/dice_5.png')        
         self.Images['Dice_6'] = PhotoImage(file = 'Resources/dogedice/dice_6.png')        
 
-        #data
+
+    ##################################################################################################################
+    #   메인 정보
+    ##################################################################################################################
+
+
         self.Coin = '이더리움 클래식'
         self.Percent = '-6.36%'
         self.Tiker = 'DOGE'
         self.CurrPrice = '50,087,000'
-        self.DailyData = list()
 
         self.Frames['Left'] = UIMaker.PackFix(Frame(parent, width = 610, bg=Col_back), LEFT, BOTH, NO)
         self.Frames['Right'] = UIMaker.PackFix(Frame(parent, width = 353, bg=Col_back), RIGHT, Y, NO)
@@ -101,10 +137,23 @@ class Page:
         D['Percent'].place(relx = 0.97, anchor = NE)
         D['전일대비'] = UIMaker.TextLabel(self.F('Name_Bot'), '전일대비 ', self.Fo('SubTitle'), Col_red, Col_title)
         D['전일대비'].place(relx = 0.97 - len(self.Percent) * 0.014, anchor = NE)
+
+
+    ##################################################################################################################
+    #   그래프
+    ##################################################################################################################
+
+
         P = self.F('Graph')
         self.Graph = Canvas(P, width = 610, height = 380, bg = Col_back, bd = 0, highlightthickness = 0)
         self.Graph.pack()
         self.Graph.create_line(0, 0, 610, 380, fill='red', width = 3)
+
+
+    ##################################################################################################################
+    #   일일 정보
+    ##################################################################################################################
+
 
         P = self.F('Daily')
         D = self.W('Daily')
@@ -140,6 +189,12 @@ class Page:
             D[str(i)+'Buy'] = UIMaker.TextLabel(P, L[i].buy, self.Fo('Items'), 'white', Col)
             D[str(i)+'Buy'].place(relx = 0.75, rely = 0.5, anchor = W)
 
+
+    ##################################################################################################################
+    #   비교 칸
+    ##################################################################################################################
+
+
         P = self.F('Compare')
         D = self.W('Compare')
         self.Frames['Compare_Menu'] = UIMaker.PackFix(Frame(P, height = 50, bg=Col_titleR), TOP, BOTH, NO)
@@ -162,6 +217,12 @@ class Page:
         UIMaker.TextLabel(P, '이름', self.Fo('Menu'), 'white', Col_back).place(relx = 0.15, rely = 0.5, anchor = W)
         UIMaker.TextLabel(P, '현재가', self.Fo('Menu'), 'white', Col_back).place(relx = 0.5, rely = 0.5, anchor = W)
         UIMaker.TextLabel(P, '전일대비', self.Fo('Menu'), 'white', Col_back).place(relx = 0.8, rely = 0.5, anchor = W)
+
+
+    ##################################################################################################################
+    #   기능 칸
+    ##################################################################################################################
+
 
         P = self.F('Functions')
         D = self.W('Functions')
@@ -238,3 +299,18 @@ class Page:
             D['DiceResult']['text'] = '6이 나왔네요!'
             D['DiceResult']['fg'] = Col_red
             D['DiceComment']['text'] = '개 좋은거'
+
+
+    ##################################################################################################################
+    #   귀차니즘 함수
+    ##################################################################################################################
+
+
+    def Fo(self, name):
+        return self.Fonts[name]
+    def I(self, name):
+        return self.Images[name]
+    def F(self, name):
+        return self.Frames[name]
+    def W(self, name):
+        return self.Widgets[name]
