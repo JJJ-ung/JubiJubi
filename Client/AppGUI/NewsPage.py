@@ -1,6 +1,6 @@
 from tkinter import *
 
 class Page:
-    def __init__(self, parent):
+    def __init__(self, parent, IL):
         self.Test = Label(parent, text='News')
         self.Test.pack()

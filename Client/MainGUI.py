@@ -1,22 +1,22 @@
 from tkinter import *
-from . import MenuFrame
-from . import StatusFrame
-from . import BitcoinPage
-from . import StockPage
-from . import NewsPage
-from . import FavoritesPage
-from . import ProfilePage
-from . import DevelopersPage
-from . import SettingsPage
-from . import AutoPage
+from AppGUI import MenuFrame
+from AppGUI import StatusFrame
+from AppGUI import BitcoinPage
+from AppGUI import StockPage
+from AppGUI import NewsPage
+from AppGUI import FavoritesPage
+from AppGUI import ProfilePage
+from AppGUI import DevelopersPage
+from AppGUI import SettingsPage
+from AppGUI import AutoPage
+from AppGUI import ImageLoader
 
-Color_Page = '#333333'
+#Color_Page = '#333333'
+Color_Page = '#3f3f3f'
 
 class MainGUI :
-    def __init__(self) :
-        window = Tk()
-        window.geometry("1024x768")
-        window.resizable(width=False, height=False)
+    def __init__(self, window) :
+        self.IL = ImageLoader.Loader()
 
         self.menu = Frame(window, relief = RIDGE, width = 60, background = '#525967')
         self.menu.pack(side = LEFT, fill = BOTH)
@@ -35,25 +35,27 @@ class MainGUI :
         self.CurrFrame = ''
 
         self.Pages = dict()
-        self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'])
-        self.Pages['stock'] = StockPage.Page(self.Frames['stock'])
-        self.Pages['news'] = NewsPage.Page(self.Frames['news'])
-        self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'])
-        self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'])
-        self.Pages['developers'] = DevelopersPage.Page(self.Frames['developers'])
-        self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'])
-        self.Pages['settings'] = AutoPage.Page(self.Frames['auto'])
+        self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'], self.IL)
+        self.Pages['stock'] = StockPage.Page(self.Frames['stock'], self.IL)
+        self.Pages['news'] = NewsPage.Page(self.Frames['news'], self.IL)
+        self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'], self.IL)
+        self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'], self.IL)
+        self.Pages['developers'] = DevelopersPage.Page(self.Frames['developers'], self.IL)
+        self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'], self.IL)
+        self.Pages['settings'] = AutoPage.Page(self.Frames['auto'], self.IL)
 
-        self.MenuGUI = MenuFrame.Menu(self.menu, self)
-        self.StatusGUI = StatusFrame.Status(self.status, self, self.Pages['stock'], self.Pages['bitcoin'])
+        self.MenuGUI = MenuFrame.Menu(self.menu, self, self.IL)
+        self.StatusGUI = StatusFrame.Status(self.status, self, self.Pages['stock'], self.Pages['bitcoin'], self.IL)
 
-        self.Show_Frame('stock')
-
-        window.mainloop()
+        self.Show_Frame('favorites')
 
 
     def Get_CurrFrame(self):
         return self.CurrFrame
+
+
+    def GetPage(self, tag):
+        return self.Pages[tag]
 
 
     def Show_Frame(self, page_name):

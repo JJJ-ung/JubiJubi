@@ -33,7 +33,10 @@
     <Compile Include="AppGUI\FavoritesPage.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppGUI\MainGUI.py">
+    <Compile Include="AppGUI\ImageLoader.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainGUI.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppGUI\MenuFrame.py">
@@ -63,38 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppGUI\" />
-    <Folder Include="Image\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Resources\buttons\" />
-    <Folder Include="Resources\menu\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Image\pichu2.png" />
-    <Content Include="Resources\buttons\auto_0.png" />
-    <Content Include="Resources\buttons\auto_1.png" />
-    <Content Include="Resources\buttons\bitcoin_0.png" />
-    <Content Include="Resources\buttons\bitcoin_1.png" />
-    <Content Include="Resources\buttons\bookmark_0.png" />
-    <Content Include="Resources\buttons\bookmark_1.png" />
-    <Content Include="Resources\buttons\developer_0.png" />
-    <Content Include="Resources\buttons\developer_1.png" />
-    <Content Include="Resources\buttons\favorite_0.png" />
-    <Content Include="Resources\buttons\favorite_1.png" />
-    <Content Include="Resources\buttons\list.png" />
-    <Content Include="Resources\buttons\news_0.png" />
-    <Content Include="Resources\buttons\news_1.png" />
-    <Content Include="Resources\buttons\profile_0.png" />
-    <Content Include="Resources\buttons\profile_1.png" />
-    <Content Include="Resources\buttons\setting_0.png" />
-    <Content Include="Resources\buttons\setting_1.png" />
-    <Content Include="Resources\buttons\stock_0.png" />
-    <Content Include="Resources\buttons\stock_1.png" />
-    <Content Include="Resources\menu\logo.png" />
-    <Content Include="Resources\menu\logo_big.png" />
-    <Content Include="Resources\menu\search.png" />
-    <Content Include="Resources\menu\searchbar.png" />
-    <Content Include="Resources\menu\toggle_0.png" />
-    <Content Include="Resources\menu\toggle_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

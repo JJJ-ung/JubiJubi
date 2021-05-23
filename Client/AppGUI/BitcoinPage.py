@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.font
 from . import UIMaker
+from . import ImageLoader
 import random
 
 Col_title = '#3f3f3f'
@@ -53,11 +54,11 @@ class Page:
     ##################################################################################################################
 
 
-    def __init__(self, parent):
+    def __init__(self, parent, IL):
+        self.IL = IL
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
         self.DailyData = list()
-
 
     ##################################################################################################################
     #  폰트 로드
@@ -72,29 +73,6 @@ class Page:
         self.Fonts['SubTitle'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')    
         self.Fonts['Items'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')    
         self.Fonts['Menu'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')    
-
-
-    ##################################################################################################################
-    #   이미지 로드
-    ##################################################################################################################
-
-
-        self.pixelVirtual = PhotoImage(width = 1, height = 1)
-        self.Images = dict()
-        self.Images['SampleCoin'] = PhotoImage(file = 'Image/sample.png')        
-        self.Images['Auto_On'] = PhotoImage(file = 'Resources/buttons/Button0_On.png')        
-        self.Images['Auto_Off'] = PhotoImage(file = 'Resources/buttons/Button0_Off.png')        
-        self.Images['Dice_On'] = PhotoImage(file = 'Resources/buttons/Button1_On.png')        
-        self.Images['Dice_Off'] = PhotoImage(file = 'Resources/buttons/Button1_Off.png')        
-        self.Images['Fav_On'] = PhotoImage(file = 'Resources/buttons/Button2_On.png')        
-        self.Images['Fav_Off'] = PhotoImage(file = 'Resources/buttons/Button2_Off.png')        
-        self.Images['Dice_1'] = PhotoImage(file = 'Resources/dogedice/dice_1.png')        
-        self.Images['Dice_2'] = PhotoImage(file = 'Resources/dogedice/dice_2.png')        
-        self.Images['Dice_3'] = PhotoImage(file = 'Resources/dogedice/dice_3.png')        
-        self.Images['Dice_4'] = PhotoImage(file = 'Resources/dogedice/dice_4.png')        
-        self.Images['Dice_5'] = PhotoImage(file = 'Resources/dogedice/dice_5.png')        
-        self.Images['Dice_6'] = PhotoImage(file = 'Resources/dogedice/dice_6.png')        
-
 
     ##################################################################################################################
     #   메인 정보
@@ -121,7 +99,8 @@ class Page:
         P = self.F('Name')
         D = self.W('Name')
         self.Frames['Name_Icon'] = UIMaker.PackFix(Frame(P, width = 60, bg = Col_title), LEFT, BOTH, NO)
-        D['Icon'] = UIMaker.ImageLabel(self.F('Name_Icon'), self.I('SampleCoin'), Col_title)
+        #D['Icon'] = UIMaker.ImageLabel(self.F('Name_Icon'), self.I('dice_1'), Col_title)
+        D['Icon'] = Label(self.F('Name_Icon'), image = self.I('sample'), bg = Col_title, bd = 0)
         D['Icon'].place(relx = 0.5, rely = 0.5, anchor = CENTER)
         self.Frames['Name_Top'] = UIMaker.PackFix(Frame(P, height = 50, bg = Col_title), TOP, BOTH, NO)
         self.Frames['Name_Bot'] = UIMaker.PackFix(Frame(P, bg = Col_title), TOP, BOTH, YES)
@@ -207,10 +186,10 @@ class Page:
         P = self.F('Compare_Menu')
         UIMaker.TextLabel(P, '비교목록', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         D['Remove'] = Button(P, text = '─', font = self.Fo('Title'), width = 50, height = 50, bd = 0, highlightthickness=0, activebackground=Col_blue, 
-                                          bg = Col_titleR, fg = Col_blue, image = self.pixelVirtual, compound = CENTER)
+                                          bg = Col_titleR, fg = Col_blue, image = self.IL.pixelVirtual, compound = CENTER)
         D['Remove'].pack(side = RIGHT)
         D['Add'] = Button(P, text = '+', font = self.Fo('Title'), width = 50, height = 50, bd = 0, highlightthickness=0, activebackground=Col_red, 
-                                          bg = Col_titleR, fg = Col_red, image = self.pixelVirtual, compound = CENTER)
+                                          bg = Col_titleR, fg = Col_red, image = self.IL.pixelVirtual, compound = CENTER)
         D['Add'].pack(side = RIGHT)
         P = self.F('Compare_Info')
         UIMaker.TextLabel(P, 'V', self.Fo('Menu'), 'white', Col_back).place(relx = 0.05, rely = 0.5, anchor = W)
@@ -253,7 +232,7 @@ class Page:
         self.Frames['Curr'].pack(side = TOP, fill = BOTH)
 
         P = self.F('Function_Dice')
-        D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('Dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
+        D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
                                                  command =lambda: self.DiceFunction())
         D['DiceImg'].place(relx = 0.1, rely = 0.5, anchor = W)
         D['DiceResult'] = Label(P, text = '운세 주사위 !', font = self.Fo('TitleMS'), fg = 'white', bg = Col_back)
@@ -274,7 +253,7 @@ class Page:
     def DiceFunction(self):
         result = random.randint(1, 6)
         D = self.W('Functions')
-        D['DiceImg']['image'] = self.I('Dice_' + str(result))
+        D['DiceImg']['image'] = self.I('dice_' + str(result))
         if result == 1 :
             D['DiceResult']['text'] = '1이 나왔네요!'
             D['DiceResult']['fg'] = Col_blue
@@ -309,7 +288,7 @@ class Page:
     def Fo(self, name):
         return self.Fonts[name]
     def I(self, name):
-        return self.Images[name]
+        return self.IL.Get(name)
     def F(self, name):
         return self.Frames[name]
     def W(self, name):
