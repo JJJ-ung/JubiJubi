@@ -40,9 +40,9 @@ class MainData(object):
         if type == 'bitcoin':
             print('비트코인 확인')
             #여기에 검색하는 기능 추가, 위에 받아온 name으로 검색, Bitcoin 객체 받아오도록
-            result = CoinInfo.SearchCoin(name)
+            result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
-                self.CurrCoin = Bitcoin(result)
+                self.CurrCoin = Bitcoin.Bitcoin(result)
             #self.UI.Pages[type].Change_Name(name) # 이제 name 대신 ㄴ
         if type == 'stock':
             print('주식 확인')

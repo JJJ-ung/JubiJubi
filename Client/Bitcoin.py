@@ -14,7 +14,7 @@ class CoinInfo():
 
 class Bitcoin(threading.Thread):
     def __init__(self, info):
-        self.ticker = info['marker']
+        self.ticker = info['market']
         self.koreanName = info['korean_name']
         self.englishName = info['english_name']
         
