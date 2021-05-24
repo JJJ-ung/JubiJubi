@@ -1,5 +1,6 @@
 import Stock
 import Bitcoin
+import threading
 from AppGUI import StatusFrame
 
 Coin = 0
@@ -15,7 +16,6 @@ class MainData(object):
         self.Compare = [list(), list()]  # 코인 비교목록
         self.BindUI()
 
-
     def BindUI(self):
         self.UI.StatusGUI.SearchButton.configure(command = lambda : self.Search(0))
         self.UI.StatusGUI.Searchbar.bind("<Return>", self.Search)
@@ -26,13 +26,15 @@ class MainData(object):
 
     # 실시간 업데이트
     def Update(self):
-        self.Update_CoinUI(self.CurrCoin.Update())
-        self.Update_StockUI(self.CurrStock.Update())
-        for type in range(0, End) :
-            for item in Favorites[type] :
-                self.Update_FavUI(type, item.Update())
-            for item in Compare[type]:
-                self.Update_CompareUI(type, item.Update())
+            if self.CurrCoin != 0:
+                self.Update_CoinUI(self.CurrCoin.Update())
+            if self.CurrStock != 0:
+                self.Update_StockUI(self.CurrStock.Update())
+            for type in range(0, End) :
+                for item in self.Favorites[type]:
+                    self.Update_FavUI(type, item.Update())
+                for item in self.Compare[type]:
+                    self.Update_CompareUI(type, item.Update())
 
     # 검색기능
     def Search(self, event):
@@ -44,6 +46,8 @@ class MainData(object):
             result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
                 self.CurrCoin = Bitcoin.Bitcoin(result)
+                self.CurrCoin.daemon = True
+                self.CurrCoin.start()
                 self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
