@@ -19,6 +19,7 @@ class MainData(object):
     def BindUI(self):
         self.UI.StatusGUI.SearchButton.configure(command = lambda : self.Search(0))
         self.UI.StatusGUI.Searchbar.bind("<Return>", self.Search)
+
         self.CoinPage = self.UI.Pages['bitcoin']
         self.StockPage = self.UI.Pages['stock']
 
@@ -43,11 +44,18 @@ class MainData(object):
             result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
                 self.CurrCoin = Bitcoin.Bitcoin(result)
+                self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
+                self.UI.StatusGUI.Searchbar['fg'] = 'black'
+            else :
+                self.UI.StatusGUI.Searchbar['fg'] = 'red'
             #self.UI.Pages[type].Change_Name(name) # 이제 name 대신 ㄴ
         if type == 'stock':
             print('주식 확인')
             #여기에 검색하는 기능 추가, 위에 받아온 name으로 검색, Stock 객체 받아오도록
             self.UI.Pages[type].Change_Name(name)
+
+    def Search_Reset(self, event):
+        self.UI.StatusGUI.Searchbar['fg'] = 'black'
 
     def Update_CoinUI(self, item):
         pass
