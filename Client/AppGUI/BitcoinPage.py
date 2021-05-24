@@ -1,8 +1,11 @@
+import sys
+sys.path.append('/Bitcoin.py')
 from tkinter import *
 import tkinter.font
 from . import UIMaker
 from . import ImageLoader
 import random
+import Bitcoin
 
 Col_title = '#3f3f3f'
 Col_titleR = '#4e4e4e'
@@ -59,6 +62,7 @@ class Page:
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
         self.DailyData = list()
+        self.test = Bitcoin.Bitcoin
 
     ##################################################################################################################
     #  폰트 로드

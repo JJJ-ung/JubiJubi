@@ -45,7 +45,7 @@ class MainGUI :
         self.Pages['settings'] = AutoPage.Page(self.Frames['auto'], self.IL)
 
         self.MenuGUI = MenuFrame.Menu(self.menu, self, self.IL)
-        self.StatusGUI = StatusFrame.Status(self.status, self, self.Pages['stock'], self.Pages['bitcoin'], self.IL)
+        self.StatusGUI = StatusFrame.Status(self.status, self, self.IL)
 
         self.Show_Frame('favorites')
 
