@@ -22,6 +22,7 @@ class Bitcoin(threading.Thread):
         self.interval = "day"
         self.coinData = pyupbit.WebSocketManager("ticker", [self.ticker])
         self.coinData.get()
+        self.curPrice = self.coinData.get('trade_price')
         self.lstDailyData = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['close']) # 날짜 오름차순
         self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
         
@@ -30,12 +31,12 @@ class Bitcoin(threading.Thread):
         self.interval = Bitcoin.intervalTable[cnt]
 
     def getPrice(self):
-        return self.coinData.get('trade_price')
+        return self.curPrice
 
     def run(self):
         while True:
+            self.curPrice = self.coinData.get('trade_price')
             self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
-
 
 if __name__ == '__main__':
     result = CoinInfo.SearchCoin("btc") 
