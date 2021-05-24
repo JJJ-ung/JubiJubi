@@ -19,8 +19,6 @@ class MainData(object):
     def BindUI(self):
         self.UI.StatusGUI.SearchButton.configure(command = lambda : self.Search(0))
         self.UI.StatusGUI.Searchbar.bind("<Return>", self.Search)
-        self.UI.StatusGUI.Searchbar.bind("<BackSpace>", self.Search_Reset)
-        self.UI.StatusGUI.Searchbar.bind("<Button-1>", self.Search_Reset)
 
         self.CoinPage = self.UI.Pages['bitcoin']
         self.StockPage = self.UI.Pages['stock']
@@ -47,6 +45,7 @@ class MainData(object):
             if result is not None:
                 self.CurrCoin = Bitcoin.Bitcoin(result)
                 self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
+                self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'
             #self.UI.Pages[type].Change_Name(name) # 이제 name 대신 ㄴ

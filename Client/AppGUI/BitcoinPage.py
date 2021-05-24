@@ -67,9 +67,9 @@ class Page:
     ##################################################################################################################
 
 
-        self.Coin = '이더리움 클래식'
+        self.Coin = ''
         self.Percent = '-6.36%'
-        self.Tiker = 'DOGE'
+        self.Tiker = ''
         self.CurrPrice = '50,087,000'
 
         self.Frames['Left'] = UIMaker.PackFix(Frame(parent, width = 610, bg=Col_back), LEFT, BOTH, NO)
@@ -87,14 +87,13 @@ class Page:
         P = self.F('Name')
         D = self.W('Name')
         self.Frames['Name_Icon'] = UIMaker.PackFix(Frame(P, width = 60, bg = Col_title), LEFT, BOTH, NO)
-        #D['Icon'] = UIMaker.ImageLabel(self.F('Name_Icon'), self.I('dice_1'), Col_title)
         D['Icon'] = Label(self.F('Name_Icon'), image = self.I('sample'), bg = Col_title, bd = 0)
         D['Icon'].place(relx = 0.5, rely = 0.5, anchor = CENTER)
         self.Frames['Name_Top'] = UIMaker.PackFix(Frame(P, height = 50, bg = Col_title), TOP, BOTH, NO)
         self.Frames['Name_Bot'] = UIMaker.PackFix(Frame(P, bg = Col_title), TOP, BOTH, YES)
         D['Name'] = UIMaker.TextLabel(self.F('Name_Top'), self.Coin, self.Fo('Title'), 'white', Col_title)
         D['Name'].place(rely = 1, anchor = SW)
-        D['Tiker'] = UIMaker.TextLabel(self.F('Name_Bot'), self.Tiker + '/KRW', self.Fo('SubTitle'), 'white', Col_title)
+        D['Tiker'] = UIMaker.TextLabel(self.F('Name_Bot'), self.Tiker, self.Fo('SubTitle'), 'white', Col_title)
         D['Tiker'].place(relx = 0.005, anchor = NW)
         D['KRW'] = UIMaker.TextLabel(self.F('Name_Top'), 'KRW', self.Fo('TitleS'), Col_red, Col_title)
         D['KRW'].place(relx = 0.97, rely = 0.92, anchor = SE)
