@@ -20,8 +20,8 @@ class Bitcoin(threading.Thread):
         self.koreanName = info['korean_name']
         self.englishName = info['english_name']
         self.interval = "day"
-        self.coinData = pyupbit.WebSocketManager("ticker", [self.ticker])
-        self.coinData.get()
+        #self.coinData = pyupbit.WebSocketManager("ticker", [self.ticker])
+        #self.coinData.get()
         self.lstDailyData = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['close']) # 날짜 오름차순
         self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
         self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])

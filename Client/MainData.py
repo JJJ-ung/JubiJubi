@@ -26,23 +26,18 @@ class MainData(object):
 
     # 실시간 업데이트
     def Update(self):
-            if self.CurrCoin != 0:
-                self.Update_CoinUI(self.CurrCoin.Update())
-            if self.CurrStock != 0:
-                self.Update_StockUI(self.CurrStock.Update())
-            for type in range(0, End) :
-                for item in self.Favorites[type]:
-                    self.Update_FavUI(type, item.Update())
-                for item in self.Compare[type]:
-                    self.Update_CompareUI(type, item.Update())
+            print('*')
+            #if self.CurrCoin != 0:
+                #self.Update_Test(self.CurrCoin.getPrice())
+
 
     # 검색기능
     def Search(self, event):
         type = self.UI.Get_CurrFrame()
         name = self.UI.StatusGUI.Searchbar.get() # 검색창에 입력한 이름
+
         if type == 'bitcoin':
             print('비트코인 확인')
-            #여기에 검색하는 기능 추가, 위에 받아온 name으로 검색, Bitcoin 객체 받아오도록
             result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
                 self.CurrCoin = Bitcoin.Bitcoin(result)
@@ -52,7 +47,7 @@ class MainData(object):
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'
-            #self.UI.Pages[type].Change_Name(name) # 이제 name 대신 ㄴ
+
         if type == 'stock':
             print('주식 확인')
             #여기에 검색하는 기능 추가, 위에 받아온 name으로 검색, Stock 객체 받아오도록
