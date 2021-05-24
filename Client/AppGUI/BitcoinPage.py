@@ -28,28 +28,12 @@ class DailyData :
 
 class Page:
 
-    def Change_Name(self, name):
-        self.Coin = name
-        self.Update_Name()
-
-    def Change_Percent(self, percent):
-        self.Percent = percent
-        self.Update_Name()
-
-    def Change_Tiker(self, tiker):
-        self.Tiker = tiker
-        self.Update_Name()
-
-    def Change_CurrPrice(self, curr):
-        self.CurrPrice = curr
-        self.Update_Name()
-
-    def Update_Name(self):
+    def Update_CurrInfo(self, coin):
         D = self.W('Name')
-        D['Name']['text'] = self.Coin
-        D['Tiker']['text'] = self.Tiker + '/KRW'
-        D['Curr']['text'] = self.CurrPrice
-        D['Percent']['text'] = self.Percent
+        D['Name'].configure(text = coin.koreanName)
+        D['Tiker'].configure(text = coin.ticker + '/' + coin.englishName)
+        #D['Curr']['text'] = self.CurrPrice
+        #D['Percent']['text'] = self.Percent
 
 
     ##################################################################################################################
@@ -62,7 +46,7 @@ class Page:
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
         self.DailyData = list()
-        self.test = Bitcoin.Bitcoin
+
 
     ##################################################################################################################
     #  폰트 로드
