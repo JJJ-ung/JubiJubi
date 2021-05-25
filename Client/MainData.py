@@ -41,8 +41,6 @@ class MainData(object):
             result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
                 self.CurrCoin = Bitcoin.Bitcoin(result)
-                self.CurrCoin.daemon = True
-                self.CurrCoin.start()
                 self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
