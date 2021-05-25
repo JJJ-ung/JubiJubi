@@ -205,7 +205,7 @@ class Page:
         self.Frames['Function_Menu'] = UIMaker.PackFix(Frame(P, height = 40, bg = Col_titleR), TOP, BOTH, NO)
         UIMaker.TextLabel(self.Frames['Function_Menu'], '기능', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         self.Frames['Function_Buttons'] = UIMaker.PackFix(Frame(P, height = 81, bg = Col_titleR), TOP, BOTH, NO)
-        self.Frames['Function_Fav'] = Frame(P, height = 121, bg = 'red')
+        self.Frames['Function_Fav'] = Frame(P, height = 121, bg = Col_back)
         self.Frames['Function_Fav'].pack_propagate(0)
         self.Frames['Function_Auto'] = Frame(P, height = 121, bg = 'yellow')
         self.Frames['Function_Auto'].pack_propagate(0)
@@ -236,6 +236,10 @@ class Page:
         D['DiceResult'].place(relx = 0.9, rely = 0.5, anchor = SE)
         D['DiceComment'] = Label(P, text = '주사위를 굴려보세요', font = self.Fo('Items'), fg = 'white', bg = Col_back)
         D['DiceComment'].place(relx = 0.9, rely = 0.5, anchor = NE)
+
+        P = self.F('Function_Fav')
+        D['FavAdd'] = Button(P, width = 340, height = 60, image = self.I('boxplus'), bd = 0, relief = FLAT, highlightthickness=0, bg = Col_back, activebackground=Col_title, anchor='w')
+        D['FavAdd'].place(relx = 0.02, rely = 0.5, anchor = SW)
 
     def ChangeFunction(self, tag):
         D = self.W('Functions')

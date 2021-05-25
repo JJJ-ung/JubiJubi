@@ -1,7 +1,10 @@
+import sys
+sys.path.append('/Bitcoin.py')
 from tkinter import *
 import tkinter.font
 from . import UIMaker
 from . import ImageLoader
+import Bitcoin
 
 Col_Title = '#4e4e4e'
 Col_Main = '#333333'
@@ -9,39 +12,32 @@ Col_Sub = '#393939'
 Col_red = '#eb6148'
 Col_blue = '#008dd2'
 
-class tmp:
-    def __init__(self, name, KRW, percent, Up) :
-        self.name = name
-        self.percent = percent
-        self.KRW = KRW
-        self.IsUp = Up
-
 class Page:
-    ##################################################################################################################
-    #   이니셜라이즈
-    ##################################################################################################################
-    def Add_Bitcoin(self) :
+    def Add_Bitcoin(self, coin) :
         D = self.Widgets['Bitcoin']
         i = len(self.BitcoinFav)
         if i == 15 : pass
         Col = Col_Main
         if i % 2 == 1 :
             Col = Col_Sub
-            self.BitcoinFav.append(tmp('도지코인', 570, 12, True))
-        else :
-            self.BitcoinFav.append(tmp('이더리움 클래식', 1254013759713, 423670, False))
+        self.BitcoinFav.append(coin)
         F = self.Frames['Bit'+str(i)]
         D['Check'+str(i)].place(relx = 0.03, rely = 0.5, anchor = W)
-        D['Name'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = self.BitcoinFav[i].name, font = self.Fonts['Main'], fg = 'white')
+        D['Name'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = self.BitcoinFav[i].koreanName, font = self.Fonts['Main'], fg = 'white')
         D['Name'+str(i)].place(relx = 0.1, rely = 0.5, anchor = W)
-        D['Percent'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = str(self.BitcoinFav[i].percent) + '%', font = self.Fonts['Sub'], fg = 'white')
+        D['Percent'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = str(self.BitcoinFav[i].koreanName) + '%', font = self.Fonts['Sub'], fg = 'white')
         D['Percent'+str(i)].place(relx = 0.9, rely = 0.5, anchor = E)
-        if self.BitcoinFav[i].IsUp :
-            D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_red, text = '▲')
-        else:
-            D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_blue, text = '▼')
+        #if self.BitcoinFav[i].IsUp :
+        #    D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_red, text = '▲')
+        #else:
+        #    D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_blue, text = '▼')
+        D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_red, text = '▲')
         D['UpDown'+str(i)].place(relx = 0.91, rely = 0.5, anchor = W)
 
+
+    ##################################################################################################################
+    #   이니셜라이즈
+    ##################################################################################################################
     def __init__(self, parent, IL):
         self.IL = IL
         self.BitcoinFav = list()
@@ -86,7 +82,6 @@ class Page:
             self.Frames['Bit'+str(i)].pack(side = TOP, fill = X)
             D['Check'+str(i)] = Checkbutton(self.Frames['Bit'+str(i)], image = self.IL.Get('check_no'), selectimage = self.IL.Get('check_yes'), indicatoron=False,
             onvalue=1, offvalue=0, variable=IntVar(value = i), bg = Col, selectcolor = Col, activebackground = Col, bd = 0, command = self.CheckBitcoin)
-            self.Add_Bitcoin()
 
         #주식 쪽
         P = self.StockFrame
@@ -106,9 +101,9 @@ class Page:
             onvalue=1, offvalue=0, variable=IntVar(value = i), bg = Col, selectcolor = Col, activebackground = Col, bd = 0, command = self.CheckStock)
 
     def CheckBitcoin(self):
-        ++self.BitcoinSel
+        self.BitcoinSel += 1
         self.Widgets['Bitcoin']['SelectedCnt']['text'] = str(self.BitcoinSel) + '개 종목'
 
     def CheckStock(self):
-        ++self.StockSel
+        self.StockSel += 1
         self.Widgets['Stock']['SelectedCnt']['text'] = str(self.StockSel) + '개 종목'
