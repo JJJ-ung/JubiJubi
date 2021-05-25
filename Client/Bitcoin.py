@@ -1,6 +1,7 @@
 import pyupbit
 import threading
 import requests
+import json
 
 class CoinInfo():
     data = requests.get("https://api.upbit.com/v1/market/all").json()
