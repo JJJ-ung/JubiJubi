@@ -15,13 +15,7 @@ class Main():
         self.wnd.mainloop()
 
     def Update(self):
-        print("*")
         self.Data.Update()
         self.wnd.after(100, self.Update)
-        #now = time.strftime("%H:%M:%S")
-        #print(now)
-        #self.wnd.after(1000, self.Update)
-        #timer = threading.Timer(1, self.Update)
-        #timer.start()
 
 Main()
