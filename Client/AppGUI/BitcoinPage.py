@@ -1,11 +1,13 @@
+import re
 import sys
-sys.path.append('/Bitcoin.py')
+import random
 from tkinter import *
-import tkinter.font
 from datetime import *
+import tkinter.font
 from . import UIMaker
 from . import ImageLoader
-import random
+
+sys.path.append('/Bitcoin.py')
 import Bitcoin
 
 Col_title = '#3f3f3f'
@@ -18,46 +20,36 @@ Col_red = '#eb6148'
 Col_blue = '#008dd2'
 Col_SubFont = '#bbbbbb'
 
-class DailyData :
-    def __init__(self, day, KRW, real, last, buy, IsUp):
-        self.date = day
-        self.KRW = KRW
-        self.real = real
-        self.last = last
-        self.buy = buy
-        self.IsUp = IsUp
-
 class Page:
-
     def Update_CurrInfo(self, coin):
-        self.CurrCoin = coin
-        PriceToday = self.CurrCoin.lstDailyData[0]
-        PriceYesterday = self.CurrCoin.lstDailyData[1]
-        PriceChange = round(self.CurrCoin.lstDailyData[0] - self.CurrCoin.lstDailyData[1], 0)
-        Percent = round((PriceChange / PriceToday) * 100, 2)
-        
-        if PriceChange > 0 : Col = Col_red
-        else : Col = Col_blue
+        now = coin.getPrice()
+        change = now - self.Yesterday
+        self.Curr.set(str(now))
+        self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
+        if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
+        else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
 
+    def Set_CurrInfo(self, coin):
         D = self.W('Name')
-        D['Name'].configure(text = coin.koreanName)
-        D['Tiker'].configure(text = coin.ticker + '/' + coin.englishName)
-        D['Curr'].configure(text = coin.getPrice(), fg = Col)
-        D['Percent'].configure(text = str(Percent) + '%', fg = Col)
-        D['KRW'].configure(fg = Col)
-        D['전일대비'].configure(fg = Col)
+        self.Yesterday = coin.lstDailyData[4]
+
+        ImagePath = 'https://static.upbit.com/logos/' + re.sub("KRW-", "", coin.ticker) + '.png'
+        self.Widgets['Name']['Icon'].configure(image = self.IL.ImgFromURL(ImagePath, 25, 25))
+
+        D['Name']['text'] = coin.koreanName
+        D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
 
         D = self.W('Daily')
         Today = datetime.today()
         for i in range(0, 5):
             P = self.F('Daily_'+str(i + 1))
-            L = self.CurrCoin.lstDailyData
-            CurrDate = Today - timedelta(i)
-            CurrDate = CurrDate.strftime("%m-%d")
-            PriceToday = L[i]
-            PriceYesterday = L[i + 1]
-            PriceChange = round(L[i] - L[i + 1], 0)
-            Percent = round((PriceChange / PriceToday) * 100, 2)
+            L = coin.lstDailyData
+            CurrDate = (Today - timedelta(i)).strftime('%m-%d')
+            PriceToday = L[5 - i]
+            PriceYesterday = L[4 - i]
+            PriceChange = round(PriceToday - PriceYesterday, 2)
+            Percent = round((PriceChange / PriceYesterday) * 100, 2)
+            Bought = int(coin.lstDailyVolume[5 - i])
             if PriceChange >= 0 :
                 Col_F = Col_red
                 PriceChange = '+' + str(PriceChange)
@@ -70,11 +62,7 @@ class Page:
             D[str(i)+'KRW'].configure(text = PriceToday, fg = Col_F)
             D[str(i)+'Real'].configure(text = PriceChange, fg = Col_F)
             D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
-            D[str(i)+'Buy'].configure(text = self.CurrCoin.lstDailyVolume[i])
-
-    def Update_Test(self, price):
-         D = self.W('Name')
-         D['Curr']['text'] = price  
+            D[str(i)+'Buy'].configure(text = Bought)
 
 
     ##################################################################################################################
@@ -87,16 +75,15 @@ class Page:
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
         self.DailyData = list()
-        self.CurrCoin = 0
-        result = Bitcoin.CoinInfo.SearchCoin('도지코인')
-        if result is not None:
-            self.CurrCoin = Bitcoin.Bitcoin(result)
+
+        self.Curr = StringVar()
+        self.Percent = StringVar()
+        self.UpDown = StringVar()
+        self.Yesterday = 0
 
     ##################################################################################################################
     #  폰트 로드
     ##################################################################################################################
-
-
         self.Fonts = dict()
         self.Fonts['Title'] = tkinter.font.Font(family='NanumSquareEB', size=20, weight='bold')
         self.Fonts['TitleS'] = tkinter.font.Font(family='NanumSquareEB', size=10, weight='bold')
@@ -109,13 +96,6 @@ class Page:
     ##################################################################################################################
     #   메인 정보
     ##################################################################################################################
-
-
-        self.Coin = ''
-        self.Percent = '-6.36%'
-        self.Tiker = ''
-        self.CurrPrice = '50,087,000'
-
         self.Frames['Left'] = UIMaker.PackFix(Frame(parent, width = 610, bg=Col_back), LEFT, BOTH, NO)
         self.Frames['Right'] = UIMaker.PackFix(Frame(parent, width = 353, bg=Col_back), RIGHT, Y, NO)
         
@@ -131,23 +111,22 @@ class Page:
         P = self.F('Name')
         D = self.W('Name')
         self.Frames['Name_Icon'] = UIMaker.PackFix(Frame(P, width = 60, bg = Col_title), LEFT, BOTH, NO)
-        D['Icon'] = Label(self.F('Name_Icon'), image = self.I('sample'), bg = Col_title, bd = 0)
+        D['Icon'] = Label(self.F('Name_Icon'), bg = Col_title, bd = 0)
         D['Icon'].place(relx = 0.5, rely = 0.5, anchor = CENTER)
         self.Frames['Name_Top'] = UIMaker.PackFix(Frame(P, height = 50, bg = Col_title), TOP, BOTH, NO)
         self.Frames['Name_Bot'] = UIMaker.PackFix(Frame(P, bg = Col_title), TOP, BOTH, YES)
-        D['Name'] = UIMaker.TextLabel(self.F('Name_Top'), self.Coin, self.Fo('Title'), 'white', Col_title)
+        D['Name'] = Label(self.F('Name_Top'), font = self.Fo('Title'), fg = 'white', bg = Col_title, bd = 0)
         D['Name'].place(rely = 1, anchor = SW)
-        D['Tiker'] = UIMaker.TextLabel(self.F('Name_Bot'), self.Tiker, self.Fo('SubTitle'), 'white', Col_title)
+        D['Tiker'] = Label(self.F('Name_Bot'), font = self.Fo('SubTitle'), fg = 'white', bg = Col_title, bd = 0)
         D['Tiker'].place(relx = 0.005, anchor = NW)
-        D['KRW'] = UIMaker.TextLabel(self.F('Name_Top'), 'KRW', self.Fo('TitleS'), Col_red, Col_title)
+        D['KRW'] = Label(self.F('Name_Top'), text = 'KRW', font = self.Fo('TitleS'), fg = 'white', bg = Col_title, bd = 0)
         D['KRW'].place(relx = 0.97, rely = 0.92, anchor = SE)
-        D['Curr'] = UIMaker.TextLabel(self.F('Name_Top'), self.CurrPrice, self.Fo('Title'), Col_red, Col_title)
+        D['Curr'] = Label(self.F('Name_Top'), textvariable = self.Curr, font = self.Fo('Title'), fg = 'white', bg = Col_title, bd = 0)
         D['Curr'].place(relx = 0.91, rely = 1, anchor = SE)
-        D['Percent'] = UIMaker.TextLabel(self.F('Name_Bot'), self.Percent, self.Fo('SubTitle'), Col_red, Col_title)
-        D['Percent'].place(relx = 0.97, anchor = NE)
-        D['전일대비'] = UIMaker.TextLabel(self.F('Name_Bot'), '전일대비 ', self.Fo('SubTitle'), Col_red, Col_title)
-        D['전일대비'].place(relx = 0.97 - len(self.Percent) * 0.014, anchor = NE)
-
+        D['Percent'] = Label(self.F('Name_Bot'), textvariable = self.Percent, font = self.Fo('SubTitle'), fg = 'white', bg = Col_title, bd = 0)
+        D['Percent'].place(relx = 0.95, anchor = NE)
+        D['UpDown'] = Label(self.F('Name_Bot'), font = self.Fo('SubTitle'), fg = Col_red, bg = Col_title, bd = 0)
+        D['UpDown'].place(relx = 0.95, anchor = NW)
 
     ##################################################################################################################
     #   그래프
@@ -176,8 +155,8 @@ class Page:
 
         UIMaker.TextLabel(self.F('Daily_Menu'), '일자', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '종가(KRW)', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.20, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(self.F('Daily_Menu'), '전일대비', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.5, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(self.F('Daily_Menu'), '거래', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.75, rely = 0.5, anchor = W)      
+        UIMaker.TextLabel(self.F('Daily_Menu'), '전일대비', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.55, rely = 0.5, anchor = W)
+        UIMaker.TextLabel(self.F('Daily_Menu'), '거래', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.78, rely = 0.5, anchor = W)      
 
         for i in range(0, 5):
             P = self.F('Daily_'+str(i + 1))
@@ -192,7 +171,7 @@ class Page:
             D[str(i)+'Percent'] = Label(P, font = self.Fo('Menu'), fg = 'white', bg = Col, bd = 0)
             D[str(i)+'Percent'].place(relx = 0.55, rely = 0.5, anchor = W)
             D[str(i)+'Buy'] = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
-            D[str(i)+'Buy'].place(relx = 0.75, rely = 0.5, anchor = W)
+            D[str(i)+'Buy'].place(relx = 0.78, rely = 0.5, anchor = W)
 
 
     ##################################################################################################################
