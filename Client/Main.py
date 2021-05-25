@@ -11,18 +11,17 @@ class Main:
         self.wnd.resizable(width=False, height=False)
         self.UI = MainGUI.MainGUI(self.wnd)
         self.Data = MainData.MainData(self.UI)
-        self.count = 0
-        self.Update()
+        self.th = threading.Thread(target=self.Update)
+        self.th.start()
         self.wnd.mainloop()
 
     def Update(self):
-        self.count += 1
-        print(self.count)
-        self.Data.Update()
-        #now = time.strftime("%H:%M:%S")
-        #print(now)
-        self.wnd.after(1000, self.Update)
-        #timer = threading.Timer(1, self.Update)
-        #timer.start()
+        while True:
+            self.Data.Update()
+            #now = time.strftime("%H:%M:%S")
+            #print(now)
+            #self.wnd.after(1000, self.Update)
+            #timer = threading.Timer(1, self.Update)
+            #timer.start()
 
 Main()

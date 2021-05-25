@@ -11,17 +11,14 @@ class CoinInfo():
                 if coin['market'].lower().endswith(str.lower()) or coin['korean_name'] == str or coin['english_name'].lower() == str.lower():
                     return coin
 
-class Bitcoin(threading.Thread):
+class Bitcoin():
     intervalTable = ["minute1", "minute3", "minute5", "minute10", "minute15", "minute30", "minute60", "minute240", "day", "week", "month"]
 
     def __init__(self, info):
-        super().__init__()
         self.ticker = info['market']
         self.koreanName = info['korean_name']
         self.englishName = info['english_name']
         self.interval = "day"
-        #self.coinData = pyupbit.WebSocketManager("ticker", [self.ticker])
-        #self.coinData.get()
         self.lstDailyData = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['close']) # 날짜 오름차순
         self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
         self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
@@ -32,9 +29,4 @@ class Bitcoin(threading.Thread):
         self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
 
     def getPrice(self):
-        return self.coinData.get().get("trade_price")
-
-    def run(self):
-        while True:
-            #self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
-            pass
+        return pyupbit.get_current_price(self.ticker)

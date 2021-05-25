@@ -26,10 +26,9 @@ class MainData(object):
 
     # 실시간 업데이트
     def Update(self):
-            print('*')
-            #if self.CurrCoin != 0:
-                #self.Update_Test(self.CurrCoin.getPrice())
-
+        type = self.UI.Get_CurrFrame()
+        if self.CurrCoin != 0:
+            self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
 
     # 검색기능
     def Search(self, event):
@@ -40,9 +39,9 @@ class MainData(object):
             print('비트코인 확인')
             result = Bitcoin.CoinInfo.SearchCoin(name)
             if result is not None:
+                if self.CurrCoin != 0:
+                    del self.CurrCoin
                 self.CurrCoin = Bitcoin.Bitcoin(result)
-                self.CurrCoin.daemon = True
-                self.CurrCoin.start()
                 self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :

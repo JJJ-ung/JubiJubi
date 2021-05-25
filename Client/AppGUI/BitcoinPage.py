@@ -33,7 +33,7 @@ class Page:
         D = self.W('Name')
         D['Name'].configure(text = coin.koreanName)
         D['Tiker'].configure(text = coin.ticker + '/' + coin.englishName)
-        #D['Curr']['text'] = coin.getPrice()
+        D['Curr']['text'] = coin.getPrice()
         #D['Percent']['text'] = self.Percent
 
     def Update_Test(self, price):
