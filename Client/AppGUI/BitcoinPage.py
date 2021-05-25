@@ -2,6 +2,7 @@ import sys
 sys.path.append('/Bitcoin.py')
 from tkinter import *
 import tkinter.font
+from datetime import *
 from . import UIMaker
 from . import ImageLoader
 import random
@@ -30,15 +31,51 @@ class Page:
 
     def Update_CurrInfo(self, coin):
         self.CurrCoin = coin
+        PriceToday = self.CurrCoin.lstDailyData[0]
+        PriceYesterday = self.CurrCoin.lstDailyData[1]
+        PriceChange = round(self.CurrCoin.lstDailyData[0] - self.CurrCoin.lstDailyData[1], 0)
+        Percent = round((PriceChange / PriceToday) * 100, 2)
+        
+        if PriceChange > 0 : Col = Col_red
+        else : Col = Col_blue
+
         D = self.W('Name')
         D['Name'].configure(text = coin.koreanName)
         D['Tiker'].configure(text = coin.ticker + '/' + coin.englishName)
-        D['Curr']['text'] = coin.getPrice()
-        #D['Percent']['text'] = self.Percent
+        D['Curr'].configure(text = coin.getPrice(), fg = Col)
+        D['Percent'].configure(text = str(Percent) + '%', fg = Col)
+        D['KRW'].configure(fg = Col)
+        D['전일대비'].configure(fg = Col)
+
+        D = self.W('Daily')
+        Today = datetime.today()
+        for i in range(0, 5):
+            P = self.F('Daily_'+str(i + 1))
+            L = self.CurrCoin.lstDailyData
+            CurrDate = Today - timedelta(i)
+            CurrDate = CurrDate.strftime("%m-%d")
+            PriceToday = L[i]
+            PriceYesterday = L[i + 1]
+            PriceChange = round(L[i] - L[i + 1], 0)
+            Percent = round((PriceChange / PriceToday) * 100, 2)
+            if PriceChange >= 0 :
+                Col_F = Col_red
+                PriceChange = '+' + str(PriceChange)
+                Percent = '+' + str(Percent)
+            else :
+                Col_F = Col_blue
+                PriceChange = str(PriceChange)
+                Percent = str(Percent)
+            D[str(i)+'Day'].configure(text = CurrDate)
+            D[str(i)+'KRW'].configure(text = PriceToday, fg = Col_F)
+            D[str(i)+'Real'].configure(text = PriceChange, fg = Col_F)
+            D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
+            D[str(i)+'Buy'].configure(text = self.CurrCoin.lstDailyVolume[i])
 
     def Update_Test(self, price):
          D = self.W('Name')
          D['Curr']['text'] = price  
+
 
     ##################################################################################################################
     #   이니셜라이즈
@@ -137,33 +174,25 @@ class Page:
             else :
                 self.Frames['Daily_' + str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg=Col_back), TOP, BOTH, NO)
 
-        UIMaker.TextLabel(self.F('Daily_Menu'), '일자', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.03, rely = 0.5, anchor = W)
+        UIMaker.TextLabel(self.F('Daily_Menu'), '일자', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '종가(KRW)', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.20, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '전일대비', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.5, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '거래', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.75, rely = 0.5, anchor = W)      
-        
-        if self.CurrCoin is not None:
-            for i in range(1, 6):
-                P = self.F('Daily_'+str(i))
-                L = self.CurrCoin.lstDailyData
-                Col = Col_title
-                if(i % 2 == 1):
-                    Col = Col_back
-                Col_F = Col_red
-                #if(L[i].IsUp == False) :
-                #    Col_F = Col_blue
-                D[str(i)+'Day'] = UIMaker.TextLabel(P, L[6 - i], self.Fo('Items'), 'white', Col)
-                D[str(i)+'Day'].place(relx = 0.03, rely = 0.5, anchor = W)
-                D[str(i)+'KRW'] = UIMaker.TextLabel(P, L[6 - i], self.Fo('Menu'), Col_F, Col)
-                D[str(i)+'KRW'].place(relx = 0.20, rely = 0.5, anchor = W)
-                D[str(i)+'Real'] = UIMaker.TextLabel(P, L[6 - i], self.Fo('Items'), Col_F, Col)
-                #D[str(i)+'Real'].place(relx = 0.20 + len(L[6 - i]) * 0.017, rely = 0.5, anchor = W)
-                D[str(i)+'Real'].place(relx = 0.20 + L[6 - i], rely = 0.5, anchor = W)
-                D[str(i)+'Percent'] = UIMaker.TextLabel(P, L[6 - i], self.Fo('Items'), Col_F, Col)
-                D[str(i)+'Percent'].place(relx = 0.5, rely = 0.5, anchor = W)
-                L = self.CurrCoin.lstDailyVolume
-                D[str(i)+'Buy'] = UIMaker.TextLabel(P, L[6 - i], self.Fo('Items'), 'white', Col)
-                D[str(i)+'Buy'].place(relx = 0.75, rely = 0.5, anchor = W)
+
+        for i in range(0, 5):
+            P = self.F('Daily_'+str(i + 1))
+            Col = Col_title
+            if(i % 2 == 0): Col = Col_back
+            D[str(i)+'Day'] = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
+            D[str(i)+'Day'].place(relx = 0.05, rely = 0.5, anchor = W)
+            D[str(i)+'KRW'] = Label(P, font = self.Fo('Menu'), fg = 'white', bg = Col, bd = 0)
+            D[str(i)+'KRW'].place(relx = 0.2, rely = 0.5, anchor = W)
+            D[str(i)+'Real'] = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
+            D[str(i)+'Real'].place(relx = 0.54, rely = 0.5, anchor = E)
+            D[str(i)+'Percent'] = Label(P, font = self.Fo('Menu'), fg = 'white', bg = Col, bd = 0)
+            D[str(i)+'Percent'].place(relx = 0.55, rely = 0.5, anchor = W)
+            D[str(i)+'Buy'] = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
+            D[str(i)+'Buy'].place(relx = 0.75, rely = 0.5, anchor = W)
 
 
     ##################################################################################################################
