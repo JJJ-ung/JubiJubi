@@ -1,8 +1,23 @@
+import urllib
+import urllib.request
 from tkinter import *
+from io import BytesIO
+from PIL import Image, ImageTk
 
 class Loader:
     def Get(self, tag) :
         return self.Images[tag]
+
+    def ImgFromURL(self, Path, width, height):
+        if self.Images.get(Path) is not None:
+            return self.Images[Path]
+        u = urllib.request.urlopen(Path)
+        raw_data=u.read()
+        img = Image.open(BytesIO(raw_data))
+        IconImg = ImageTk.PhotoImage(img.resize((width, height)))
+        self.Images[Path] = IconImg
+        return IconImg
+
 
     def __init__(self):
         self.Images = dict()

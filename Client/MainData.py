@@ -42,7 +42,7 @@ class MainData(object):
                 if self.CurrCoin != 0:
                     del self.CurrCoin
                 self.CurrCoin = Bitcoin.Bitcoin(result)
-                self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
+                self.UI.Pages[type].Set_CurrInfo(self.CurrCoin)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'
