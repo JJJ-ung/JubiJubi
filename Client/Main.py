@@ -3,6 +3,7 @@ import MainGUI
 import MainData
 import threading
 import time
+import sys
         
 class Main():
     def __init__(self):
@@ -12,6 +13,7 @@ class Main():
         self.UI = MainGUI.MainGUI(self.wnd)
         self.Data = MainData.MainData(self.UI)
         self.Update()
+        print(sys.version)
         self.wnd.mainloop()
 
     def Update(self):

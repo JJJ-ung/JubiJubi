@@ -1,3 +1,5 @@
+#from pykiwoom.kiwoom import *
+
 class Stock(object):
     def __init__(self):
         pass

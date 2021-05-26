@@ -1,5 +1,4 @@
 import pyupbit
-import threading
 import requests
 import json
 
