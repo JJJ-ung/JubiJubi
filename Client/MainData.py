@@ -3,10 +3,6 @@ import Bitcoin
 import threading
 from AppGUI import StatusFrame
 
-Coin = 0
-Stock = 1
-End = 2
-
 class MainData(object):
     def __init__(self, UI):
         self.UI = UI   # 메인 UI 객체 담아둠
@@ -53,8 +49,15 @@ class MainData(object):
 
         if type == 'stock':
             print('주식 확인')
-            #여기에 검색하는 기능 추가, 위에 받아온 name으로 검색, Stock 객체 받아오도록
-            self.UI.Pages[type].Change_Name(name)
+            result = Stock.StockInfo.SearchStock(name)
+            if result is not None:
+                if self.CurrStock != 0:
+                    del self.CurrStock
+                self.CurrStock = Stock.Stock(result)
+                self.UI.Pages[type].Set_CurrInfo(self.CurrStock)
+                self.UI.StatusGUI.Searchbar['fg'] = 'black'
+            else :
+                self.UI.StatusGUI.Searchbar['fg'] = 'red'
 
     def Search_Reset(self, event):
         self.UI.StatusGUI.Searchbar['fg'] = 'black'
