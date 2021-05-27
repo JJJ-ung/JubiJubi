@@ -66,3 +66,5 @@ class Loader:
         self.Images['Fav_On'] = PhotoImage(file = 'Resources/buttons/Button2_On.png')
         #images
         self.Images['sample'] = PhotoImage(file = 'Image/sample.png')
+        self.Images['kiwoom'] = PhotoImage(file = 'Image/kiwoom.png')
+        self.Images['upbit'] = PhotoImage(file = 'Image/upbit.png')

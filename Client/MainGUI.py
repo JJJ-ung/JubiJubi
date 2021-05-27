@@ -84,7 +84,7 @@ class MainGUI :
         self.Frames['favorites'] = Frame(parent, background = Color_Page, width = 964, height = 708)
         self.Frames['favorites'].grid(row=0, column=0, sticky='nsew')
         self.Frames['favorites'].grid_propagate(0)
-        self.Frames['profile'] = Frame(parent, background = Color_Page, width = 964, height = 708)
+        self.Frames['profile'] = Frame(parent, background = '#333333', width = 964, height = 708)
         self.Frames['profile'].grid(row=0, column=0, sticky='nsew')
         self.Frames['profile'].grid_propagate(0)
         self.Frames['developers'] = Frame(parent, background = Color_Page, width = 964, height = 708)

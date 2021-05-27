@@ -6,6 +6,10 @@ from datetime import *
 import tkinter.font
 from . import UIMaker
 from . import ImageLoader
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.figure import Figure
 
 sys.path.append('/Bitcoin.py')
 import Bitcoin
@@ -134,9 +138,18 @@ class Page:
 
 
         P = self.F('Graph')
-        self.Graph = Canvas(P, width = 610, height = 380, bg = Col_back, bd = 0, highlightthickness = 0)
-        self.Graph.pack()
-        self.Graph.create_line(0, 0, 610, 380, fill='red', width = 3)
+
+        test = plt.Figure(facecolor = Col_back)
+        ax = test.add_subplot(1, 1, 1)
+        ax.set_facecolor(Col_back)
+        ax.spines['bottom'].set_color('#dddddd')
+        ax.spines['top'].set_color(Col_back) 
+        ax.spines['right'].set_color(Col_back)
+        ax.spines['left'].set_color('#dddddd')
+        ax.tick_params(axis='x', colors='#dddddd')
+        ax.tick_params(axis='y', colors='#dddddd')
+        self.GraphCanvas = FigureCanvasTkAgg(test, P)        
+        self.GraphCanvas.get_tk_widget().pack(fill = BOTH)
 
 
     ##################################################################################################################
