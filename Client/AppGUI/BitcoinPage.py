@@ -4,12 +4,13 @@ import random
 from tkinter import *
 from datetime import *
 import tkinter.font
+import numpy as np
+import matplotlib.pyplot as plt
+from pandas import DataFrame
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from . import UIMaker
 from . import ImageLoader
-import matplotlib.pyplot as plt
-import numpy as np
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
-from matplotlib.figure import Figure
 
 sys.path.append('/Bitcoin.py')
 import Bitcoin
@@ -32,6 +33,28 @@ class Page:
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
+        self.Update_Graph(now)
+
+    def Update_Graph(self, CurrPrice):
+        now = datetime.now()
+        now = now.strftime('%H:%M:%S')
+        self.GraphData['Curr'] = self.ax.plot(now, CurrPrice, '-')
+        self.fig.canvas.draw()
+        self.fig.canvas.flush_events()
+        plt.pause(0.001)
+
+    def Draw_Graph(self, data):
+        pass
+
+    def Reset_Graph(self):
+        self.ax.cla()
+        self.ax.spines['bottom'].set_color('#dddddd')
+        self.ax.spines['top'].set_color(Col_back) 
+        self.ax.spines['right'].set_color(Col_back)
+        self.ax.spines['left'].set_color('#dddddd')
+        self.ax.tick_params(axis='x', colors='#dddddd')
+        self.ax.tick_params(axis='y', colors='#dddddd')
+        self.GraphData['Curr'] = self.ax.plot(np.arange(5), np.ones(5, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
 
     def Set_CurrInfo(self, coin):
         D = self.W('Name')
@@ -42,6 +65,11 @@ class Page:
 
         D['Name']['text'] = coin.koreanName
         D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
+
+        self.Update_Graph(coin.getPrice())
+       #plt.close(self.fig)
+
+        self.Reset_Graph()
 
         D = self.W('Daily')
         Today = datetime.today()
@@ -68,7 +96,6 @@ class Page:
             D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
             D[str(i)+'Buy'].configure(text = Bought)
 
-
     ##################################################################################################################
     #   이니셜라이즈
     ##################################################################################################################
@@ -84,6 +111,8 @@ class Page:
         self.Percent = StringVar()
         self.UpDown = StringVar()
         self.Yesterday = 0
+
+        self.GraphData = {'Curr' : None}
 
     ##################################################################################################################
     #  폰트 로드
@@ -139,16 +168,16 @@ class Page:
 
         P = self.F('Graph')
 
-        test = plt.Figure(facecolor = Col_back)
-        ax = test.add_subplot(1, 1, 1)
-        ax.set_facecolor(Col_back)
-        ax.spines['bottom'].set_color('#dddddd')
-        ax.spines['top'].set_color(Col_back) 
-        ax.spines['right'].set_color(Col_back)
-        ax.spines['left'].set_color('#dddddd')
-        ax.tick_params(axis='x', colors='#dddddd')
-        ax.tick_params(axis='y', colors='#dddddd')
-        self.GraphCanvas = FigureCanvasTkAgg(test, P)        
+        self.fig = plt.Figure(facecolor = Col_back)
+        self.ax = self.fig.add_subplot(1, 1, 1)
+        self.ax.set_facecolor(Col_back)
+        self.ax.spines['bottom'].set_color('#dddddd')
+        self.ax.spines['top'].set_color(Col_back) 
+        self.ax.spines['right'].set_color(Col_back)
+        self.ax.spines['left'].set_color('#dddddd')
+        self.ax.tick_params(axis='x', colors='#dddddd')
+        self.ax.tick_params(axis='y', colors='#dddddd')
+        self.GraphCanvas = FigureCanvasTkAgg(self.fig, P)        
         self.GraphCanvas.get_tk_widget().pack(fill = BOTH)
 
 
