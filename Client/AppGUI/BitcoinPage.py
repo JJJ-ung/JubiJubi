@@ -4,14 +4,14 @@ import random
 from tkinter import *
 from datetime import *
 import tkinter.font
-import numpy as np
-import matplotlib.pyplot as plt
-from pandas import DataFrame
-from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 from . import UIMaker
 from . import ImageLoader
-
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.figure import *
+from matplotlib.animation import *
+import matplotlib.dates as mdates
+from matplotlib.backends.backend_tkagg import *
 sys.path.append('/Bitcoin.py')
 import Bitcoin
 
@@ -29,47 +29,23 @@ class Page:
     def Update_CurrInfo(self, coin):
         now = coin.getPrice()
         change = now - self.Yesterday
-        self.Curr.set(str(now))
+        self.Curr.set(str(now))       
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
-        self.Update_Graph(now)
-
-    def Update_Graph(self, CurrPrice):
-        now = datetime.now()
-        now = now.strftime('%H:%M:%S')
-        self.GraphData['Curr'] = self.ax.plot(now, CurrPrice, '-')
-        self.fig.canvas.draw()
-        self.fig.canvas.flush_events()
-        plt.pause(0.001)
-
-    def Draw_Graph(self, data):
-        pass
-
-    def Reset_Graph(self):
-        self.ax.cla()
-        self.ax.spines['bottom'].set_color('#dddddd')
-        self.ax.spines['top'].set_color(Col_back) 
-        self.ax.spines['right'].set_color(Col_back)
-        self.ax.spines['left'].set_color('#dddddd')
-        self.ax.tick_params(axis='x', colors='#dddddd')
-        self.ax.tick_params(axis='y', colors='#dddddd')
-        self.GraphData['Curr'] = self.ax.plot(np.arange(5), np.ones(5, dtype=np.float)*np.nan, lw=1, c='blue',ms=1)
 
     def Set_CurrInfo(self, coin):
         D = self.W('Name')
+        self.CurrCoin = coin
         self.Yesterday = coin.lstDailyData[4]
+
+        self.SetGraph()
 
         ImagePath = 'https://static.upbit.com/logos/' + re.sub("KRW-", "", coin.ticker) + '.png'
         self.Widgets['Name']['Icon'].configure(image = self.IL.ImgFromURL(ImagePath, 25, 25))
 
         D['Name']['text'] = coin.koreanName
         D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
-
-        self.Update_Graph(coin.getPrice())
-       #plt.close(self.fig)
-
-        self.Reset_Graph()
 
         D = self.W('Daily')
         Today = datetime.today()
@@ -112,7 +88,7 @@ class Page:
         self.UpDown = StringVar()
         self.Yesterday = 0
 
-        self.GraphData = {'Curr' : None}
+        self.GraphData = list()
 
     ##################################################################################################################
     #  폰트 로드
@@ -168,17 +144,10 @@ class Page:
 
         P = self.F('Graph')
 
-        self.fig = plt.Figure(facecolor = Col_back)
-        self.ax = self.fig.add_subplot(1, 1, 1)
-        self.ax.set_facecolor(Col_back)
-        self.ax.spines['bottom'].set_color('#dddddd')
-        self.ax.spines['top'].set_color(Col_back) 
-        self.ax.spines['right'].set_color(Col_back)
-        self.ax.spines['left'].set_color('#dddddd')
-        self.ax.tick_params(axis='x', colors='#dddddd')
-        self.ax.tick_params(axis='y', colors='#dddddd')
-        self.GraphCanvas = FigureCanvasTkAgg(self.fig, P)        
-        self.GraphCanvas.get_tk_widget().pack(fill = BOTH)
+        self.fig = plt.figure(facecolor = Col_back)
+        Canvas = FigureCanvasTkAgg(self.fig, P)
+        Canvas.get_tk_widget().pack(fill = BOTH)
+        self.anim = None
 
 
     ##################################################################################################################
@@ -344,3 +313,44 @@ class Page:
         return self.Frames[name]
     def W(self, name):
         return self.Widgets[name]
+
+
+    ##################################################################################################################
+    #   그래프 함수
+    ##################################################################################################################
+
+    def Animate(self, i):
+        self.line.set_data(self.x, self.y)
+        #self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
+        return (self.line,)
+
+    def SetGraph(self):
+        plt.clf()
+        self.ax = plt.subplot(111)
+        self.ax.set_facecolor(Col_back)
+        self.ax.spines['bottom'].set_color('#dddddd')
+        self.ax.spines['top'].set_color(Col_back) 
+        self.ax.spines['right'].set_color(Col_back)
+        self.ax.spines['left'].set_color('#dddddd')
+        self.ax.tick_params(axis='x', colors='#dddddd')
+        self.ax.tick_params(axis='y', colors='#dddddd')
+        self.GraphData = self.CurrCoin.graphData
+        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        self.x.reverse()
+        self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
+        self.ax.set_ylim(self.CurrCoin.getLow(), self.CurrCoin.getHigh())
+        self.line, = self.ax.plot([], [], lw=2)
+        if self.anim is not None:
+            self.anim._stop()
+        self.anim = FuncAnimation(self.fig, self.Animate, init_func=self.init, interval=100, frames=600, blit=True)
+        self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+        self.ax.ticklabel_format(axis='y', style='plain')
+        #plt.gcf().autofmt_xdate()
+
+    def init(self):
+        print('그래프업데이트')
+        self.GraphData.pop(0)
+        self.GraphData.append(self.CurrCoin.getPrice())
+        #self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        self.y = self.CurrCoin.graphData
+        return (self.line, )

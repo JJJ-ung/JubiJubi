@@ -22,7 +22,8 @@ class Bitcoin():
         self.lstDailyData = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['close']) # 날짜 오름차순
         self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
         self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
-        
+        self.graphData = list(pyupbit.get_ohlcv(self.ticker, count=100, interval="minute1")['close'])
+
     # 0.minute1, 1.minute3, 2.minute5, 3.minute10, 4.minute15, 5.minute30, 6.minute60, 7.minute240, 8.day, 9.week, 10.month
     def setInterval(self, cnt=8):
         self.interval = Bitcoin.intervalTable[cnt]
@@ -30,3 +31,9 @@ class Bitcoin():
 
     def getPrice(self):
         return pyupbit.get_current_price(self.ticker)
+
+    def getLow(self):
+        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="minute240")['low'])
+
+    def getHigh(self):
+        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="minute240")['high'])

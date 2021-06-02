@@ -34,6 +34,9 @@
     <Compile Include="AppGUI\FavoritesPage.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppGUI\Graph.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="AppGUI\ImageLoader.py">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7-32" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
