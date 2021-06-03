@@ -320,6 +320,8 @@ class Page:
     ##################################################################################################################
 
     def Animate(self, i):
+        #self.ax.relim()
+        #self.ax.autoscale()
         self.line.set_data(self.x, self.y)
         #self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
         return (self.line,)
@@ -338,6 +340,9 @@ class Page:
         self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
         self.x.reverse()
         self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
+        low = self.CurrCoin.getLow()
+        high = self.CurrCoin.getHigh()
+        curr = self.CurrCoin.getPrice()
         self.ax.set_ylim(self.CurrCoin.getLow(), self.CurrCoin.getHigh())
         self.line, = self.ax.plot([], [], lw=2)
         if self.anim is not None:
@@ -345,12 +350,16 @@ class Page:
         self.anim = FuncAnimation(self.fig, self.Animate, init_func=self.init, interval=100, frames=600, blit=True)
         self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
         self.ax.ticklabel_format(axis='y', style='plain')
-        #plt.gcf().autofmt_xdate()
+        self.ax.grid(True, color = 'white', alpha = 0.1)
+        plt.gcf().autofmt_xdate()
 
     def init(self):
         print('그래프업데이트')
         self.GraphData.pop(0)
         self.GraphData.append(self.CurrCoin.getPrice())
         #self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
-        self.y = self.CurrCoin.graphData
+        self.y = self.GraphData
+        print(self.GraphData)
+        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        
         return (self.line, )

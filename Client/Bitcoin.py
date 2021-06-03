@@ -33,7 +33,7 @@ class Bitcoin():
         return pyupbit.get_current_price(self.ticker)
 
     def getLow(self):
-        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="minute240")['low'])
+        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="day")['low'])
 
     def getHigh(self):
-        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="minute240")['high'])
+        return float(pyupbit.get_ohlcv(self.ticker, count = 1, interval="day")['high'])
