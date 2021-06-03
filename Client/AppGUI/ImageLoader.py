@@ -36,6 +36,8 @@ class Loader:
         self.Images['delete'] = PhotoImage(file = 'Resources/icons/delete.png')
         self.Images['dice'] = PhotoImage(file = 'Resources/icons/dice.png')
         self.Images['dice_on'] = PhotoImage(file = 'Resources/icons/dice_on.png')
+        self.Images['graph'] = PhotoImage(file = 'Resources/icons/graph.png')
+        self.Images['graph_on'] = PhotoImage(file = 'Resources/icons/graph_on.png')
         self.Images['favorites'] = PhotoImage(file = 'Resources/icons/favorites.png')
         self.Images['favorites_on'] = PhotoImage(file = 'Resources/icons/favorites_on.png')
         self.Images['ghost'] = PhotoImage(file = 'Resources/icons/ghost.png')
@@ -59,10 +61,10 @@ class Loader:
         self.Images['dice_6'] = PhotoImage(file = 'Resources/dogedice/dice_6.png')
         #buttons
         self.Images['Auto_Off'] = PhotoImage(file = 'Resources/buttons/Button0_Off.png')
-        self.Images['Dice_Off'] = PhotoImage(file = 'Resources/buttons/Button1_Off.png')
+        self.Images['Graph_Off'] = PhotoImage(file = 'Resources/buttons/Button1_Off.png')
         self.Images['Fav_Off'] = PhotoImage(file = 'Resources/buttons/Button2_Off.png')
         self.Images['Auto_On'] = PhotoImage(file = 'Resources/buttons/Button0_On.png')
-        self.Images['Dice_On'] = PhotoImage(file = 'Resources/buttons/Button1_On.png')
+        self.Images['Graph_On'] = PhotoImage(file = 'Resources/buttons/Button1_On.png')
         self.Images['Fav_On'] = PhotoImage(file = 'Resources/buttons/Button2_On.png')
         #images
         self.Images['sample'] = PhotoImage(file = 'Image/sample.png')
