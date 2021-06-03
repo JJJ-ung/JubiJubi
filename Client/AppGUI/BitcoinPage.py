@@ -361,5 +361,5 @@ class Page:
         self.y = self.GraphData
         print(self.GraphData)
         self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
-        
+
         return (self.line, )
