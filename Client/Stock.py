@@ -44,7 +44,15 @@ class Stock():
 
         self.type = "opt10081"
         self.interval = 1
-            
+
+        self.lstDailyData = list() # 종가
+        self.lstDailyVolume = list() # 거래량
+        self.lstDailyMarketPrice = list() # 시가
+
+        self.graphData = list()
+        self.Low = list()
+        self.High = list()
+           
         self.Refresh()
 
     def Refresh(self):

@@ -236,21 +236,24 @@ class Page:
         D['DiceComment'].place(relx = 0.9, rely = 0.5, anchor = NE)
 
     def ChangeFunction(self, tag):
+        if self.CurrCoin is None :
+            return
+
         D = self.W('Functions')
         str = ''
         if tag is 'Fav':
             self.Fav = not self.Fav
             if self.Fav:
-                str = tag + '_Off'
-            else:
                 str = tag + '_On'
+            else:
+                str = tag + '_Off'
 
         if tag is 'Auto':
             self.Auto = not self.Auto
             if self.Auto:
-                str = tag + '_Off'
-            else:
                 str = tag + '_On'
+            else:
+                str = tag + '_Off'
 
         if tag is 'Graph':
             self.AniGraph = not self.AniGraph
@@ -339,7 +342,6 @@ class Page:
         self.Canvas.draw()
 
     def UpdateAniGraph(self, i):
-        print('ani')
         self.GraphData.append(self.CurrCoin.getPrice())
         self.x.append(datetime.now())
         if len(self.x) >= 60 :
@@ -358,6 +360,7 @@ class Page:
         return self.line
 
     def InitAniGraph(self):
+        self.ax.ticklabel_format(axis='y', style='plain')
         return self.line
 
     def SetAxis(self, format):

@@ -32,49 +32,48 @@ class Page:
     def SetCurr(self, stock):
         self.ResetFunction()
         D = self.W('Name')
-        self.CurrCoin = coin
-        self.Yesterday = coin.lstDailyData[4]
-        ImagePath = 'https://static.upbit.com/logos/' + re.sub("KRW-", "", coin.ticker) + '.png'
-        self.Widgets['Name']['Icon'].configure(image = self.IL.ImgFromURL(ImagePath, 25, 25))
-        D['Name']['text'] = coin.koreanName
-        D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
-        self.SetDaily(coin)
+        self.CurrStock = stock
+        self.Yesterday = stock.lstDailyData[4]
+        D['Name']['text'] = stock.name
+        D['Tiker']['text'] =  stock.code
+        self.SetDaily(stock)
         self.SetGraph()
 
-    def SetDaily(self, coin):
-        #D = self.W('Daily')
-        #Today = datetime.today()
-        #for i in range(0, 5):
-        #    P = self.F('Daily_'+str(i + 1))
-        #    L = coin.lstDailyData
-        #    CurrDate = (Today - timedelta(i)).strftime('%m-%d')
-        #    PriceToday = L[5 - i]
-        #    PriceYesterday = L[4 - i]
-        #    PriceChange = round(PriceToday - PriceYesterday, 2)
-        #    Percent = round((PriceChange / PriceYesterday) * 100, 2)
-        #    Bought = int(coin.lstDailyVolume[5 - i])
-        #    if PriceChange >= 0 :
-        #        Col_F = Col_red
-        #        PriceChange = '+' + str(PriceChange)
-        #        Percent = '+' + str(Percent)
-        #    else :
-        #        Col_F = Col_blue
-        #        PriceChange = str(PriceChange)
-        #        Percent = str(Percent)
-        #    D[str(i)+'Day'].configure(text = CurrDate)
-        #    D[str(i)+'KRW'].configure(text = PriceToday, fg = Col_F)
-        #    D[str(i)+'Real'].configure(text = PriceChange, fg = Col_F)
-        #    D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
-        #    D[str(i)+'Buy'].configure(text = Bought)
-        pass
+    def SetDaily(self, stock):
+        D = self.W('Daily')
+        Today = datetime.today()
+        for i in range(0, 5):
+            P = self.F('Daily_'+str(i + 1))
+            L = stock.lstDailyData
+            CurrDate = (Today - timedelta(i)).strftime('%m-%d')
+            PriceToday = L[5 - i]
+            PriceYesterday = L[4 - i]
+            PriceChange = round(PriceToday - PriceYesterday, 2)
+            Percent = round((PriceChange / PriceYesterday) * 100, 2)
+            Market = stock.lstDailyMarketPrice[5 - i]
+            Bought = int(stock.lstDailyVolume[5 - i])
+            if PriceChange >= 0 :
+                Col_F = Col_red
+                PriceChange = '+' + str(PriceChange)
+                Percent = '+' + str(Percent)
+            else :
+                Col_F = Col_blue
+                PriceChange = str(PriceChange)
+                Percent = str(Percent)
+            D[str(i)+'Day'].configure(text = CurrDate)
+            D[str(i)+'KRW'].configure(text = PriceToday, fg = Col_F)
+            D[str(i)+'Real'].configure(text = PriceChange, fg = Col_F)
+            D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
+            D[str(i)+'MarketPrice'].configure(text = Market, fg = Col_F)
+            D[str(i)+'Buy'].configure(text = Bought)
 
     def UpdateCurr(self, stock):
-        #now = coin.getPrice()
-        #change = now - self.Yesterday
-        #self.Curr.set(str(now))       
-        #self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
-        #if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
-        #else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
+        now = stock.getPrice()
+        change = now - self.Yesterday
+        self.Curr.set(str(now))       
+        self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
+        if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
+        else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
         pass
 
     def __init__(self, parent, IL):

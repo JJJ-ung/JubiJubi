@@ -95,6 +95,9 @@ class Page:
         D['SelectedCnt'].place(relx = 0.05, rely = 0.5, anchor = W)
 
         for i in range(0, 15) :
+            Col = Col_Main
+            if i % 2 == 1 :
+                Col = Col_Sub
             self.Frames['Stock'+str(i)] = UIMaker.CreateFixedFrame(P, 0, 38, Col, 'p')
             self.Frames['Stock'+str(i)].pack(side = TOP, fill = X)
             D['Check'+str(i)] = Checkbutton(self.Frames['Stock'+str(i)], image = self.IL.Get('check_no'), selectimage = self.IL.Get('check_yes'), indicatoron=False,

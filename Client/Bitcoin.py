@@ -7,7 +7,7 @@ class CoinInfo():
 
     accessKey = ""
     secretKey = ""
-    acount
+    acount = None
 
     def setKey(access, secret):
         print(access, secret)
