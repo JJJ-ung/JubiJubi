@@ -23,12 +23,12 @@ class MainData(object):
     # 실시간 업데이트
     def Update(self):
         type = self.UI.Get_CurrFrame()
-        if type == 'bitcoin':
-            if self.CurrCoin != 0:
-                self.UI.Pages[type].Update_CurrInfo(self.CurrCoin)
-        elif type == 'stock':
-            if self.CurrStock != 0:
-                self.UI.Pages[type].Update_CurrInfo(self.CurrStock)
+        if self.CurrCoin != 0:
+            self.UI.Pages[type].UpdateCurr(self.CurrCoin)
+        if self.CurrStock != 0:
+            self.UI.Pages[type].UpdateCurr(self.CurrStock)
+        #if type == 'bitcoin':
+        #elif type == 'stock':
 
     # 검색기능
     def Search(self, event):
@@ -42,7 +42,7 @@ class MainData(object):
                 if self.CurrCoin != 0:
                     del self.CurrCoin
                 self.CurrCoin = Bitcoin.Bitcoin(result)
-                self.UI.Pages[type].Set_CurrInfo(self.CurrCoin)
+                self.UI.Pages[type].SetCurr(self.CurrCoin)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'
@@ -54,7 +54,7 @@ class MainData(object):
                 if self.CurrStock != 0:
                     del self.CurrStock
                 self.CurrStock = Stock.Stock(result)
-                self.UI.Pages[type].Set_CurrInfo(self.CurrStock)
+                self.UI.Pages[type].SetCurr(self.CurrStock)
                 self.UI.StatusGUI.Searchbar['fg'] = 'black'
             else :
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'

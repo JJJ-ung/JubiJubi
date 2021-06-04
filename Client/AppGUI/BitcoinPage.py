@@ -1,19 +1,22 @@
 import re
 import sys
 import random
-from tkinter import *
-from datetime import *
-import tkinter.font
-from . import UIMaker
-from . import ImageLoader
 import numpy as np
+from datetime import *
+
+from tkinter import *
+import tkinter.font
+
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 from matplotlib.figure import *
 from matplotlib.animation import *
-import matplotlib.dates as mdates
 from matplotlib.backends.backend_tkagg import *
+
 sys.path.append('/Bitcoin.py')
 import Bitcoin
+from . import UIMaker
+from . import ImageLoader
 
 Col_title = '#3f3f3f'
 Col_titleR = '#4e4e4e'
@@ -26,27 +29,19 @@ Col_blue = '#008dd2'
 Col_SubFont = '#bbbbbb'
 
 class Page:
-    def Update_CurrInfo(self, coin):
-        now = coin.getPrice()
-        change = now - self.Yesterday
-        self.Curr.set(str(now))       
-        self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
-        if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
-        else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
-
-    def Set_CurrInfo(self, coin):
+    def SetCurr(self, coin):
+        self.ResetFunction()
         D = self.W('Name')
         self.CurrCoin = coin
         self.Yesterday = coin.lstDailyData[4]
-
-        self.SetGraph()
-
         ImagePath = 'https://static.upbit.com/logos/' + re.sub("KRW-", "", coin.ticker) + '.png'
         self.Widgets['Name']['Icon'].configure(image = self.IL.ImgFromURL(ImagePath, 25, 25))
-
         D['Name']['text'] = coin.koreanName
         D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
+        self.SetDaily(coin)
+        self.SetGraph()
 
+    def SetDaily(self, coin):
         D = self.W('Daily')
         Today = datetime.today()
         for i in range(0, 5):
@@ -72,27 +67,41 @@ class Page:
             D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
             D[str(i)+'Buy'].configure(text = Bought)
 
-    ##################################################################################################################
-    #   이니셜라이즈
-    ##################################################################################################################
-
+    def UpdateCurr(self, coin):
+        now = coin.getPrice()
+        change = now - self.Yesterday
+        self.Curr.set(str(now))       
+        self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
+        if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
+        else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
 
     def __init__(self, parent, IL):
         self.IL = IL
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
-        self.DailyData = list()
-
+        # for Info
+        self.CurrCoin = None
+        self.Yesterday = None
         self.Curr = StringVar()
+        # for Daily
+        self.DailyData = list()
         self.Percent = StringVar()
         self.UpDown = StringVar()
-        self.Yesterday = 0
-
+        # for Graph
+        self.x = list()
         self.GraphData = list()
+        # for Func
+        self.Auto = False
+        self.Fav = False
+        self.AniGraph = False
 
-    ##################################################################################################################
-    #  폰트 로드
-    ##################################################################################################################
+        self.LoadFont()
+        self.LoadFrames(parent)
+        self.LoadDailyFrame()
+        self.LoadCompareFrame()
+        self.LoadFuncFrame()
+
+    def LoadFont(self):
         self.Fonts = dict()
         self.Fonts['Title'] = tkinter.font.Font(family='NanumSquareEB', size=20, weight='bold')
         self.Fonts['TitleS'] = tkinter.font.Font(family='NanumSquareEB', size=10, weight='bold')
@@ -102,9 +111,7 @@ class Page:
         self.Fonts['Items'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')    
         self.Fonts['Menu'] = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')    
 
-    ##################################################################################################################
-    #   메인 정보
-    ##################################################################################################################
+    def LoadFrames(self, parent):
         self.Frames['Left'] = UIMaker.PackFix(Frame(parent, width = 610, bg=Col_back), LEFT, BOTH, NO)
         self.Frames['Right'] = UIMaker.PackFix(Frame(parent, width = 353, bg=Col_back), RIGHT, Y, NO)
         
@@ -112,11 +119,11 @@ class Page:
         self.Frames['Name'] = UIMaker.PackFix(Frame(P, height = 88, bg = Col_back), TOP, BOTH, NO)
         self.Frames['Graph'] = UIMaker.PackFix(Frame(P, height = 380, bg = Col_back), TOP, BOTH, NO)
         self.Frames['Daily'] = UIMaker.PackFix(Frame(P, bg = Col_back), TOP, BOTH, YES)
-
+        
         P = self.F('Right')
         self.Frames['Compare'] = UIMaker.PackFix(Frame(P, height = 468, bg = '#6b6b6b'), TOP, BOTH, NO)
         self.Frames['Functions'] = UIMaker.PackFix(Frame(P, bg = '#6b6b6b'), TOP, BOTH, YES)
-
+        
         P = self.F('Name')
         D = self.W('Name')
         self.Frames['Name_Icon'] = UIMaker.PackFix(Frame(P, width = 60, bg = Col_title), LEFT, BOTH, NO)
@@ -137,24 +144,13 @@ class Page:
         D['UpDown'] = Label(self.F('Name_Bot'), font = self.Fo('SubTitle'), fg = Col_red, bg = Col_title, bd = 0)
         D['UpDown'].place(relx = 0.95, anchor = NW)
 
-    ##################################################################################################################
-    #   그래프
-    ##################################################################################################################
-
-
         P = self.F('Graph')
-
         self.fig = plt.figure(facecolor = Col_back)
-        Canvas = FigureCanvasTkAgg(self.fig, P)
-        Canvas.get_tk_widget().pack(fill = BOTH)
+        self.Canvas = FigureCanvasTkAgg(self.fig, P)
+        self.Canvas.get_tk_widget().pack(fill = BOTH)
         self.anim = None
 
-
-    ##################################################################################################################
-    #   일일 정보
-    ##################################################################################################################
-
-
+    def LoadDailyFrame(self):
         P = self.F('Daily')
         D = self.W('Daily')
         self.Frames['Daily_Menu'] = UIMaker.PackFix(Frame(P, height = 40, bg=Col_titleR), TOP, BOTH, NO)
@@ -163,12 +159,10 @@ class Page:
                 self.Frames['Daily_' + str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg=Col_title), TOP, BOTH, NO)
             else :
                 self.Frames['Daily_' + str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg=Col_back), TOP, BOTH, NO)
-
         UIMaker.TextLabel(self.F('Daily_Menu'), '일자', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '종가(KRW)', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.20, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '전일대비', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.55, rely = 0.5, anchor = W)
         UIMaker.TextLabel(self.F('Daily_Menu'), '거래', self.Fo('Menu'), 'white', Col_titleR).place(relx = 0.78, rely = 0.5, anchor = W)      
-
         for i in range(0, 5):
             P = self.F('Daily_'+str(i + 1))
             Col = Col_title
@@ -184,12 +178,7 @@ class Page:
             D[str(i)+'Buy'] = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
             D[str(i)+'Buy'].place(relx = 0.78, rely = 0.5, anchor = W)
 
-
-    ##################################################################################################################
-    #   비교 칸
-    ##################################################################################################################
-
-
+    def LoadCompareFrame(self):
         P = self.F('Compare')
         D = self.W('Compare')
         self.Frames['Compare_Menu'] = UIMaker.PackFix(Frame(P, height = 50, bg=Col_titleR), TOP, BOTH, NO)
@@ -213,24 +202,16 @@ class Page:
         UIMaker.TextLabel(P, '현재가', self.Fo('Menu'), 'white', Col_back).place(relx = 0.5, rely = 0.5, anchor = W)
         UIMaker.TextLabel(P, '전일대비', self.Fo('Menu'), 'white', Col_back).place(relx = 0.8, rely = 0.5, anchor = W)
 
-
-    ##################################################################################################################
-    #   기능 칸
-    ##################################################################################################################
-
-
+    def LoadFuncFrame(self):
         P = self.F('Functions')
         D = self.W('Functions')
+        
         self.Frames['Function_Menu'] = UIMaker.PackFix(Frame(P, height = 40, bg = Col_titleR), TOP, BOTH, NO)
-        UIMaker.TextLabel(self.Frames['Function_Menu'], '기능', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         self.Frames['Function_Buttons'] = UIMaker.PackFix(Frame(P, height = 81, bg = Col_titleR), TOP, BOTH, NO)
-        self.Frames['Function_Fav'] = Frame(P, height = 121, bg = Col_back)
-        self.Frames['Function_Fav'].pack_propagate(0)
-        self.Frames['Function_Auto'] = Frame(P, height = 121, bg = 'yellow')
-        self.Frames['Function_Auto'].pack_propagate(0)
-        self.Frames['Function_Dice'] = Frame(P, height = 121, bg = Col_back)
-        self.Frames['Function_Dice'].pack_propagate(0)
+        self.Frames['Function_Dice'] = UIMaker.PackFix(Frame(P, height = 121, bg = Col_back), BOTTOM, BOTH, NO)        
 
+        UIMaker.TextLabel(self.Frames['Function_Menu'], '기능', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
+        
         P = self.F('Function_Buttons')
         D['Fav'] = Button(P, width = 118, height = 81, image = self.I('Fav_Off'), bg = Col_back, bd=0, relief = FLAT,
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
@@ -240,13 +221,11 @@ class Page:
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
                                            command =lambda: self.ChangeFunction('Auto'))
         D['Auto'].grid(row = 0, column = 1)
-        D['Dice'] = Button(P, width = 118, height = 81, image = self.I('Dice_On'), bg = Col_back, bd=0, relief = FLAT,
+        D['Graph'] = Button(P, width = 118, height = 81, image = self.I('Graph_Off'), bg = Col_back, bd=0, relief = FLAT,
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
-                                           command =lambda: self.ChangeFunction('Dice'))
-        D['Dice'].grid(row = 0, column = 2)
-        self.Frames['Curr'] = self.Frames['Function_Dice']
-        self.Frames['Curr'].pack(side = TOP, fill = BOTH)
-
+                                           command =lambda: self.ChangeFunction('Graph'))
+        D['Graph'].grid(row = 0, column = 2)
+        
         P = self.F('Function_Dice')
         D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
                                                  command =lambda: self.DiceFunction())
@@ -256,19 +235,33 @@ class Page:
         D['DiceComment'] = Label(P, text = '주사위를 굴려보세요', font = self.Fo('Items'), fg = 'white', bg = Col_back)
         D['DiceComment'].place(relx = 0.9, rely = 0.5, anchor = NE)
 
-        P = self.F('Function_Fav')
-        D['FavAdd'] = Button(P, width = 340, height = 60, image = self.I('boxplus'), bd = 0, relief = FLAT, highlightthickness=0, bg = Col_back, activebackground=Col_title, anchor='w')
-        D['FavAdd'].place(relx = 0.02, rely = 0.5, anchor = SW)
-
     def ChangeFunction(self, tag):
         D = self.W('Functions')
-        D['Fav']['image'] = self.I('Fav' + '_Off')
-        D['Dice']['image'] = self.I('Dice' + '_Off')
-        D['Auto']['image'] = self.I('Auto' + '_Off')
-        D[tag]['image'] = self.I(tag + '_On')
-        self.Frames['Curr'].pack_forget()
-        self.Frames['Curr'] = self.Frames['Function_' + tag]
-        self.Frames['Curr'].pack(side = TOP, fill = BOTH)
+        str = ''
+        if tag is 'Fav':
+            self.Fav = not self.Fav
+            if self.Fav:
+                str = tag + '_Off'
+            else:
+                str = tag + '_On'
+
+        if tag is 'Auto':
+            self.Auto = not self.Auto
+            if self.Auto:
+                str = tag + '_Off'
+            else:
+                str = tag + '_On'
+
+        if tag is 'Graph':
+            self.AniGraph = not self.AniGraph
+            if self.AniGraph:
+                str = tag + '_On'
+                self.SetAniGraph()
+            else:
+                str = tag + '_Off'
+                self.SetGraph()
+
+        D[tag]['image'] = self.I(str)
 
     def DiceFunction(self):
         result = random.randint(1, 6)
@@ -299,11 +292,86 @@ class Page:
             D['DiceResult']['fg'] = Col_red
             D['DiceComment']['text'] = '개 좋은거'
 
+    def ResetFunction(self):
+        self.Auto = False
+        self.Fav = False
+        self.AniGraph = False
 
-    ##################################################################################################################
-    #   귀차니즘 함수
-    ##################################################################################################################
+    def SetGraph(self):
+        # 1분당        
+        self.fig.clear()
+        self.ax = self.fig.add_subplot(111)
+        self.GraphData.clear()
+        self.GraphData = self.CurrCoin.getGraphData()
+        self.x.clear()
+        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        self.x.reverse()
+        self.SetAxis('%H:%M')
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2)
+        self.ax.ticklabel_format(axis='y', style='plain')
+        if self.anim is not None:
+            self.anim._stop()
+        self.anim = FuncAnimation(self.fig, self.UpdateGraph, init_func = self.InitGraph, interval = 1000, frames = 60, blit = False)
+        self.Canvas.draw()
 
+    def UpdateGraph(self, i):
+        self.GraphData.pop()
+        self.GraphData.append(self.CurrCoin.getPrice())
+        self.ax.relim()
+        self.ax.autoscale_view()
+        self.line.set_data(self.x, self.GraphData)
+        return self.line
+
+    def SetAniGraph(self):
+        # 1초당
+        self.fig.clear()
+        self.ax = self.fig.add_subplot(111)
+        self.GraphData.clear()
+        self.GraphData.append(self.CurrCoin.getPrice())
+        self.x.clear()
+        self.x = [datetime.now()]
+        self.SetAxis('%H:%M:%S')
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2)
+        self.ax.ticklabel_format(axis='y', style='plain')
+        if self.anim is not None:
+            self.anim._stop()
+        self.anim = FuncAnimation(self.fig, self.UpdateAniGraph, init_func = self.InitAniGraph, interval = 1000, frames = 10, blit = False)
+        self.Canvas.draw()
+
+    def UpdateAniGraph(self, i):
+        print('ani')
+        self.GraphData.append(self.CurrCoin.getPrice())
+        self.x.append(datetime.now())
+        if len(self.x) >= 60 :
+            self.GraphData.pop(0)
+            self.x.pop(0)
+        self.ax.relim()
+        self.ax.autoscale_view()
+        self.line.set_data(self.x, self.GraphData)
+        return self.line
+
+    def InitGraph(self):
+        self.GraphData.pop(0)
+        self.GraphData.append(self.CurrCoin.getPrice())
+        self.x.pop(0)
+        self.x.append(datetime.now())
+        return self.line
+
+    def InitAniGraph(self):
+        return self.line
+
+    def SetAxis(self, format):
+        self.ax.set_facecolor(Col_back)
+        self.ax.spines['bottom'].set_color('#dddddd')
+        self.ax.spines['top'].set_color(Col_back)
+        self.ax.spines['right'].set_color(Col_back)
+        self.ax.spines['left'].set_color('#dddddd')
+        self.ax.tick_params(axis='x', colors='#dddddd')
+        self.ax.tick_params(axis='y', colors='#dddddd')
+        self.ax.ticklabel_format(axis='y', style='plain')
+        self.ax.grid(True, color='white', alpha=0.1)
+        self.ax.xaxis.set_major_formatter(mdates.DateFormatter(format))
+        self.fig.autofmt_xdate()
 
     def Fo(self, name):
         return self.Fonts[name]
@@ -313,53 +381,3 @@ class Page:
         return self.Frames[name]
     def W(self, name):
         return self.Widgets[name]
-
-
-    ##################################################################################################################
-    #   그래프 함수
-    ##################################################################################################################
-
-    def Animate(self, i):
-        #self.ax.relim()
-        #self.ax.autoscale()
-        self.line.set_data(self.x, self.y)
-        #self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
-        return (self.line,)
-
-    def SetGraph(self):
-        plt.clf()
-        self.ax = plt.subplot(111)
-        self.ax.set_facecolor(Col_back)
-        self.ax.spines['bottom'].set_color('#dddddd')
-        self.ax.spines['top'].set_color(Col_back) 
-        self.ax.spines['right'].set_color(Col_back)
-        self.ax.spines['left'].set_color('#dddddd')
-        self.ax.tick_params(axis='x', colors='#dddddd')
-        self.ax.tick_params(axis='y', colors='#dddddd')
-        self.GraphData = self.CurrCoin.graphData
-        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
-        self.x.reverse()
-        self.ax.set_xlim(self.x[0], self.x[len(self.x)-1])
-        low = self.CurrCoin.getLow()
-        high = self.CurrCoin.getHigh()
-        curr = self.CurrCoin.getPrice()
-        self.ax.set_ylim(self.CurrCoin.getLow(), self.CurrCoin.getHigh())
-        self.line, = self.ax.plot([], [], lw=2)
-        if self.anim is not None:
-            self.anim._stop()
-        self.anim = FuncAnimation(self.fig, self.Animate, init_func=self.init, interval=100, frames=600, blit=True)
-        self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
-        self.ax.ticklabel_format(axis='y', style='plain')
-        self.ax.grid(True, color = 'white', alpha = 0.1)
-        plt.gcf().autofmt_xdate()
-
-    def init(self):
-        print('그래프업데이트')
-        self.GraphData.pop(0)
-        self.GraphData.append(self.CurrCoin.getPrice())
-        #self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
-        self.y = self.GraphData
-        print(self.GraphData)
-        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
-
-        return (self.line, )
