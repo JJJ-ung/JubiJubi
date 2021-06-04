@@ -310,7 +310,7 @@ class Page:
         self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
         self.x.reverse()
         self.SetAxis('%H:%M')
-        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2)
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
         self.ax.ticklabel_format(axis='y', style='plain')
         if self.anim is not None:
             self.anim._stop()
@@ -334,7 +334,7 @@ class Page:
         self.x.clear()
         self.x = [datetime.now()]
         self.SetAxis('%H:%M:%S')
-        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2)
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
         self.ax.ticklabel_format(axis='y', style='plain')
         if self.anim is not None:
             self.anim._stop()
