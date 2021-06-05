@@ -16,7 +16,7 @@ class StockInfo():
     def Login():
         if not StockInfo.login:
             StockInfo.KIWOOM = Kiwoom()
-            StockInfo.KIWOOM.CommConnect(False)
+            StockInfo.KIWOOM.CommConnect()
             print("Login success")
             StockInfo.login = True
 
