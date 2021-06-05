@@ -63,15 +63,15 @@ class Stock():
         
         dailyData = StockInfo.KIWOOM.block_request("opt10081", 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=1, next=0, output="주식차트조회")
         
-        self.lstDailyData = df['전일종가'][0] # 종가
-        self.lstDailyVolume = dailyData['거래량'][0] # 거래량
-        self.lstDailyMarketPrice = dailyData['시가'][0] # 시가
+        self.lstDailyData = [int(list(dailyData['현재가'])[i]) for i in range(6, 0, -1)] # 종가
+        self.lstDailyVolume = [int(list(dailyData['거래량'])[i]) for i in range(6, 0, -1)] # 거래량
+        self.lstDailyMarketPrice = [int(list(dailyData['시가'])[i]) for i in range(6, 0, -1)] # 시가
 
         print(self.lstDailyData, self.lstDailyMarketPrice, self.lstDailyVolume)
 
-        self.graphData = list(df['현재가'])[0:200]
-        self.Low = list(df['저가'])[0:200]
-        self.High = list(df['고가'])[0:200]
+        self.graphData = list(df['현재가'])[0:6]
+        self.Low = list(df['저가'])[0:6]
+        self.High = list(df['고가'])[0:6]
 
     def setInterval(self, type, cnt):
         if type == 1:
@@ -86,10 +86,10 @@ class Stock():
         return int(StockInfo.KIWOOM.block_request("opt10001", 종목코드=self.code, output="주식기본정보", next=0)['기준가'])
 
     def getLow(self):
-        return self.Low[0]
+        return int(self.Low[0])
 
     def gethigh(self):
-        return self.High[0]
+        return int(self.High[0])
 
     def gethigh(self):
-        return self.graphData[0]
+        return int(self.graphData[0])

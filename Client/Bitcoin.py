@@ -60,3 +60,13 @@ class Bitcoin():
 
     def getGraphData(self):
         return list(self.graphData['close'])
+
+class CoinAutoTrade():
+    def __init__(self):
+        selforderLst = []
+
+    def Order(self, type, ticker):
+        pass
+
+    def Cancel(self, ticker):
+        pass
