@@ -30,6 +30,7 @@ class Loader:
         self.Images['bitcoin'] = PhotoImage(file = 'Resources/icons/bitcoin.png')
         self.Images['bookmark'] = PhotoImage(file = 'Resources/icons/bookmark.png')
         self.Images['boxminus'] = PhotoImage(file = 'Resources/icons/boxminus.png')
+        self.Images['boxminus_small'] = PhotoImage(file = 'Resources/icons/boxminus_small.png')
         self.Images['boxplus'] = PhotoImage(file = 'Resources/icons/boxplus.png')
         self.Images['check_no'] = PhotoImage(file = 'Resources/icons/check_no.png')
         self.Images['check_yes'] = PhotoImage(file = 'Resources/icons/check_yes.png')

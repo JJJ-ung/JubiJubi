@@ -14,7 +14,6 @@ class Main():
         self.Data = MainData.MainData(self.UI)
         self.UpdateCoin()
         self.UpdateStock()
-        self.UpdateComp()
         print(sys.version)
         self.wnd.mainloop()
         
@@ -25,11 +24,6 @@ class Main():
     def UpdateStock(self):
         self.Data.UpdateStock()
         self.wnd.after(1000, self.UpdateStock)
-
-    def UpdateComp(self):
-        print("앙")
-        self.Data.UpdateCompare()
-        self.wnd.after(10000, self.UpdateComp)
        
 
 Main()
