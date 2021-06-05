@@ -14,24 +14,25 @@ class StockInfo():
     login = False
 
     def Login():
-        StockInfo.KIWOOM = Kiwoom()
-        StockInfo.KIWOOM.CommConnect(block=True)
-        StockInfo.login = True
-        print("Login success")
+        if not StockInfo.login:
+            StockInfo.KIWOOM = Kiwoom()
+            StockInfo.KIWOOM.CommConnect(False)
+            print("Login success")
+            StockInfo.login = True
 
-        StockInfo.kospi = StockInfo.KIWOOM.GetCodeListByMarket('0')
-        StockInfo.kosdaq = StockInfo.KIWOOM.GetCodeListByMarket('10')
-        StockInfo.etf = StockInfo.KIWOOM.GetCodeListByMarket('8')
-        
-        for code in StockInfo.kospi:
-            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
-            StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
-        for code in StockInfo.kosdaq:
-            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
-            StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
-        for code in StockInfo.etf:
-            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
-            StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
+            StockInfo.kospi = StockInfo.KIWOOM.GetCodeListByMarket('0')
+            StockInfo.kosdaq = StockInfo.KIWOOM.GetCodeListByMarket('10')
+            StockInfo.etf = StockInfo.KIWOOM.GetCodeListByMarket('8')
+            
+            for code in StockInfo.kospi:
+                StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
+                StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
+            for code in StockInfo.kosdaq:
+                StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
+                StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
+            for code in StockInfo.etf:
+                StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
+                StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
 
     def SearchStock(str):
         if str in StockInfo.Name2Code:
@@ -67,8 +68,6 @@ class Stock():
         self.lstDailyVolume = [int(list(dailyData['거래량'])[i]) for i in range(6, 0, -1)] # 거래량
         self.lstDailyMarketPrice = [int(list(dailyData['시가'])[i]) for i in range(6, 0, -1)] # 시가
 
-        print(self.lstDailyData, self.lstDailyMarketPrice, self.lstDailyVolume)
-
         self.graphData = list(df['현재가'])[0:6]
         self.Low = list(df['저가'])[0:6]
         self.High = list(df['고가'])[0:6]
@@ -83,8 +82,10 @@ class Stock():
         self.Refresh()
 
     def getPrice(self):
-        return int(StockInfo.KIWOOM.block_request("opt10001", 종목코드=self.code, output="주식기본정보", next=0)['기준가'])
-
+        cur = StockInfo.KIWOOM.block_request("opt10003", 종목코드=self.code, output="주식기본정보", next=0)['현재가']
+        print (cur)
+        return cur
+        
     def getLow(self):
         return int(self.Low[0])
 

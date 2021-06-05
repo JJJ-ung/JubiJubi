@@ -24,9 +24,9 @@ class MainData(object):
     def Update(self):
         type = self.UI.Get_CurrFrame()
         if self.CurrCoin != 0:
-            self.UI.Pages[type].UpdateCurr(self.CurrCoin)
+            self.UI.Pages['bitcoin'].UpdateCurr(self.CurrCoin)
         if self.CurrStock != 0:
-            self.UI.Pages[type].UpdateCurr(self.CurrStock)
+            self.UI.Pages['stock'].UpdateCurr(self.CurrStock)
         #if type == 'bitcoin':
         #elif type == 'stock':
 
