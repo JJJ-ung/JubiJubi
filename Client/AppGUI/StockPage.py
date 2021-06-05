@@ -67,6 +67,10 @@ class Page:
             D[str(i)+'MarketPrice'].configure(text = Market, fg = Col_F)
             D[str(i)+'Buy'].configure(text = Bought)
 
+    def Update(self, stock):
+        self.UpdateCurr(stock)
+        self.UpdateCompare()
+
     def UpdateCurr(self, stock):
         now = stock.getPrice()
         change = now - self.Yesterday
@@ -74,6 +78,9 @@ class Page:
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
+
+    def UpdateCompare(self):
+        pass
 
     def __init__(self, parent, IL):
         self.IL = IL

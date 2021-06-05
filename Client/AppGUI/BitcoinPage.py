@@ -28,6 +28,31 @@ Col_red = '#eb6148'
 Col_blue = '#008dd2'
 Col_SubFont = '#bbbbbb'
 
+class Compare:
+    def __init__(self):
+        self.Coin = None
+        self.Yesterday = 0
+        self.Curr = StringVar()
+        self.Name = StringVar()
+        self.Percent = StringVar()
+
+    def SetCoin(self, coin):
+        self.Coin = coin
+        self.Yesterday = coin.lstDailyData[4]
+        self.Name.set(coin.koreanName)
+        self.Update()
+
+    def Update(self):
+        if self.Coin is None:
+            return
+        now = self.Coin.getPrice()
+        change = now - self.Yesterday
+        self.Curr.set(str(now))       
+        if change > 0 : 
+            self.Percent.set('▲' + str(round((change / self.Yesterday) * 100, 2)) + '%')
+        else : 
+            self.Percent.set('▼' + str(round((change / self.Yesterday) * 100, 2)) + '%')
+
 class Page:
     def SetCurr(self, coin):
         self.ResetFunction()
@@ -67,6 +92,10 @@ class Page:
             D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
             D[str(i)+'Buy'].configure(text = Bought)
 
+    def Update(self, coin):
+        self.UpdateCurr(coin)
+        self.UpdateCompare()
+
     def UpdateCurr(self, coin):
         now = coin.getPrice()
         change = now - self.Yesterday
@@ -74,6 +103,10 @@ class Page:
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
+
+    def UpdateCompare(self):
+        for comp in self.CompareList :
+            comp.Update()
 
     def __init__(self, parent, IL):
         self.IL = IL
@@ -94,6 +127,10 @@ class Page:
         self.Auto = False
         self.Fav = False
         self.AniGraph = False
+        # for Compare
+        self.CompareList = [Compare() for i in range(0, 10)]
+        self.CompareSel = IntVar()
+        self.CompareItems = 0
 
         self.LoadFont()
         self.LoadFrames(parent)
@@ -185,22 +222,29 @@ class Page:
         self.Frames['Compare_Info'] = UIMaker.PackFix(Frame(P, height = 38, bg = Col_back), TOP, BOTH, NO)
         for i in range(0, 10):
             Col = Col_back
-            if(i % 2 == 1):
-                Col = Col_title
-            self.Frames['Compare_' + str(10 - i)] = UIMaker.PackFix(Frame(P, height = 38, bg = Col), BOTTOM, BOTH, NO)
+            if(i % 2 == 0): Col = Col_title
+            Pa = self.Frames['Compare_' + str(i)] = UIMaker.PackFix(Frame(P, height = 38, bg = Col), TOP, BOTH, NO)
+            D['CompareName' + str(i)] = Label(Pa, text = '1', textvariable = self.CompareList[i].Name, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.15, rely = 0.5, anchor = W)
+            D['ComparePrice' + str(i)] = Label(Pa, text = '2', textvariable = self.CompareList[i].Curr, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.45, rely = 0.5, anchor = W)
+            D['ComparePercent' + str(i)] = Label(Pa, text = '3', textvariable = self.CompareList[i].Percent, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.8, rely = 0.5, anchor = W)
+
         P = self.F('Compare_Menu')
         UIMaker.TextLabel(P, '비교목록', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         D['Remove'] = Button(P, text = '─', font = self.Fo('Title'), width = 50, height = 50, bd = 0, highlightthickness=0, activebackground=Col_blue, 
-                                          bg = Col_titleR, fg = Col_blue, image = self.IL.pixelVirtual, compound = CENTER)
+                                          bg = Col_titleR, fg = Col_blue, image = self.IL.pixelVirtual, compound = CENTER, command = self.DeleteCompare)
         D['Remove'].pack(side = RIGHT)
         D['Add'] = Button(P, text = '+', font = self.Fo('Title'), width = 50, height = 50, bd = 0, highlightthickness=0, activebackground=Col_red, 
-                                          bg = Col_titleR, fg = Col_red, image = self.IL.pixelVirtual, compound = CENTER)
+                                          bg = Col_titleR, fg = Col_red, image = self.IL.pixelVirtual, compound = CENTER, command = self.AddCompare)
         D['Add'].pack(side = RIGHT)
         P = self.F('Compare_Info')
         UIMaker.TextLabel(P, 'V', self.Fo('Menu'), 'white', Col_back).place(relx = 0.05, rely = 0.5, anchor = W)
         UIMaker.TextLabel(P, '이름', self.Fo('Menu'), 'white', Col_back).place(relx = 0.15, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(P, '현재가', self.Fo('Menu'), 'white', Col_back).place(relx = 0.5, rely = 0.5, anchor = W)
+        UIMaker.TextLabel(P, '현재가', self.Fo('Menu'), 'white', Col_back).place(relx = 0.45, rely = 0.5, anchor = W)
         UIMaker.TextLabel(P, '전일대비', self.Fo('Menu'), 'white', Col_back).place(relx = 0.8, rely = 0.5, anchor = W)
+        #for i in range(0, 10):
+        #    Col = Col_back
+        #    if(i % 2 == 0): Col = Col_title
+        #    P = self.F('Compare_' + str(i))
 
     def LoadFuncFrame(self):
         P = self.F('Functions')
@@ -375,6 +419,17 @@ class Page:
         self.ax.grid(True, color='white', alpha=0.1)
         self.ax.xaxis.set_major_formatter(mdates.DateFormatter(format))
         self.fig.autofmt_xdate()
+
+    def AddCompare(self):
+        print('add')
+        if not  self.CompareItems < 10:
+            return
+        self.CompareList[self.CompareItems].SetCoin(self.CurrCoin)
+        self.CompareItems += 1
+
+    def DeleteCompare(self):
+        print('del')
+
 
     def Fo(self, name):
         return self.Fonts[name]

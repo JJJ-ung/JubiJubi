@@ -24,9 +24,13 @@ class MainData(object):
     def UpdateCoin(self):
         if self.CurrCoin != 0:
             self.UI.Pages['bitcoin'].UpdateCurr(self.CurrCoin)
+
     def UpdateStock(self):
         if self.CurrStock != 0:
             self.UI.Pages['stock'].UpdateCurr(self.CurrStock)
+
+    def UpdateCompare(self):
+        self.UI.Pages['bitcoin'].UpdateCompare()
 
     # 검색기능
     def Search(self, event):
