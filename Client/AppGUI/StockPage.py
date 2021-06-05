@@ -74,7 +74,6 @@ class Page:
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
-        pass
 
     def __init__(self, parent, IL):
         self.IL = IL

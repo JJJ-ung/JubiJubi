@@ -1,9 +1,9 @@
 from pykiwoom.kiwoom import *
 import datetime
 
-KIWOOM = None
 
-class StockInfo():
+class StockInfo(): 
+    KIWOOM = None
     kospi = None
     kosdaq = None
     etf = None
@@ -11,23 +11,26 @@ class StockInfo():
     Code2Name = {}
     Name2Code = {}
 
+    login = False
+
     def Login():
-        Stock.KIWOOM = Kiwoom()
-        Stock.KIWOOM.CommConnect(block=True)
+        StockInfo.KIWOOM = Kiwoom()
+        StockInfo.KIWOOM.CommConnect(block=True)
+        StockInfo.login = True
         print("Login success")
 
-        StockInfo.kospi = Stock.KIWOOM.GetCodeListByMarket('0')
-        StockInfo.kosdaq = Stock.KIWOOM.GetCodeListByMarket('10')
-        StockInfo.etf = Stock.KIWOOM.GetCodeListByMarket('8')
+        StockInfo.kospi = StockInfo.KIWOOM.GetCodeListByMarket('0')
+        StockInfo.kosdaq = StockInfo.KIWOOM.GetCodeListByMarket('10')
+        StockInfo.etf = StockInfo.KIWOOM.GetCodeListByMarket('8')
         
         for code in StockInfo.kospi:
-            StockInfo.Code2Name[code] = Stock.KIWOOM.GetMasterCodeName(code)
+            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
             StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
         for code in StockInfo.kosdaq:
-            StockInfo.Code2Name[code] = Stock.KIWOOM.GetMasterCodeName(code)
+            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
             StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
         for code in StockInfo.etf:
-            StockInfo.Code2Name[code] = Stock.KIWOOM.GetMasterCodeName(code)
+            StockInfo.Code2Name[code] = StockInfo.KIWOOM.GetMasterCodeName(code)
             StockInfo.Name2Code[StockInfo.Code2Name[code]] = code
 
     def SearchStock(str):
@@ -56,7 +59,19 @@ class Stock():
         self.Refresh()
 
     def Refresh(self):
-        self.df = kiwoom.block_request(self.type, 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=interval, next=0)
+        df = StockInfo.KIWOOM.block_request(self.type, 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=self.interval, next=0, output="주식차트조회")
+        
+        dailyData = StockInfo.KIWOOM.block_request("opt10081", 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=1, next=0, output="주식차트조회")
+        
+        self.lstDailyData = df['전일종가'][0] # 종가
+        self.lstDailyVolume = dailyData['거래량'][0] # 거래량
+        self.lstDailyMarketPrice = dailyData['시가'][0] # 시가
+
+        print(self.lstDailyData, self.lstDailyMarketPrice, self.lstDailyVolume)
+
+        self.graphData = list(df['현재가'])[0:200]
+        self.Low = list(df['저가'])[0:200]
+        self.High = list(df['고가'])[0:200]
 
     def setInterval(self, type, cnt):
         if type == 1:
@@ -68,13 +83,13 @@ class Stock():
         self.Refresh()
 
     def getPrice(self):
-        return int(KIWOOM.block_request("opt10001", 종목코드=self.code, output="주식기본정보", next=0)['기준가'])
+        return int(StockInfo.KIWOOM.block_request("opt10001", 종목코드=self.code, output="주식기본정보", next=0)['기준가'])
 
     def getLow(self):
-        return list(df['저가'])[0:200]
+        return self.Low[0]
 
     def gethigh(self):
-        return list(df['고가'])[0:200]
+        return self.High[0]
 
     def gethigh(self):
-        return list(df['현재가'])[0:200]
+        return self.graphData[0]

@@ -48,16 +48,17 @@ class MainData(object):
                 self.UI.StatusGUI.Searchbar['fg'] = 'red'
 
         if type == 'stock':
-            print('주식 확인')
-            result = Stock.StockInfo.SearchStock(name)
-            if result is not None:
-                if self.CurrStock != 0:
-                    del self.CurrStock
-                self.CurrStock = Stock.Stock(result)
-                self.UI.Pages[type].SetCurr(self.CurrStock)
-                self.UI.StatusGUI.Searchbar['fg'] = 'black'
-            else :
-                self.UI.StatusGUI.Searchbar['fg'] = 'red'
+            if Stock.StockInfo.login == True:
+                print('주식 확인')
+                result = Stock.StockInfo.SearchStock(name)
+                if result is not None:
+                    if self.CurrStock != 0:
+                        del self.CurrStock
+                    self.CurrStock = Stock.Stock(result)
+                    self.UI.Pages[type].SetCurr(self.CurrStock)
+                    self.UI.StatusGUI.Searchbar['fg'] = 'black'
+                else :
+                    self.UI.StatusGUI.Searchbar['fg'] = 'red'
 
     def Search_Reset(self, event):
         self.UI.StatusGUI.Searchbar['fg'] = 'black'

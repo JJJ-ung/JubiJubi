@@ -10,15 +10,16 @@ class CoinInfo():
     acount = None
 
     def setKey(access, secret):
-        print(access, secret)
-        CoinInfo.accessKey = access
-        CoinInfo.secretKey = secret
-        acount = pyupbit.Upbit(CoinInfo.accessKey, CoinInfo.secretKey)
-        if acount.get_balance() == None:
-            acount = None
-            print("Login Error")
-        else:
-            print("Login success")
+        if access != "" or secret != "":
+            print(access, secret)
+            CoinInfo.accessKey = access
+            CoinInfo.secretKey = secret
+            acount = pyupbit.Upbit(CoinInfo.accessKey, CoinInfo.secretKey)
+            if acount.get_balance() == None:
+                acount = None
+                print("Login Error")
+            else:
+                print("Login success")
 
     def SearchCoin(str):
         for coin in CoinInfo.data:
