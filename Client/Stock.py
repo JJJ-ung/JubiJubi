@@ -82,8 +82,7 @@ class Stock():
         self.Refresh()
 
     def getPrice(self):
-        cur = StockInfo.KIWOOM.block_request("opt10003", 종목코드=self.code, output="주식기본정보", next=0)['현재가']
-        print (cur)
+        cur = int(StockInfo.KIWOOM.block_request("opt10003", 종목코드=self.code, output="주식기본정보", next=0)['현재가'][0][1:])
         return cur
         
     def getLow(self):

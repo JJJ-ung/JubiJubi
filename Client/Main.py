@@ -12,12 +12,17 @@ class Main():
         self.wnd.resizable(width=False, height=False)
         self.UI = MainGUI.MainGUI(self.wnd)
         self.Data = MainData.MainData(self.UI)
-        self.Update()
+        self.UpdateCoin()
+        self.UpdateStock()
         print(sys.version)
         self.wnd.mainloop()
-
-    def Update(self):
-        self.Data.Update()
-        self.wnd.after(100, self.Update)
+        
+    def UpdateCoin(self):
+        self.Data.UpdateCoin()
+        self.wnd.after(100, self.UpdateCoin)
+    
+    def UpdateStock(self):
+        self.Data.UpdateStock()
+        self.wnd.after(1000, self.UpdateStock)
 
 Main()

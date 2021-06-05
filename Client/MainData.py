@@ -21,14 +21,12 @@ class MainData(object):
 
 
     # 실시간 업데이트
-    def Update(self):
-        type = self.UI.Get_CurrFrame()
+    def UpdateCoin(self):
         if self.CurrCoin != 0:
             self.UI.Pages['bitcoin'].UpdateCurr(self.CurrCoin)
+    def UpdateStock(self):
         if self.CurrStock != 0:
             self.UI.Pages['stock'].UpdateCurr(self.CurrStock)
-        #if type == 'bitcoin':
-        #elif type == 'stock':
 
     # 검색기능
     def Search(self, event):
