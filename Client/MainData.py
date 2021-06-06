@@ -27,7 +27,7 @@ class MainData(object):
 
     def UpdateNews(self):
         if self.UI.Get_CurrFrame() != 'news':
-            self.UI.Pages['news'].Rest()
+            self.UI.Pages['news'].Rest(self.UI.StatusGUI.Searchbar)
         else:
             self.UI.Pages['news'].Work()
 
