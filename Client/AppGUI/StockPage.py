@@ -114,6 +114,8 @@ class Page:
         self.Percent = StringVar()
         self.UpDown = StringVar()
         # for Graph
+        # for Graph
+        self.x = list()
         self.GraphData = list()
         # for Func
         self.Auto = False
