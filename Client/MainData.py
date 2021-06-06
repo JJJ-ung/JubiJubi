@@ -25,6 +25,12 @@ class MainData(object):
     def UpdateStock(self):
         self.UI.Pages['stock'].UpdateCurr()
 
+    def UpdateNews(self):
+        if self.UI.Get_CurrFrame() != 'news':
+            self.UI.Pages['news'].Rest(self.UI.StatusGUI.Searchbar)
+        else:
+            self.UI.Pages['news'].Work()
+
     # 검색기능
     def Search(self, event):
         type = self.UI.Get_CurrFrame()

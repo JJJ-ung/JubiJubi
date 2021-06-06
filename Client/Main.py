@@ -14,7 +14,7 @@ class Main():
         self.Data = MainData.MainData(self.UI)
         self.UpdateCoin()
         self.UpdateStock()
-        print(sys.version)
+        self.UpdateNews()
         self.wnd.mainloop()
         
     def UpdateCoin(self):
@@ -24,6 +24,12 @@ class Main():
     def UpdateStock(self):
         self.Data.UpdateStock()
         self.wnd.after(1000, self.UpdateStock)
+
+    def UpdateNews(self):
+        self.Data.UpdateNews()
+        self.wnd.after(100, self.UpdateNews)
+
+
        
 
 Main()
