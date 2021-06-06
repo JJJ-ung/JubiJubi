@@ -32,6 +32,12 @@ class MainData(object):
     def UpdateCompare(self):
         self.UI.Pages['bitcoin'].UpdateCompare()
 
+    def UpdateNews(self):
+        if self.UI.Get_CurrFrame() != 'news':
+            self.UI.Pages['news'].Rest()
+        else:
+            self.UI.Pages['news'].Work()
+
     # 검색기능
     def Search(self, event):
         type = self.UI.Get_CurrFrame()
