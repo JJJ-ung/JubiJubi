@@ -7,7 +7,7 @@ class Status(object):
     def __init__(self, parent, Main, IL):
         self.Main = Main
         self. IL = IL
-        self.SearchStr = ''
+        self.SearchStr = StringVar()
         self.MainFont = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')
         self.SubFont = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')
 
@@ -22,7 +22,7 @@ class Status(object):
                                         bg = Color_Back, borderwidth=0)
         self.Logo.pack(side=LEFT)
 
-        self.Searchbar = Entry(parent, bd = 0)
+        self.Searchbar = Entry(parent, bd = 0, textvariable = self.SearchStr)
         self.Searchbar.place(relx = 0.085, rely = 0.5, anchor = W, width = 400, height = 22)
 
         self.SearchButton = Button(parent, image=self.IL.Images['search'],
@@ -30,11 +30,11 @@ class Status(object):
                            bg=Color_Back, activebackground=Color_Back, anchor='center')
         self.SearchButton.place(relx = 0.5, rely = 0.5, anchor = W)
 
-        self.AutoON = True
-        self.Toggle = Button(parent, image=self.IL.Images['toggle0'],
-                           width = 100, height=60, borderwidth=0, highlightthickness=0,
-                           bg=Color_Back, activebackground=Color_Back, anchor='center', command=self.Click_Toggle)
-        self.Toggle.pack(side=RIGHT)
+        #self.AutoON = True
+        #self.Toggle = Button(parent, image=self.IL.Images['toggle0'],
+        #                   width = 100, height=60, borderwidth=0, highlightthickness=0,
+        #                   bg=Color_Back, activebackground=Color_Back, anchor='center', command=self.Click_Toggle)
+        #self.Toggle.pack(side=RIGHT)
 
     def Click_Toggle(self):
         if self.AutoON :

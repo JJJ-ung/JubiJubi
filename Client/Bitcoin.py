@@ -43,6 +43,7 @@ class Bitcoin():
         self.High = list(self.graphData['high'])
         self.Low.sort()
         self.High.sort(reverse = True)
+        self.Save = False
 
     # 0.minute1, 1.minute3, 2.minute5, 3.minute10, 4.minute15, 5.minute30, 6.minute60, 7.minute240, 8.day, 9.week, 10.month
     def setInterval(self, cnt=8):

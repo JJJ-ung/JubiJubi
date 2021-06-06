@@ -1,10 +1,12 @@
 import sys
-sys.path.append('/Bitcoin.py')
 from tkinter import *
 import tkinter.font
 from . import UIMaker
 from . import ImageLoader
+sys.path.append('/Bitcoin.py')
 import Bitcoin
+sys.path.append('/Stock.py')
+import Stock
 
 Col_Title = '#4e4e4e'
 Col_Main = '#333333'
@@ -14,30 +16,27 @@ Col_blue = '#008dd2'
 
 class Page:
     def Add_Bitcoin(self, coin) :
-        D = self.Widgets['Bitcoin']
-        i = len(self.BitcoinFav)
-        if i == 15 : pass
-        Col = Col_Main
-        if i % 2 == 1 :
-            Col = Col_Sub
+        if self.Find_Bitcoin(coin) is True:
+            return
+        coin.Save = True
         self.BitcoinFav.append(coin)
-        F = self.Frames['Bit'+str(i)]
-        D['Check'+str(i)].place(relx = 0.03, rely = 0.5, anchor = W)
-        D['Name'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = self.BitcoinFav[i].koreanName, font = self.Fonts['Main'], fg = 'white')
-        D['Name'+str(i)].place(relx = 0.1, rely = 0.5, anchor = W)
-        D['Percent'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, text = str(self.BitcoinFav[i].koreanName) + '%', font = self.Fonts['Sub'], fg = 'white')
-        D['Percent'+str(i)].place(relx = 0.9, rely = 0.5, anchor = E)
-        #if self.BitcoinFav[i].IsUp :
-        #    D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_red, text = '▲')
-        #else:
-        #    D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_blue, text = '▼')
-        D['UpDown'+str(i)] = Label(F, height = 38, bg = Col, bd = 0, font = self.Fonts['Sub'], fg = Col_red, text = '▲')
-        D['UpDown'+str(i)].place(relx = 0.91, rely = 0.5, anchor = W)
+        print(self.BitcoinFav)
+        pass
 
+    def Delete_Bitcoin(self, coin):
+        print('코인삭제')
+        idx = self.BitcoinFav.index(coin)
+        print(idx)
 
-    ##################################################################################################################
-    #   이니셜라이즈
-    ##################################################################################################################
+    def Find_Bitcoin(self, coin):
+        if coin in self.BitcoinFav :
+            return True
+        return False
+
+    def Add_Stock(self, coin) :
+        print('주식추가')
+        pass
+
     def __init__(self, parent, IL):
         self.IL = IL
         self.BitcoinFav = list()
@@ -45,68 +44,27 @@ class Page:
         self.StockSel = 0
         self.BitcoinSel = 0
 
-        self.Fonts = dict()
-        self.Fonts['Main'] = tkinter.font.Font(family='나눔스퀘어', size=12, weight='bold')
-        self.Fonts['Sub'] = tkinter.font.Font(family='나눔스퀘어', size=12, weight='normal')
+        self.FontMain = tkinter.font.Font(family='나눔스퀘어', size=12, weight='bold')
+        self.FontSub = tkinter.font.Font(family='나눔스퀘어', size=12, weight='normal')
 
         self.Frames = dict()
-        self.BitcoinFrame = UIMaker.CreateFixedFrame(parent, 481, 0, Col_Main, 'p')
-        self.BitcoinFrame.pack(side = LEFT, fill = Y)
-
-        self.StockFrame = UIMaker.CreateFixedFrame(parent, 481, 0, Col_Main, 'p')
-        self.StockFrame.pack(side = RIGHT, fill = Y)
+        self.BitcoinFrame = UIMaker.PackFix(Frame(parent, width = 481, bg = Col_Main), LEFT, Y, False)
+        self.StockFrame = UIMaker.PackFix(Frame(parent, width = 481, bg = Col_Main), RIGHT, Y, False)
 
         self.Widgets = {'Bitcoin' : dict(), 'Stock' : dict(), 'Title' : dict()}
-        
         self.Widgets['Title']['Bitcoin'] = Label(self.BitcoinFrame, height = 60, image = self.IL.Get('bitcoin'), bg = Col_Title, bd = 0)
         self.Widgets['Title']['Bitcoin'].pack(side = TOP, fill = X)
         self.Widgets['Title']['Stock'] = Label(self.StockFrame, height = 60, image = self.IL.Get('stock'), bg = Col_Title, bd = 0)
         self.Widgets['Title']['Stock'].pack(side = TOP, fill = X)
 
-        #비트코인 쪽
-        P = self.BitcoinFrame
-        D = self.Widgets['Bitcoin']
-        self.BitcoinMenuFrame = UIMaker.CreateFixedFrame(P, 481, 77, Col_Title, 'p')
-        self.BitcoinMenuFrame.pack(side = BOTTOM)
-        D['Button_Del'] = Button(self.BitcoinMenuFrame, width = 88, height = 78, image = self.IL.Get('delete'), bg = Col_Title, bd = 0, highlightthickness=0, activebackground=Col_Title)
-                                          #command =lambda: self.ChangeFunction('Fav'))
-        D['Button_Del'].place(relx = 0.97, rely = 0.5, anchor = E)
-        D['SelectedCnt'] = Label(self.BitcoinMenuFrame, text = '0개 종목', bd = 0, bg = Col_Title, font = self.Fonts['Main'], fg = 'white')
-        D['SelectedCnt'].place(relx = 0.05, rely = 0.5, anchor = W)
+        self.Setup('Bitcoin', self.BitcoinFrame, self.Widgets['Bitcoin'])
+        self.Setup('Stock', self.StockFrame, self.Widgets['Stock'])
 
+    def Setup(self, type, P, D):
+        MenuFrame = UIMaker.PackFix(Frame(P, width = 481, height = 77, bg = Col_Title), BOTTOM, NONE, False)
+        Button(MenuFrame, text = '  저장', font = self.FontMain, width = 100, height = 30, bd = 0, highlightthickness=0, activebackground=Col_Title, 
+               bg = Col_Title, fg = 'white', activeforeground = Col_red, image = self.IL.Get('favorites_on'), compound = LEFT).pack(side = LEFT)
         for i in range(0, 15) :
             Col = Col_Main
-            if i % 2 == 1 :
-                Col = Col_Sub
-            self.Frames['Bit'+str(i)] = UIMaker.CreateFixedFrame(P, 0, 38, Col, 'p')
-            self.Frames['Bit'+str(i)].pack(side = TOP, fill = X)
-            D['Check'+str(i)] = Checkbutton(self.Frames['Bit'+str(i)], image = self.IL.Get('check_no'), selectimage = self.IL.Get('check_yes'), indicatoron=False,
-            onvalue=1, offvalue=0, variable=IntVar(value = i), bg = Col, selectcolor = Col, activebackground = Col, bd = 0, command = self.CheckBitcoin)
-
-        #주식 쪽
-        P = self.StockFrame
-        D = self.Widgets['Stock']
-        self.StockMenuFrame = UIMaker.CreateFixedFrame(P, 481, 77, Col_Title, 'p')
-        self.StockMenuFrame.pack(side = BOTTOM)
-        D['Button_Del'] = Button(self.BitcoinMenuFrame, width = 88, height = 78, image = self.IL.Get('delete'), bg = Col_Title, bd = 0, highlightthickness=0, activebackground=Col_Title)
-                                          #command =lambda: self.ChangeFunction('Fav'))
-        D['Button_Del'].place(relx = 0.97, rely = 0.5, anchor = E)
-        D['SelectedCnt'] = Label(self.BitcoinMenuFrame, text = '0개 종목', bd = 0, bg = Col_Title, font = self.Fonts['Main'], fg = 'white')
-        D['SelectedCnt'].place(relx = 0.05, rely = 0.5, anchor = W)
-
-        for i in range(0, 15) :
-            Col = Col_Main
-            if i % 2 == 1 :
-                Col = Col_Sub
-            self.Frames['Stock'+str(i)] = UIMaker.CreateFixedFrame(P, 0, 38, Col, 'p')
-            self.Frames['Stock'+str(i)].pack(side = TOP, fill = X)
-            D['Check'+str(i)] = Checkbutton(self.Frames['Stock'+str(i)], image = self.IL.Get('check_no'), selectimage = self.IL.Get('check_yes'), indicatoron=False,
-            onvalue=1, offvalue=0, variable=IntVar(value = i), bg = Col, selectcolor = Col, activebackground = Col, bd = 0, command = self.CheckStock)
-
-    def CheckBitcoin(self):
-        self.BitcoinSel += 1
-        self.Widgets['Bitcoin']['SelectedCnt']['text'] = str(self.BitcoinSel) + '개 종목'
-
-    def CheckStock(self):
-        self.StockSel += 1
-        self.Widgets['Stock']['SelectedCnt']['text'] = str(self.StockSel) + '개 종목'
+            if i % 2 == 1 : Col = Col_Sub
+            self.Frames[type+str(i)] = UIMaker.PackFix(Frame(P, height = 38, bg = Col), TOP, X, False)

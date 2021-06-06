@@ -35,10 +35,10 @@ class MainGUI :
         self.CurrFrame = ''
 
         self.Pages = dict()
-        self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'], self.IL)
-        self.Pages['stock'] = StockPage.Page(self.Frames['stock'], self.IL)
-        self.Pages['news'] = NewsPage.Page(self.Frames['news'], self.IL)
         self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'], self.IL)
+        self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'], self.IL, self.Pages['favorites'])
+        self.Pages['stock'] = StockPage.Page(self.Frames['stock'], self.IL, self.Pages['favorites'])
+        self.Pages['news'] = NewsPage.Page(self.Frames['news'], self.IL)
         self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'], self.IL)
         self.Pages['developers'] = DevelopersPage.Page(self.Frames['developers'], self.IL)
         self.Pages['settings'] = SettingsPage.Page(self.Frames['settings'], self.IL)

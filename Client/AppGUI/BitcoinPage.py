@@ -17,6 +17,7 @@ sys.path.append('/Bitcoin.py')
 import Bitcoin
 from . import UIMaker
 from . import ImageLoader
+from . import FavoritesPage
 
 Col_title = '#3f3f3f'
 Col_titleR = '#4e4e4e'
@@ -29,33 +30,31 @@ Col_blue = '#008dd2'
 Col_SubFont = '#bbbbbb'
 
 class Compare:
-    def __init__(self):
-        self.Coin = None
-        self.Yesterday = 0
-        self.Curr = StringVar()
-        self.Name = StringVar()
-        self.Percent = StringVar()
-
-    def SetCoin(self, coin):
+    def __init__(self, coin, label, radio):
         self.Coin = coin
-        self.Yesterday = coin.lstDailyData[4]
-        self.Name.set(coin.koreanName)
-        self.Update()
+        self.Ticker = coin.ticker
+        self.Name = coin.koreanName + "  " + coin.ticker
+        self.Label = label
+        self.Radio = radio
+        self.Label.configure(text = self.Name)
 
-    def Update(self):
-        if self.Coin is None:
-            return
-        now = self.Coin.getPrice()
-        change = now - self.Yesterday
-        self.Curr.set(str(now))       
-        if change > 0 : 
-            self.Percent.set('▲' + str(round((change / self.Yesterday) * 100, 2)) + '%')
-        else : 
-            self.Percent.set('▼' + str(round((change / self.Yesterday) * 100, 2)) + '%')
+    def Delete(self):
+        self.Coin.Save = False
+        self.Label.destroy()
+        self.Radio.destroy()
+
+    def Set(self, index, label, radio):
+        self.Label.destroy()
+        self.Radio.destroy()
+        self.Label = label
+        self.Radio = radio
+        self.Label.configure(text = self.Name)
 
 class Page:
     def SetCurr(self, coin):
-        self.ResetFunction()
+        if self.CurrCoin is not None:
+            if not self.CurrCoin.Save:
+                del self.CurrCoin
         D = self.W('Name')
         self.CurrCoin = coin
         self.Yesterday = coin.lstDailyData[4]
@@ -63,6 +62,7 @@ class Page:
         self.Widgets['Name']['Icon'].configure(image = self.IL.ImgFromURL(ImagePath, 25, 25))
         D['Name']['text'] = coin.koreanName
         D['Tiker']['text'] =  coin.ticker + '/' + coin.englishName
+        self.ResetFunction()
         self.SetDaily(coin)
         self.SetGraph()
 
@@ -92,23 +92,17 @@ class Page:
             D[str(i)+'Percent'].configure(text = Percent, fg = Col_F)
             D[str(i)+'Buy'].configure(text = Bought)
 
-    def Update(self, coin):
-        self.UpdateCurr(coin)
-        self.UpdateCompare()
-
-    def UpdateCurr(self, coin):
-        now = coin.getPrice()
+    def UpdateCurr(self):
+        if self.CurrCoin is None :
+            return
+        now = self.CurrCoin.getPrice()
         change = now - self.Yesterday
         self.Curr.set(str(now))       
         self.Percent.set(str(round((change / self.Yesterday) * 100, 2)) + '%')
         if change > 0 : self.Widgets['Name']['UpDown'].configure(text = '▲', fg = Col_red)
         else : self.Widgets['Name']['UpDown'].configure(text = '▼', fg = Col_blue)
 
-    def UpdateCompare(self):
-        for comp in self.CompareList :
-            comp.Update()
-
-    def __init__(self, parent, IL):
+    def __init__(self, parent, IL, FavPage):
         self.IL = IL
         self.Frames = dict()
         self.Widgets = {'Name' : dict(), 'Graph' : dict(), 'Daily' : dict(), 'Compare' : dict(), 'Functions' : dict()}
@@ -128,8 +122,8 @@ class Page:
         self.Fav = False
         self.AniGraph = False
         # for Compare
-        self.CompareList = [Compare() for i in range(0, 10)]
-        self.CompareSel = IntVar()
+        self.CompareList = list()
+        self.CompareIndex = IntVar()
         self.CompareItems = 0
 
         self.LoadFont()
@@ -137,6 +131,8 @@ class Page:
         self.LoadDailyFrame()
         self.LoadCompareFrame()
         self.LoadFuncFrame()
+
+        self.FavPage = FavPage
 
     def LoadFont(self):
         self.Fonts = dict()
@@ -158,7 +154,7 @@ class Page:
         self.Frames['Daily'] = UIMaker.PackFix(Frame(P, bg = Col_back), TOP, BOTH, YES)
         
         P = self.F('Right')
-        self.Frames['Compare'] = UIMaker.PackFix(Frame(P, height = 468, bg = '#6b6b6b'), TOP, BOTH, NO)
+        self.Frames['Compare'] = UIMaker.PackFix(Frame(P, height = 468, bg = Col_back), TOP, BOTH, NO)
         self.Frames['Functions'] = UIMaker.PackFix(Frame(P, bg = '#6b6b6b'), TOP, BOTH, YES)
         
         P = self.F('Name')
@@ -218,16 +214,13 @@ class Page:
     def LoadCompareFrame(self):
         P = self.F('Compare')
         D = self.W('Compare')
+
         self.Frames['Compare_Menu'] = UIMaker.PackFix(Frame(P, height = 50, bg=Col_titleR), TOP, BOTH, NO)
         self.Frames['Compare_Info'] = UIMaker.PackFix(Frame(P, height = 38, bg = Col_back), TOP, BOTH, NO)
         for i in range(0, 10):
             Col = Col_back
             if(i % 2 == 0): Col = Col_title
-            Pa = self.Frames['Compare_' + str(i)] = UIMaker.PackFix(Frame(P, height = 38, bg = Col), TOP, BOTH, NO)
-            D['CompareName' + str(i)] = Label(Pa, text = '1', textvariable = self.CompareList[i].Name, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.15, rely = 0.5, anchor = W)
-            D['ComparePrice' + str(i)] = Label(Pa, text = '2', textvariable = self.CompareList[i].Curr, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.45, rely = 0.5, anchor = W)
-            D['ComparePercent' + str(i)] = Label(Pa, text = '3', textvariable = self.CompareList[i].Percent, font = self.Fo('Items'), fg = 'white', bg = Col).place(relx = 0.8, rely = 0.5, anchor = W)
-
+            self.Frames['Compare_' + str(i)] = UIMaker.PackFix(Frame(P, height = 38, bg = Col), TOP, BOTH, NO)
         P = self.F('Compare_Menu')
         UIMaker.TextLabel(P, '비교목록', self.Fo('TitleM'), 'white', Col_titleR).place(relx = 0.05, rely = 0.5, anchor = W)
         D['Remove'] = Button(P, text = '─', font = self.Fo('Title'), width = 50, height = 50, bd = 0, highlightthickness=0, activebackground=Col_blue, 
@@ -237,14 +230,8 @@ class Page:
                                           bg = Col_titleR, fg = Col_red, image = self.IL.pixelVirtual, compound = CENTER, command = self.AddCompare)
         D['Add'].pack(side = RIGHT)
         P = self.F('Compare_Info')
-        UIMaker.TextLabel(P, 'V', self.Fo('Menu'), 'white', Col_back).place(relx = 0.05, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(P, '이름', self.Fo('Menu'), 'white', Col_back).place(relx = 0.15, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(P, '현재가', self.Fo('Menu'), 'white', Col_back).place(relx = 0.45, rely = 0.5, anchor = W)
-        UIMaker.TextLabel(P, '전일대비', self.Fo('Menu'), 'white', Col_back).place(relx = 0.8, rely = 0.5, anchor = W)
-        #for i in range(0, 10):
-        #    Col = Col_back
-        #    if(i % 2 == 0): Col = Col_title
-        #    P = self.F('Compare_' + str(i))
+        Label(P, image = self.I('boxminus_small'), bg = Col_back, bd = 0).place(relx = 0.05, rely = 0.5, anchor = W)
+        Label(P, text = '종목', font = self.Fo('Menu'), fg = 'white', bg = Col_back, bd = 0).place(relx = 0.2, rely = 0.5, anchor = W)
 
     def LoadFuncFrame(self):
         P = self.F('Functions')
@@ -269,7 +256,7 @@ class Page:
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
                                            command =lambda: self.ChangeFunction('Graph'))
         D['Graph'].grid(row = 0, column = 2)
-        
+
         P = self.F('Function_Dice')
         D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
                                                  command =lambda: self.DiceFunction())
@@ -289,8 +276,10 @@ class Page:
             self.Fav = not self.Fav
             if self.Fav:
                 str = tag + '_On'
+                self.AddFav()
             else:
                 str = tag + '_Off'
+                self.DelFav()
 
         if tag is 'Auto':
             self.Auto = not self.Auto
@@ -317,11 +306,11 @@ class Page:
         if result == 1 :
             D['DiceResult']['text'] = '1이 나왔네요!'
             D['DiceResult']['fg'] = Col_blue
-            D['DiceComment']['text'] = '물리기 전에 손절하세요'
+            D['DiceComment']['text'] = '나-락'
         if result == 2 :
             D['DiceResult']['text'] = '2가 나왔네요!'
             D['DiceResult']['fg'] = Col_blue
-            D['DiceComment']['text'] = '좀 많이 안좋은거'
+            D['DiceComment']['text'] = '물리기 전에 손절하세요'
         if result == 3 :
             D['DiceResult']['text'] = '3이 나왔네요!'
             D['DiceResult']['fg'] = Col_blue
@@ -337,12 +326,23 @@ class Page:
         if result == 6 :
             D['DiceResult']['text'] = '6이 나왔네요!'
             D['DiceResult']['fg'] = Col_red
-            D['DiceComment']['text'] = '개 좋은거'
+            D['DiceComment']['text'] = '극-락'
 
     def ResetFunction(self):
+        D = self.W('Functions')
+
         self.Auto = False
-        self.Fav = False
+        D['Auto']['image'] = self.I('Auto_Off')
+
+        if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
+            self.Fav = False
+            D['Fav']['image'] = self.I('Fav_Off')
+        else :
+            self.Fav = True
+            D['Fav']['image'] = self.I('Fav_On')
+
         self.AniGraph = False
+        D['Graph']['image'] = self.I('Graph_Off')
 
     def SetGraph(self):
         # 1분당        
@@ -421,15 +421,47 @@ class Page:
         self.fig.autofmt_xdate()
 
     def AddCompare(self):
-        print('add')
-        if not  self.CompareItems < 10:
+        if self.CurrCoin is None:
             return
-        self.CompareList[self.CompareItems].SetCoin(self.CurrCoin)
-        self.CompareItems += 1
+        for var in self.CompareList :
+            if var.Ticker == self.CurrCoin.ticker :
+                return
+        index = len(self.CompareList)
+        P = self.Frames['Compare_' + str(index)]
+        Col = Col_back
+        if(index % 2 == 0): Col = Col_title
+        label = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
+        label.place(relx = 0.2, rely = 0.5, anchor = W)
+        radio = Radiobutton(P, image = self.I('check_no'), selectimage = self.I('check_yes'), value = index, variable = self.CompareIndex, 
+                    bg = Col, activebackground=Col, selectcolor = Col, bd = 0, indicatoron=0, command = self.SetCompareToCurr)
+        radio.place(relx = 0.045, rely = 0.5, anchor = W)
+        self.CompareList.append(Compare(self.CurrCoin, label, radio))
+        self.CompareIndex.set(index)
+        self.CurrCoin.Save = True
 
     def DeleteCompare(self):
-        print('del')
+        self.CompareList[self.CompareIndex.get()].Delete()
+        del self.CompareList[self.CompareIndex.get()]
+        for index in range(0, len(self.CompareList)) :
+            P = self.Frames['Compare_' + str(index)]
+            Col = Col_back
+            if(index % 2 == 0): Col = Col_title
+            label = Label(P, font = self.Fo('Items'), fg = 'white', bg = Col, bd = 0)
+            label.place(relx = 0.2, rely = 0.5, anchor = W)
+            radio = Radiobutton(P, image = self.I('check_no'), selectimage = self.I('check_yes'), value = index, variable = self.CompareIndex, 
+                        bg = Col, activebackground=Col, selectcolor = Col, bd = 0, indicatoron=0, command = self.SetCompareToCurr)
+            radio.place(relx = 0.045, rely = 0.5, anchor = W)
+            self.CompareList[index].Set(index, label, radio)
 
+    def SetCompareToCurr(self):
+        coin = self.CompareList[self.CompareIndex.get()].Coin
+        self.SetCurr(coin)
+
+    def AddFav(self):
+        self.FavPage.Add_Bitcoin(self.CurrCoin)
+
+    def DelFav(self):
+        self.FavPage.Delete_Bitcoin(self.CurrCoin)
 
     def Fo(self, name):
         return self.Fonts[name]

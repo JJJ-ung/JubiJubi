@@ -59,6 +59,8 @@ class Stock():
            
         self.Refresh()
 
+        self.Save = False
+
     def Refresh(self):
         df = StockInfo.KIWOOM.block_request(self.type, 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=self.interval, next=0, output="주식차트조회")
         
