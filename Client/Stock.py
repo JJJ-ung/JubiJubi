@@ -75,8 +75,6 @@ class Stock():
         self.Low = list(df['저가'])[0:6]
         self.High = list(df['고가'])[0:6]
 
-        print(self.graphData)
-
     def setInterval(self, type, cnt):
         if type == 1:
             interval = 1
