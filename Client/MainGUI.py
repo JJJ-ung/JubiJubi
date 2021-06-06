@@ -60,10 +60,6 @@ class MainGUI :
 
     def Show_Frame(self, page_name):
         self.CurrFrame = page_name
-        if page_name == 'bitcoin' or page_name == 'stock':
-            self.StatusGUI.Searchbar.config(state = 'normal')
-        else :
-            self.StatusGUI.Searchbar.config(state = 'disabled')
         self.Frames[page_name].tkraise()
 
 
