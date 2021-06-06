@@ -120,6 +120,10 @@ class Page:
         self.Auto = False
         self.Fav = False
         self.AniGraph = False
+         # for Compare
+        self.CompareList = list()
+        self.CompareIndex = IntVar()
+        self.CompareItems = 0
 
         self.LoadFont()
         self.LoadFrames(parent)
@@ -171,7 +175,6 @@ class Page:
         self.fig = plt.figure(facecolor = Col_back)
         self.Canvas = FigureCanvasTkAgg(self.fig, P)
         self.Canvas.get_tk_widget().pack(fill = BOTH)
-        self.anim = None
 
     def LoadDailyFrame(self):
         P = self.F('Daily')
@@ -334,58 +337,50 @@ class Page:
             D['DiceComment']['text'] = '극-락'
 
     def ResetFunction(self):
+        D = self.W('Functions')
+
         self.Auto = False
+        D['Auto']['image'] = self.I('Auto_Off')
         self.Fav = False
+        D['Fav']['image'] = self.I('Fav_Off')
+
+        #if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
+        #else :
+        #    self.Fav = True
+        #    D['Fav']['image'] = self.I('Fav_On')
+
         self.AniGraph = False
+        D['Graph']['image'] = self.I('Graph1_Off')
 
     def SetGraph(self):
         # 하루당
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
         self.GraphData.clear()
-        self.GraphData = self.CurrStock.graphDataDay
+        self.GraphData = list(self.CurrStock.graphDataDay)
+        self.GraphData.reverse()
         self.x.clear()
         self.x = [datetime.now() - timedelta(days=i) for i in range(len(self.GraphData))]
         self.x.reverse()
         self.SetAxis('%m/%d')
         self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
         self.ax.ticklabel_format(axis='y', style='plain')
-        if self.anim is not None:
-            self.anim._stop()
-        self.anim = None
         self.Canvas.draw()
 
     def SetAniGraph(self):
-        # 1분당
+        # 1주당
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
         self.GraphData.clear()
-        self.GraphData = self.CurrStock.graphDataMin
+        self.GraphData = list(self.CurrStock.graphDataWeek)
+        self.GraphData.reverse()
         self.x.clear()
-        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        self.x = [datetime.now() - timedelta(days=i * 7) for i in range(len(self.GraphData))]
         self.x.reverse()
-        self.SetAxis('%H:%M')
+        self.SetAxis('%m/%d')
         self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
         self.ax.ticklabel_format(axis='y', style='plain')
-        if self.anim is not None:
-            self.anim._stop()
-        self.anim = FuncAnimation(self.fig, self.UpdateGraph, init_func = self.InitGraph, interval = 1000, frames = 60, blit = False)
         self.Canvas.draw()
-
-    def UpdateGraph(self, i):
-        self.GraphData.pop()
-        self.GraphData.append(self.CurrStock.getPrice())
-        self.ax.relim()
-        self.ax.autoscale_view()
-        self.line.set_data(self.x, self.GraphData)
-        return self.line
-
-    def InitGraph(self):
-        self.GraphData.pop(0)
-        self.GraphData.append(self.CurrStock.getPrice())
-        self.x.pop(0)
-        self.x.append(datetime.now())
-        return self.line
 
     def SetAxis(self, format):
         self.ax.set_facecolor(Col_back)
