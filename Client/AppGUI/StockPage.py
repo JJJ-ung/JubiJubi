@@ -257,10 +257,51 @@ class Page:
         D['DiceResult'].place(relx = 0.9, rely = 0.5, anchor = SE)
         D['DiceComment'] = Label(P, text = '주사위를 굴려보세요', font = self.Fo('Items'), fg = 'white', bg = Col_back)
         D['DiceComment'].place(relx = 0.9, rely = 0.5, anchor = NE)
-
+    
     def ChangeFunction(self, tag):
-        pass
+        if self.CurrStock is None :
+            return
+        D = self.W('Functions')
+        str = ''
+        if tag is 'Fav':
+            self.Fav = not self.Fav
+            if self.Fav:
+                str = tag + '_On'
+                self.AddFav()
+            else:
+                str = tag + '_Off'
+                self.DelFav()
+        if tag is 'Auto':
+            self.Auto = not self.Auto
+            if self.Auto:
+                str = tag + '_On'
+            else:
+                str = tag + '_Off'
+        if tag is 'Graph':
+            self.AniGraph = not self.AniGraph
+            if self.AniGraph:
+                str = tag + '_On'
+                self.SetAniGraph()
+            else:
+                str = tag + '_Off'
+                self.SetGraph()
+        D[tag]['image'] = self.I(str)
 
+    def ResetFunction(self):
+        D = self.W('Functions')
+
+        self.Auto = False
+        D['Auto']['image'] = self.I('Auto_Off')
+
+        if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
+            self.Fav = False
+            D['Fav']['image'] = self.I('Fav_Off')
+        else :
+            self.Fav = True
+            D['Fav']['image'] = self.I('Fav_On')
+
+        self.AniGraph = False
+        D['Graph']['image'] = self.I('Graph_Off')
     def DiceFunction(self):
         result = random.randint(1, 6)
         D = self.W('Functions')
@@ -296,34 +337,54 @@ class Page:
         self.AniGraph = False
 
     def SetGraph(self):
-        plt.clf()
-        self.ax = plt.subplot(111)
-        self.SetGraphData()
-        self.SetAxis()
-        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2)
+        # 하루당
+        self.fig.clear()
+        self.ax = self.fig.add_subplot(111)
+        self.GraphData.clear()
+        self.GraphData = self.CurrStock.graphDataDay
+        self.x.clear()
+        self.x = [datetime.now() - timedelta(days=i) for i in range(len(self.GraphData))]
+        self.x.reverse()
+        self.SetAxis('%H:%M')
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
+        self.ax.ticklabel_format(axis='y', style='plain')
         if self.anim is not None:
             self.anim._stop()
-        self.anim = FuncAnimation(self.fig, self.UpdateGraph, init_func = self.InitGraph, interval = 1000, frames = 100, blit = False)
         self.Canvas.draw()
 
-    def InitGraph(self):
-        return self.line
+    def SetAniGraph(self):
+        # 1분당
+        self.fig.clear()
+        self.ax = self.fig.add_subplot(111)
+        self.GraphData.clear()
+        self.GraphData = self.CurrStock.graphDataMin
+        self.x.clear()
+        self.x = [datetime.now() - timedelta(minutes=i) for i in range(len(self.GraphData))]
+        self.x.reverse()
+        self.SetAxis('%H:%M')
+        self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
+        self.ax.ticklabel_format(axis='y', style='plain')
+        if self.anim is not None:
+            self.anim._stop()
+        self.anim = FuncAnimation(self.fig, self.UpdateGraph, init_func = self.InitGraph, interval = 1000, frames = 60, blit = False)
+        self.Canvas.draw()
 
-    def UpdateGraph(self, i):
+    def UpdateAniGraph(self, i):
+        self.GraphData.pop()
         self.GraphData.append(self.CurrStock.getPrice())
-        self.x.append(datetime.now())
-        if len(self.x) >= 60 :
-            self.GraphData.pop(0)
-            self.x.pop(0)
         self.ax.relim()
         self.ax.autoscale_view()
         self.line.set_data(self.x, self.GraphData)
         return self.line
 
-    def SetGraphData(self):
-        self.x = [datetime.now()]
+    def InitGraph(self):
+        self.GraphData.pop(0)
+        self.GraphData.append(self.CurrStock.getPrice())
+        self.x.pop(0)
+        self.x.append(datetime.now())
+        return self.line
 
-    def SetAxis(self):
+    def SetAxis(self, format):
         self.ax.set_facecolor(Col_back)
         self.ax.spines['bottom'].set_color('#dddddd')
         self.ax.spines['top'].set_color(Col_back)
@@ -333,8 +394,8 @@ class Page:
         self.ax.tick_params(axis='y', colors='#dddddd')
         self.ax.ticklabel_format(axis='y', style='plain')
         self.ax.grid(True, color='white', alpha=0.1)
-        self.ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
-        plt.gcf().autofmt_xdate()
+        self.ax.xaxis.set_major_formatter(mdates.DateFormatter(format))
+        self.fig.autofmt_xdate()
 
     def AddCompare(self):
         if self.CurrStock is None:

@@ -299,6 +299,22 @@ class Page:
 
         D[tag]['image'] = self.I(str)
 
+    def ResetFunction(self):
+        D = self.W('Functions')
+
+        self.Auto = False
+        D['Auto']['image'] = self.I('Auto_Off')
+
+        if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
+            self.Fav = False
+            D['Fav']['image'] = self.I('Fav_Off')
+        else :
+            self.Fav = True
+            D['Fav']['image'] = self.I('Fav_On')
+
+        self.AniGraph = False
+        D['Graph']['image'] = self.I('Graph_Off')
+
     def DiceFunction(self):
         result = random.randint(1, 6)
         D = self.W('Functions')
@@ -327,22 +343,6 @@ class Page:
             D['DiceResult']['text'] = '6이 나왔네요!'
             D['DiceResult']['fg'] = Col_red
             D['DiceComment']['text'] = '극-락'
-
-    def ResetFunction(self):
-        D = self.W('Functions')
-
-        self.Auto = False
-        D['Auto']['image'] = self.I('Auto_Off')
-
-        if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
-            self.Fav = False
-            D['Fav']['image'] = self.I('Fav_Off')
-        else :
-            self.Fav = True
-            D['Fav']['image'] = self.I('Fav_On')
-
-        self.AniGraph = False
-        D['Graph']['image'] = self.I('Graph_Off')
 
     def SetGraph(self):
         # 1분당        
