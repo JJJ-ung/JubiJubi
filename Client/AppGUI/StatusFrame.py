@@ -22,7 +22,7 @@ class Status(object):
                                         bg = Color_Back, borderwidth=0)
         self.Logo.pack(side=LEFT)
 
-        self.Searchbar = Entry(parent, bd = 0)
+        self.Searchbar = Entry(parent, bd = 0, textvariable = self.SearchStr)
         self.Searchbar.place(relx = 0.085, rely = 0.5, anchor = W, width = 400, height = 22)
 
         self.SearchButton = Button(parent, image=self.IL.Images['search'],
