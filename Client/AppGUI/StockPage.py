@@ -114,7 +114,6 @@ class Page:
         self.Percent = StringVar()
         self.UpDown = StringVar()
         # for Graph
-        # for Graph
         self.x = list()
         self.GraphData = list()
         # for Func
@@ -246,10 +245,10 @@ class Page:
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
                                            command =lambda: self.ChangeFunction('Auto'))
         D['Auto'].grid(row = 0, column = 1)
-        D['GChange'] = Button(P, width = 118, height = 81, image = self.I('Graph_Off'), bg = Col_back, bd=0, relief = FLAT,
+        D['Graph'] = Button(P, width = 118, height = 81, image = self.I('Graph1_Off'), bg = Col_back, bd=0, relief = FLAT,
                                            highlightthickness=0, activebackground=Col_back, anchor='center',
                                            command =lambda: self.ChangeFunction('Graph'))
-        D['GChange'].grid(row = 0, column = 2)
+        D['Graph'].grid(row = 0, column = 2)
         
         P = self.F('Function_Dice')
         D['DiceImg'] = Button(P, width = 74, height = 74, image = self.I('dice_1'), bd = 0, relief = FLAT, highlightthickness=0, activebackground=Col_back, anchor = 'center',
@@ -282,10 +281,10 @@ class Page:
         if tag is 'Graph':
             self.AniGraph = not self.AniGraph
             if self.AniGraph:
-                str = tag + '_On'
+                str = tag + '1_On'
                 self.SetAniGraph()
             else:
-                str = tag + '_Off'
+                str = tag + '1_Off'
                 self.SetGraph()
         D[tag]['image'] = self.I(str)
 
@@ -303,7 +302,8 @@ class Page:
             D['Fav']['image'] = self.I('Fav_On')
 
         self.AniGraph = False
-        D['Graph']['image'] = self.I('Graph_Off')
+        D['Graph']['image'] = self.I('Graph1_Off')
+
     def DiceFunction(self):
         result = random.randint(1, 6)
         D = self.W('Functions')
@@ -347,7 +347,7 @@ class Page:
         self.x.clear()
         self.x = [datetime.now() - timedelta(days=i) for i in range(len(self.GraphData))]
         self.x.reverse()
-        self.SetAxis('%H:%M')
+        self.SetAxis('%m/%d')
         self.line, = self.ax.plot(self.x, self.GraphData, lw = 2, color = Col_red)
         self.ax.ticklabel_format(axis='y', style='plain')
         if self.anim is not None:
@@ -371,7 +371,7 @@ class Page:
         self.anim = FuncAnimation(self.fig, self.UpdateGraph, init_func = self.InitGraph, interval = 1000, frames = 60, blit = False)
         self.Canvas.draw()
 
-    def UpdateAniGraph(self, i):
+    def UpdateGraph(self, i):
         self.GraphData.pop()
         self.GraphData.append(self.CurrStock.getPrice())
         self.ax.relim()
