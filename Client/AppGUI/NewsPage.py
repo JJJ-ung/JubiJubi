@@ -1,6 +1,7 @@
 from tkinter import *
+import sys
+import os
 from cefpython3 import cefpython as cef
-import threading
 
 class Page:
     def __init__(self, parent, IL):
@@ -8,10 +9,7 @@ class Page:
         self.run = True
         self.browser = None
         self.parent = parent
-        
-        self.thread = threading.Thread(target=self.CreateBrowser)
-        self.thread.setDaemon(True)
-        self.thread.start()
+        self.CreateBrowser()
 
     def CreateBrowser(self):
         sys.excepthook = cef.ExceptHook
@@ -19,20 +17,22 @@ class Page:
         self.search.SetAsChild(self.parent.winfo_id(), [0,0, 964, 708])
         cef.Initialize()
         self.browser = cef.CreateBrowserSync(self.search, url=self.URL)
-        cef.MessageLoop()
+
+    def messageLoopWork(self):
+        cef.MessageLoopWork()
 
     def Rest(self, searchbar):
         if self.browser != None:
             if self.run:
                 self.run = False
-                self.browser.StopLoad()
-                searchbar.icursor(0)
+                searchbar.focus_set()
 
-    def Work(self):
+    def Work(self, searchbar):
         if self.browser != None:
             if not self.run:
                 self.run = True
                 self.browser.LoadUrl(self.URL)
+                searchbar.focus_set()
 
     def Search(self, str):
         self.browser.StopLoad()

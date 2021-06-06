@@ -16,7 +16,6 @@ class Main():
         self.UpdateStock()
         self.UpdateNews()
         self.wnd.mainloop()
-        cef.Shutdown()
         
     def UpdateCoin(self):
         self.Data.UpdateCoin()
