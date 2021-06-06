@@ -67,6 +67,8 @@ class Loader:
         self.Images['Auto_On'] = PhotoImage(file = 'Resources/buttons/Button0_On.png')
         self.Images['Graph_On'] = PhotoImage(file = 'Resources/buttons/Button1_On.png')
         self.Images['Fav_On'] = PhotoImage(file = 'Resources/buttons/Button2_On.png')
+        self.Images['Graph1_On'] = PhotoImage(file = 'Resources/buttons/Button3_On.png')
+        self.Images['Graph1_Off'] = PhotoImage(file = 'Resources/buttons/Button3_Off.png')
         #images
         self.Images['sample'] = PhotoImage(file = 'Image/sample.png')
         self.Images['kiwoom'] = PhotoImage(file = 'Image/kiwoom.png')
