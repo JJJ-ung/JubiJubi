@@ -41,16 +41,6 @@ class Menu(object):
         self.Buttons['Auto'].pack(side=TOP)
        
         #아래쪽 pack
-        self.Buttons['Settings'] = Button(parent, image=self.IL.Images['setting'],
-                           height=60, width=60, borderwidth=0, highlightthickness=0,
-                           bg=Color_ButtonIdle, activebackground=Color_ButtonActive, anchor='center',
-                           command =lambda: self.ChangePage('settings'))
-        self.Buttons['Settings'].pack(side=BOTTOM)
-        self.Buttons['Developer'] = Button(parent, image=self.IL.Images['ghost'],
-                           height=60, width=60, borderwidth=0, highlightthickness=0,
-                           bg=Color_ButtonIdle, activebackground=Color_ButtonActive, anchor='center',
-                           command =lambda: self.ChangePage('developers'))
-        self.Buttons['Developer'].pack(side=BOTTOM)
         self.Buttons['Profile'] = Button(parent, image=self.IL.Images['profile'],
                            height=60, width=60, borderwidth=0, highlightthickness=0,
                            bg=Color_ButtonIdle, activebackground=Color_ButtonActive, anchor='center',

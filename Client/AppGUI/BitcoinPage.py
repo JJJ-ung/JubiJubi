@@ -305,7 +305,7 @@ class Page:
         self.Auto = False
         D['Auto']['image'] = self.I('Auto_Off')
 
-        if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
+        if self.FavPage.Find('bitcoin', self.CurrCoin.ticker) is False :
             self.Fav = False
             D['Fav']['image'] = self.I('Fav_Off')
         else :
@@ -458,10 +458,10 @@ class Page:
         self.SetCurr(coin)
 
     def AddFav(self):
-        self.FavPage.Add_Bitcoin(self.CurrCoin)
+        self.FavPage.Add('bitcoin', self.CurrCoin)
 
     def DelFav(self):
-        self.FavPage.Delete_Bitcoin(self.CurrCoin)
+        self.FavPage.Delete('bitcoin', self.CurrCoin.ticker)
 
     def Fo(self, name):
         return self.Fonts[name]

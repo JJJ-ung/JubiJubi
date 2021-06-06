@@ -35,7 +35,7 @@ class MainGUI :
         self.CurrFrame = ''
 
         self.Pages = dict()
-        self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'], self.IL)
+        self.Pages['favorites'] = FavoritesPage.Page(self.Frames['favorites'], self.IL, self)
         self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'], self.IL, self.Pages['favorites'])
         self.Pages['stock'] = StockPage.Page(self.Frames['stock'], self.IL, self.Pages['favorites'])
         self.Pages['news'] = NewsPage.Page(self.Frames['news'], self.IL)

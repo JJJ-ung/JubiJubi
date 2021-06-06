@@ -20,7 +20,7 @@ class Page:
         self.Widgets = dict()
         W = self.Widgets
 
-        self.FontMain = tkinter.font.Font(family='나눔스퀘어', size=12, weight='bold')
+        self.FontMain = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')
         self.FontSub = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')
 
         self.Frames['Coin'] = UIMaker.PackFix(Frame(parent, width = 481, bg = Col_Main, bd = 0), LEFT, Y, False)
@@ -30,45 +30,101 @@ class Page:
         W['CoinLogo'] = Label(P, height = 60, bg = Col_Title, bd = 0, image = IL.Get('bitcoin'))
         W['CoinLogo'].pack(side = TOP, fill = X)
 
-        Pa = self.Frames['CoinMain'] = UIMaker.PackFix(Frame(P, height = 400, bg = '#3f3f3f', bd = 0), TOP, X, False)
-        Pb = self.Frames['CoinLst'] = UIMaker.PackFix(Frame(Pa, width = 240, bg = 'yellow', bd = 0), LEFT, Y, False)
-        for i in range(0, 10) :
+        for i in range(0, 3):
             Col = Col_Main
             if i % 2 == 1 : Col = Col_Sub
-            self.Frames['CoinLst'+str(i)] = UIMaker.PackFix(Frame(Pb, height = 40, bg = Col), TOP, X, False)
-        self.CoinLog = Text(Pa, bg = Col_Main, bd = 0, fg = 'white', padx = 8, pady = 8, font = self.FontSub)#
+            self.Frames['CoinLst'+str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg = Col), TOP, X, False)
+        Pa = self.Frames['CoinText'] = UIMaker.PackFix(Frame(P, height = 300, bg = 'yellow'), TOP, X, False)
+
+        self.CoinLog = Text(Pa, bg = Col_Sub, bd = 0, fg = 'white', padx = 20, pady = 15, font = self.FontSub)#
         self.CoinLog.bind("<Key>", lambda e: "break")
-        self.CoinLog.pack(side = RIGHT, fill = BOTH, expand = True)
-
-        self.CoinLog.insert(CURRENT, '▶ 업비트 자동매매 로그\n\n')
-        self.CoinLog.insert(CURRENT, '- 자동매매 설정을 완료 해주세요\n')
-
+        self.CoinLog.pack(side = TOP)
+        self.CoinLog.insert(CURRENT, '▶ 비트코인 자동매매 로그\n\n')
+        
         Pa = self.Frames['CoinFunc'] = UIMaker.PackFix(Frame(P, bg = Col_Title, bd = 0), TOP, BOTH, True)
-        W['CoinBuyLabel'] = Label(Pa, text = '구매 가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['CoinBuyLabel'].place(relx = 0.1, rely = 0.2, anchor = 'w')
+        W['CoinJangoLabel'] = Label(Pa, text = '잔고  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['CoinJangoLabel'].place(relx = 0.06, rely = 0.15, anchor = 'w')
+        W['CoinHandoLabel'] = Label(Pa, text = '구매한도  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['CoinHandoLabel'].place(relx = 0.06, rely = 0.3, anchor = 'w')
         W['CoinPercentLabel'] = Label(Pa, text = '수익률  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['CoinPercentLabel'].place(relx = 0.1, rely = 0.4, anchor = 'w')
+        W['CoinPercentLabel'].place(relx = 0.06, rely = 0.5, anchor = 'w')
+        W['CoinPriceLabel'] = Label(Pa, text = '구매가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['CoinPriceLabel'].place(relx = 0.06, rely = 0.65, anchor = 'w')
+
+        self.CoinJango = StringVar()
+        self.CoinHando = StringVar()
+        self.CoinPercent = StringVar()
+        self.CoinPrice = StringVar()
+        W['CoinJangoEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinJango, width = 40)
+        W['CoinJangoEntry'].place(relx = 0.36, rely = 0.15, anchor = 'w')
+        W['CoinHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinHando, width = 40)
+        W['CoinHandoEntry'].place(relx = 0.36, rely = 0.3, anchor = 'w')
+        W['CoinPercentEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinPercent, width = 40)
+        W['CoinPercentEntry'].place(relx = 0.36, rely = 0.5, anchor = 'w')
+        W['CoinPriceEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinPrice, width = 40)
+        W['CoinPriceEntry'].place(relx = 0.36 , rely = 0.65, anchor = 'w')
+
+        self.CoinHando.set('설정하지 않을 시, 남은 잔고를 올인합니다')
+
+        W['CoinSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain, command = self.SetCoin)
+        W['CoinSetButton'].place(relx = 0.5, rely = 0.85, anchor = CENTER)
 
         P = self.Frames['Stock']
         W['StockLogo'] = Label(P, height = 60, bg = Col_Title, bd = 0, image = IL.Get('stock'))
         W['StockLogo'].pack(side = TOP, fill = X)
         
-        Pa = self.Frames['StockMain'] = UIMaker.PackFix(Frame(P, height = 400, bg = '#3f3f3f', bd = 0), TOP, X, False)
-        Pb = self.Frames['StockLst'] = UIMaker.PackFix(Frame(Pa, width = 240, bg = 'yellow', bd = 0), LEFT, Y, False)
-        for i in range(0, 10) :
+        for i in range(0, 3):
             Col = Col_Main
             if i % 2 == 1 : Col = Col_Sub
-            self.Frames['StockLst'+str(i)] = UIMaker.PackFix(Frame(Pb, height = 40, bg = Col), TOP, X, False)
-        self.StockLog = Text(Pa, bg = Col_Main, bd = 0, fg = 'white', padx = 8, pady = 8, font = self.FontSub)#
+            self.Frames['StockLst'+str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg = Col), TOP, X, False)
+        Pa = self.Frames['StockText'] = UIMaker.PackFix(Frame(P, height = 300, bg = 'yellow'), TOP, X, False)
+
+        self.StockLog = Text(Pa, bg = Col_Sub, bd = 0, fg = 'white', padx = 20, pady = 15, font = self.FontSub)#
         self.StockLog.bind("<Key>", lambda e: "break")
-        self.StockLog.pack(side = RIGHT, fill = BOTH, expand = True)
+        self.StockLog.pack(side = TOP)
+        self.StockLog.insert(CURRENT, '▶ 주식 자동매매 로그\n\n')
 
-        self.StockLog.insert(CURRENT, '▶ 키움증권 자동매매 로그\n\n')
-        self.StockLog.insert(CURRENT, '- 자동매매 설정을 완료 해주세요\n')
-        
         Pa = self.Frames['StockFunc'] = UIMaker.PackFix(Frame(P, bg = Col_Title, bd = 0), TOP, BOTH, True)
-        W['StockBuyLabel'] = Label(Pa, text = '구매 가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockBuyLabel'].place(relx = 0.1, rely = 0.2, anchor = 'w')
+        W['StockJangoLabel'] = Label(Pa, text = '잔고  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['StockJangoLabel'].place(relx = 0.06, rely = 0.15, anchor = 'w')
+        W['StockHandoLabel'] = Label(Pa, text = '구매한도  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['StockHandoLabel'].place(relx = 0.06, rely = 0.3, anchor = 'w')
         W['StockPercentLabel'] = Label(Pa, text = '수익률  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockPercentLabel'].place(relx = 0.1, rely = 0.4, anchor = 'w')
+        W['StockPercentLabel'].place(relx = 0.06, rely = 0.5, anchor = 'w')
+        W['StockPriceLabel'] = Label(Pa, text = '구매가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['StockPriceLabel'].place(relx = 0.06, rely = 0.65, anchor = 'w')
 
+        self.StockJango = StringVar()
+        self.StockHando = StringVar()
+        self.StockPercent = StringVar()
+        self.StockPrice = StringVar()
+        W['StockJangoEntry'] = Entry(Pa, bd = 0, textvariable = self.StockJango, width = 40)
+        W['StockJangoEntry'].place(relx = 0.36, rely = 0.15, anchor = 'w')
+        W['StockHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.StockHando, width = 40)
+        W['StockHandoEntry'].place(relx = 0.36, rely = 0.3, anchor = 'w')
+        W['StockPercentEntry'] = Entry(Pa, bd = 0, textvariable = self.StockPercent, width = 40)
+        W['StockPercentEntry'].place(relx = 0.36, rely = 0.5, anchor = 'w')
+        W['StockPriceEntry'] = Entry(Pa, bd = 0, textvariable = self.StockPrice, width = 40)
+        W['StockPriceEntry'].place(relx = 0.36 , rely = 0.65, anchor = 'w')
+
+        self.StockHando.set('설정하지 않을 시, 남은 잔고를 올인합니다')
+
+        W['StockSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain)
+        W['StockSetButton'].place(relx = 0.5, rely = 0.85, anchor = CENTER)
+
+    def SetCoin(self):
+        Jango = int(self.CoinJango.get())
+        Hando = int(self.CoinHando.get())
+        Percent = int(self.CoinPercent.get())
+        Price = int(self.CoinPrice.get())
+        # 이게 entry 값들이니 알아서 사용
+
+        self.AddCoinLog('옵션 설정 완료\n')
+        self.AddCoinLog('- 잔고 : ' + str(Jango))
+        self.AddCoinLog('- 한도 : ' + str(Hando))
+        self.AddCoinLog('- 수익률 : ' + str(Percent))
+        self.AddCoinLog('- 구매가격 : ' + str(Price) + '\n')
+
+    def AddCoinLog(self, message):
+        #로그에 한줄 추가하는거
+        self.CoinLog.insert(CURRENT, message + '\n')
