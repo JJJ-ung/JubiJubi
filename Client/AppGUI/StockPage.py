@@ -352,6 +352,7 @@ class Page:
         self.ax.ticklabel_format(axis='y', style='plain')
         if self.anim is not None:
             self.anim._stop()
+        self.anim = None
         self.Canvas.draw()
 
     def SetAniGraph(self):
