@@ -59,3 +59,7 @@ class MainData(object):
             else :
                 self.UI.StatusGUI.Searchbar.configure(fg = 'red')
                 self.UI.StatusGUI.SearchStr.set('로그인을 진행해주세요')
+
+                
+        if type == 'news':
+            self.UI.Pages['news'].Search(name)

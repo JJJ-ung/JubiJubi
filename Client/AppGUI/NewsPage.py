@@ -7,13 +7,13 @@ class Page:
         self.URL = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=일론머스크"
         self.run = True
         self.browser = None
-        #self.parent = parent
+        self.parent = parent
         
-        #self.thread = threading.Thread(target=self.Search)
-        #self.thread.setDaemon(True)
-        #self.thread.start()
+        self.thread = threading.Thread(target=self.CreateBrowser)
+        self.thread.setDaemon(True)
+        self.thread.start()
 
-    def Search(self):
+    def CreateBrowser(self):
         sys.excepthook = cef.ExceptHook
         self.search = cef.WindowInfo(self.parent.winfo_id())
         self.search.SetAsChild(self.parent.winfo_id(), [0,0, 964, 708])
@@ -33,3 +33,8 @@ class Page:
             if not self.run:
                 self.run = True
                 self.browser.LoadUrl(self.URL)
+
+    def Search(self, str):
+        self.browser.StopLoad()
+        self.URL = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=" + str
+        self.browser.LoadUrl(self.URL)
