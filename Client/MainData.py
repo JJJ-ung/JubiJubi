@@ -27,10 +27,11 @@ class MainData(object):
 
     def UpdateNews(self):
         self.UI.Pages['news'].messageLoopWork()
-        #if self.UI.Get_CurrFrame() != 'news':
-        #    self.UI.Pages['news'].Rest(self.UI.StatusGUI.Searchbar)
-        #else:
-        #    self.UI.Pages['news'].Work(self.UI.StatusGUI.Searchbar)
+
+    def UpdateAuto(self):
+        type = self.UI.Get_CurrFrame()
+        if type == 'auto':
+            self.UI.Pages['auto']
 
     # 검색기능
     def Search(self, event):
@@ -61,6 +62,5 @@ class MainData(object):
                 self.UI.StatusGUI.Searchbar.configure(fg = 'red')
                 self.UI.StatusGUI.SearchStr.set('로그인을 진행해주세요')
 
-                
         if type == 'news':
             self.UI.Pages['news'].Search(name)

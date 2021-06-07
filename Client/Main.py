@@ -15,6 +15,7 @@ class Main():
         self.UpdateCoin()
         self.UpdateStock()
         self.UpdateNews()
+        self.UpdateAuto()
         self.wnd.mainloop()
         
     def UpdateCoin(self):
@@ -28,5 +29,9 @@ class Main():
     def UpdateNews(self):
         self.Data.UpdateNews()
         self.wnd.after(100, self.UpdateNews)
+
+    def UpdateAuto(self):
+        self.Data.UpdateAuto()
+        self.wnd.after(5000, self.UpdateAuto)
 
 Main()

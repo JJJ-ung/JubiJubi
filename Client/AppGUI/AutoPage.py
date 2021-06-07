@@ -58,7 +58,7 @@ class Page:
         self.CoinHando = StringVar()
         self.CoinPercent = StringVar()
         self.CoinPrice = StringVar()
-        W['CoinJangoEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinJango, width = 40)
+        W['CoinJangoEntry'] = Label(Pa, bg= Col_Title, textvariable = self.CoinJango, bd = 0, fg = 'white', width = 40, anchor="w")
         W['CoinJangoEntry'].place(relx = 0.36, rely = 0.15, anchor = 'w')
         W['CoinHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinHando, width = 40)
         W['CoinHandoEntry'].place(relx = 0.36, rely = 0.3, anchor = 'w')
@@ -87,34 +87,41 @@ class Page:
 
         Pa = self.Frames['StockFunc'] = UIMaker.PackFix(Frame(P, bg = Col_Title, bd = 0), TOP, BOTH, True)
         W['StockJangoLabel'] = Label(Pa, text = '잔고  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockJangoLabel'].place(relx = 0.06, rely = 0.15, anchor = 'w')
+        W['StockJangoLabel'].place(relx = 0.06, rely = 0.1, anchor = 'w')
+        W['StockCodeLabel'] = Label(Pa, text = '주식  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
+        W['StockCodeLabel'].place(relx = 0.06, rely = 0.25, anchor = 'w')
         W['StockHandoLabel'] = Label(Pa, text = '구매한도  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockHandoLabel'].place(relx = 0.06, rely = 0.3, anchor = 'w')
+        W['StockHandoLabel'].place(relx = 0.06, rely = 0.4, anchor = 'w')
         W['StockPercentLabel'] = Label(Pa, text = '수익률  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockPercentLabel'].place(relx = 0.06, rely = 0.5, anchor = 'w')
+        W['StockPercentLabel'].place(relx = 0.06, rely = 0.55, anchor = 'w')
         W['StockPriceLabel'] = Label(Pa, text = '구매가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
-        W['StockPriceLabel'].place(relx = 0.06, rely = 0.65, anchor = 'w')
+        W['StockPriceLabel'].place(relx = 0.06, rely = 0.7, anchor = 'w')
         W['SPriceLabel'] = Label(Pa, text = '설정하지 않을 시, 남은 잔고를 올인합니다', font = self.Allin, bg = Col_Title, fg = 'white', bd = 0)
-        W['SPriceLabel'].place(relx = 0.06, rely = 0.38, anchor = 'w')
+        W['SPriceLabel'].place(relx = 0.06, rely = 0.46, anchor = 'w')
 
         self.StockJango = StringVar()
         self.StockHando = StringVar()
         self.StockPercent = StringVar()
         self.StockPrice = StringVar()
-        W['StockJangoEntry'] = Entry(Pa, bd = 0, textvariable = self.StockJango, width = 40)
-        W['StockJangoEntry'].place(relx = 0.36, rely = 0.15, anchor = 'w')
+        W['StockJangoEntry'] = Label(Pa, bg= Col_Title, textvariable = self.StockJango, bd = 0, fg = 'white', width = 40, anchor="w")
+        W['StockJangoEntry'].place(relx = 0.36, rely = 0.1, anchor = 'w')
         W['StockHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.StockHando, width = 40)
-        W['StockHandoEntry'].place(relx = 0.36, rely = 0.3, anchor = 'w')
+        W['StockHandoEntry'].place(relx = 0.36, rely = 0.25, anchor = 'w')
+        W['StockHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.StockHando, width = 40)
+        W['StockHandoEntry'].place(relx = 0.36, rely = 0.4, anchor = 'w')
         W['StockPercentEntry'] = Entry(Pa, bd = 0, textvariable = self.StockPercent, width = 40)
-        W['StockPercentEntry'].place(relx = 0.36, rely = 0.5, anchor = 'w')
+        W['StockPercentEntry'].place(relx = 0.36, rely = 0.55, anchor = 'w')
         W['StockPriceEntry'] = Entry(Pa, bd = 0, textvariable = self.StockPrice, width = 40)
-        W['StockPriceEntry'].place(relx = 0.36 , rely = 0.65, anchor = 'w')
+        W['StockPriceEntry'].place(relx = 0.36 , rely = 0.7, anchor = 'w')
 
-        W['StockSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain)
-        W['StockSetButton'].place(relx = 0.5, rely = 0.85, anchor = CENTER)
+        W['StockSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain, command = self.SetStock)
+        W['StockSetButton'].place(relx = 0.5, rely = 0.9, anchor = CENTER)
+        
+    def SetCoinBalance(self, balance):
+        self.Widgets['CoinJangoEntry']['text'] = balance
 
     def SetCoin(self):
-        Jango = int(self.CoinJango.get())
+        Jango = self.Widgets['CoinJangoEntry']['text']
         Hando = int(self.CoinHando.get())
         Percent = int(self.CoinPercent.get())
         Price = int(self.CoinPrice.get())
@@ -129,3 +136,23 @@ class Page:
     def AddCoinLog(self, message):
         #로그에 한줄 추가하는거
         self.CoinLog.insert(CURRENT, message + '\n')
+
+    def SetStockBalance(self, balance):
+        self.Widgets['StockJangoEntry']['text'] = balance
+        
+    def SetStock(self):
+        Jango = self.Widgets['CoinJangoEntry']['text']
+        Hando = int(self.StockHando.get())
+        Percent = int(self.StockPercent.get())
+        Price = int(self.StockPrice.get())
+        # 이게 entry 값들이니 알아서 사용
+
+        self.AddStockLog('옵션 설정 완료\n')
+        self.AddStockLog('- 잔고 : ' + str(Jango))
+        self.AddStockLog('- 한도 : ' + str(Hando))
+        self.AddStockLog('- 수익률 : ' + str(Percent) + "%")
+        self.AddStockLog('- 구매가격 : ' + str(Price) + '\n')
+
+    def AddStockLog(self, message):
+        #로그에 한줄 추가하는거
+        self.StockLog.insert(CURRENT, message + '\n')

@@ -7,6 +7,7 @@ class StockInfo():
     kospi = None
     kosdaq = None
     etf = None
+    accno = None
 
     Code2Name = {}
     Name2Code = {}
@@ -19,6 +20,8 @@ class StockInfo():
             StockInfo.KIWOOM.CommConnect()
             print("Login success")
             StockInfo.login = True
+
+            StockInfo.accno = int(StockInfo.KIWOOM.GetLoginInfo("ACCNO")[0])
 
             StockInfo.kospi = StockInfo.KIWOOM.GetCodeListByMarket('0')
             StockInfo.kosdaq = StockInfo.KIWOOM.GetCodeListByMarket('10')
@@ -40,6 +43,9 @@ class StockInfo():
        
         if str in StockInfo.Code2Name:
             return [str, StockInfo.Code2Name[str]]
+
+    def getBalance():
+        return int(StockInfo.KIWOOM.block_request("opw00001", 계좌번호=accno, next=1, output="예수금상세현황")['출금가능금액'])
 
 class Stock():
     def __init__(self, info):
@@ -94,3 +100,46 @@ class Stock():
     def gethigh(self):
         return int(self.High[0])
 
+class AutoStockTrade():
+    def __init__(self, stock, price, per, balance, log):
+        self.stock = stock
+        self.price = price
+        self.per = per
+        self.balance = balance
+        self.log = log
+        self.buyOrder = None
+        self.sellOrder = None
+
+        StockInfo.KIWOOM.ocx.OnReceiveChejanData.connect(self._handler_chejan)
+
+    def Update(self):
+        if self.buyOrder == None:
+            if self.stock.getPrice() < self.price:
+                self.BuyOrder()
+
+        if self.SellOrder == None:
+            if self.stock.getPrice() > self.price + (self.price * (per/100)):
+                self.SellOrder()
+        
+    def _handler_chejan(self, gubun, item_cnt, fid_list):
+        self.log.addStockLog(f"OnReceiveChejanData {gubun} {item_cnt} {fid_list}")
+
+    def BuyOrder(self):
+        self.buyOrder = StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.Accno, 1, self.stock.code, self.balance//self.price, self.price, "00", "")
+        pass
+
+    def SellOrder(self, code, price, balance):
+        self.SellOrder = StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.Accno, 2, self.stock.code, self.balance//self.price, price, "00", "")
+        pass
+
+    def BuyCancel(self, code):
+        if self.buyOrder != None:
+            StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.Accno, 3, self.stock.code, self.balance//self.price, 0, "00", self.buyOrder)
+            self.buyOrder = None
+        pass
+
+    def SellCancel(self, code):
+        if self.SellOrder != None:
+            StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.Accno, 4, self.stock.code, self.balance//self.price, 0, "00", self.SellOrder)
+            self.SellOrder = None
+        pass

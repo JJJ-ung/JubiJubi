@@ -64,7 +64,7 @@ class Bitcoin():
 
 class CoinAutoTrade():
     def __init__(self):
-        selforderLst = []
+        self.orderLst = []
 
     def Order(self, type, ticker):
         pass
