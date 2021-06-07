@@ -29,9 +29,10 @@ class MainData(object):
         self.UI.Pages['news'].messageLoopWork()
 
     def UpdateAuto(self):
-        type = self.UI.Get_CurrFrame()
-        if type == 'auto':
-            self.UI.Pages['auto']
+        if Stock.StockInfo.login == True:
+            for s in Stock.StockInfo.Auto:
+                s.Update()
+
 
     # 검색기능
     def Search(self, event):

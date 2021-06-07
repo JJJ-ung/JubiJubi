@@ -138,20 +138,24 @@ class Page:
         self.CoinLog.insert(CURRENT, message + '\n')
 
     def SetStockBalance(self, balance):
-        self.Widgets['StockJangoEntry']['text'] = balance
+        if Stock.StockInfo.login:
+            self.Widgets['StockJangoEntry']['text'] = balance
         
     def SetStock(self):
-        Jango = self.Widgets['CoinJangoEntry']['text']
-        Hando = int(self.StockHando.get())
-        Percent = int(self.StockPercent.get())
-        Price = int(self.StockPrice.get())
-        # 이게 entry 값들이니 알아서 사용
+        if Stock.StockInfo.login:
+            Jango = self.Widgets['CoinJangoEntry']['text']
+            Hando = int(self.StockHando.get())
+            Percent = float(self.StockPercent.get())
+            Price = int(self.StockPrice.get())
+            # 이게 entry 값들이니 알아서 사용
 
-        self.AddStockLog('옵션 설정 완료\n')
-        self.AddStockLog('- 잔고 : ' + str(Jango))
-        self.AddStockLog('- 한도 : ' + str(Hando))
-        self.AddStockLog('- 수익률 : ' + str(Percent) + "%")
-        self.AddStockLog('- 구매가격 : ' + str(Price) + '\n')
+            self.AddStockLog('옵션 설정 완료\n')
+            self.AddStockLog('- 잔고 : ' + str(Jango))
+            self.AddStockLog('- 한도 : ' + str(Hando))
+            self.AddStockLog('- 수익률 : ' + str(Percent) + "%")
+            self.AddStockLog('- 구매가격 : ' + str(Price) + '\n')
+
+            Stock.StockInfo.Auto.append(Stock.AutoStockTrade(Stock.Stock(Stock.StockInfo.SearchStock('삼성전자')), Price, Percent, Hando, self))
 
     def AddStockLog(self, message):
         #로그에 한줄 추가하는거
