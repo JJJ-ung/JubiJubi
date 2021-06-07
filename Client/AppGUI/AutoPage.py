@@ -32,6 +32,7 @@ class Page:
         W = self.Widgets
 
         self.FontMain = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')
+        self.Allin = tkinter.font.Font(family='나눔스퀘어', size=6, weight='bold')
         self.FontSub = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')
 
         self.Frames['Coin'] = UIMaker.PackFix(Frame(parent, width=481, bg=Col_Main, bd=0), LEFT, Y, False)
@@ -139,7 +140,7 @@ class Page:
         W['StockSetButton'].place(relx=0.5, rely=0.85, anchor=CENTER)
 
     def SetCoin(self):
-        Jango = int(self.CoinJango.get())
+        Jango = self.Widgets['CoinJangoEntry']['text']
         Hando = int(self.CoinHando.get())
         Percent = int(self.CoinPercent.get())
         Price = int(self.CoinPrice.get())
