@@ -56,12 +56,12 @@ class Page:
         if self.CurrStock is not None:
             if not self.CurrStock.Save:
                 del self.CurrStock
-        self.ResetFunction()
         D = self.W('Name')
         self.CurrStock = stock
         self.Yesterday = stock.lstDailyData[4]
         D['Name']['text'] = stock.name
         D['Tiker']['text'] = stock.code
+        self.ResetFunction()
         self.SetDaily(stock)
         self.SetGraph()
 
