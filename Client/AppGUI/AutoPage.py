@@ -35,6 +35,11 @@ class Page:
             Col = Col_Main
             if i % 2 == 1 : Col = Col_Sub
             self.Frames['CoinLst'+str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg = Col), TOP, X, False)
+            #D['CoinRadio' + str(i)] = Radiobutton(Pa, image=self.IL.Get('bookmark'),
+            #                                  selectimage=self.IL.Get('bookmarksel'), value=i,
+            #                                  variable=self.BitcoinIndex,
+            #                                  bg=Col, activebackground=Col, selectcolor=Col, bd=0, indicatoron=0 )
+            #D['CoinLabel' + str(i)] = Label(Pa, font=self.FontSub, bg=Col, fg='white', bd=0)
         Pa = self.Frames['CoinText'] = UIMaker.PackFix(Frame(P, height = 300, bg = 'yellow'), TOP, X, False)
 
         self.CoinLog = Text(Pa, bg = Col_Sub, bd = 0, fg = 'white', padx = 20, pady = 15, font = self.FontSub)#
@@ -78,6 +83,12 @@ class Page:
             Col = Col_Main
             if i % 2 == 1 : Col = Col_Sub
             self.Frames['StockLst'+str(i)] = UIMaker.PackFix(Frame(P, height = 40, bg = Col), TOP, X, False)
+            #D['StockRadio' + str(i)] = Radiobutton(Pa, image=self.IL.Get('bookmark'),
+            #                                  selectimage=self.IL.Get('bookmarksel'), value=i,
+            #                                  variable=self.BitcoinIndex,
+            #                                  bg=Col, activebackground=Col, selectcolor=Col, bd=0, indicatoron=0 )
+            #D['StockLabel' + str(i)] = Label(Pa, font=self.FontSub, bg=Col, fg='white', bd=0)
+
         Pa = self.Frames['StockText'] = UIMaker.PackFix(Frame(P, height = 300, bg = 'yellow'), TOP, X, False)
 
         self.StockLog = Text(Pa, bg = Col_Sub, bd = 0, fg = 'white', padx = 20, pady = 15, font = self.FontSub)#
@@ -160,3 +171,27 @@ class Page:
     def AddStockLog(self, message):
         #로그에 한줄 추가하는거
         self.StockLog.insert(CURRENT, message + '\n')
+
+    def Add(self, tag, item):
+        if tag == 'bitcoin':
+            if len(self.BitcoinFav) > 2:
+                return
+            info = Info(item.koreanName, item.ticker)
+            if self.Find(tag, info.Ticker):
+                return
+            index = len(self.BitcoinFav)
+            self.BitcoinFav.append(info)
+            self.Widgets['Bitcoin']['Label' + str(index)].configure(text=info.Name + '  ' + info.Ticker)
+            self.Widgets['Bitcoin']['Radio' + str(index)].place(relx=0.05, rely=0.5, anchor=W)
+            self.Widgets['Bitcoin']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
+        if tag == 'stock':
+            if len(self.StockFav) > 2:
+                return
+            info = Info(item.name, item.code)
+            if self.Find(tag, info.Ticker):
+                return
+            index = len(self.StockFav)
+            self.StockFav.append(info)
+            self.Widgets['Stock']['Label' + str(index)].configure(text=info.Name + '  ' + info.Ticker)
+            self.Widgets['Stock']['Radio' + str(index)].place(relx=0.05, rely=0.5, anchor=W)
+            self.Widgets['Stock']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
