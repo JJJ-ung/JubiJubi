@@ -20,7 +20,7 @@ class Main():
     def UpdateCoin(self):
         self.Data.UpdateCoin()
         self.wnd.after(100, self.UpdateCoin)
-    
+
     def UpdateStock(self):
         self.Data.UpdateStock()
         self.wnd.after(1000, self.UpdateStock)
@@ -28,8 +28,5 @@ class Main():
     def UpdateNews(self):
         self.Data.UpdateNews()
         self.wnd.after(100, self.UpdateNews)
-
-
-       
 
 Main()

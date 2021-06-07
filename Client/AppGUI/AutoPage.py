@@ -21,6 +21,7 @@ class Page:
         W = self.Widgets
 
         self.FontMain = tkinter.font.Font(family='나눔스퀘어', size=10, weight='bold')
+        self.Allin = tkinter.font.Font(family='나눔스퀘어', size=6, weight='bold')
         self.FontSub = tkinter.font.Font(family='나눔스퀘어', size=10, weight='normal')
 
         self.Frames['Coin'] = UIMaker.PackFix(Frame(parent, width = 481, bg = Col_Main, bd = 0), LEFT, Y, False)
@@ -50,6 +51,8 @@ class Page:
         W['CoinPercentLabel'].place(relx = 0.06, rely = 0.5, anchor = 'w')
         W['CoinPriceLabel'] = Label(Pa, text = '구매가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
         W['CoinPriceLabel'].place(relx = 0.06, rely = 0.65, anchor = 'w')
+        W['CPriceLabel'] = Label(Pa, text = '설정하지 않을 시, 남은 잔고를 올인합니다', font = self.Allin, bg = Col_Title, fg = 'white', bd = 0)
+        W['CPriceLabel'].place(relx = 0.06, rely = 0.38, anchor = 'w')
 
         self.CoinJango = StringVar()
         self.CoinHando = StringVar()
@@ -63,8 +66,6 @@ class Page:
         W['CoinPercentEntry'].place(relx = 0.36, rely = 0.5, anchor = 'w')
         W['CoinPriceEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinPrice, width = 40)
         W['CoinPriceEntry'].place(relx = 0.36 , rely = 0.65, anchor = 'w')
-
-        self.CoinHando.set('설정하지 않을 시, 남은 잔고를 올인합니다')
 
         W['CoinSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain, command = self.SetCoin)
         W['CoinSetButton'].place(relx = 0.5, rely = 0.85, anchor = CENTER)
@@ -93,6 +94,8 @@ class Page:
         W['StockPercentLabel'].place(relx = 0.06, rely = 0.5, anchor = 'w')
         W['StockPriceLabel'] = Label(Pa, text = '구매가격  ', font = self.FontMain, bg = Col_Title, fg = 'white', bd = 0)
         W['StockPriceLabel'].place(relx = 0.06, rely = 0.65, anchor = 'w')
+        W['SPriceLabel'] = Label(Pa, text = '설정하지 않을 시, 남은 잔고를 올인합니다', font = self.Allin, bg = Col_Title, fg = 'white', bd = 0)
+        W['SPriceLabel'].place(relx = 0.06, rely = 0.38, anchor = 'w')
 
         self.StockJango = StringVar()
         self.StockHando = StringVar()
@@ -106,8 +109,6 @@ class Page:
         W['StockPercentEntry'].place(relx = 0.36, rely = 0.5, anchor = 'w')
         W['StockPriceEntry'] = Entry(Pa, bd = 0, textvariable = self.StockPrice, width = 40)
         W['StockPriceEntry'].place(relx = 0.36 , rely = 0.65, anchor = 'w')
-
-        self.StockHando.set('설정하지 않을 시, 남은 잔고를 올인합니다')
 
         W['StockSetButton'] = Button(Pa, bd = 0, text = '설정완료', bg = Col_Main, fg = 'white', font = self.FontMain)
         W['StockSetButton'].place(relx = 0.5, rely = 0.85, anchor = CENTER)

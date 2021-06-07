@@ -93,3 +93,4 @@ class Stock():
 
     def gethigh(self):
         return int(self.High[0])
+
