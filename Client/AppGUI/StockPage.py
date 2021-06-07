@@ -105,7 +105,7 @@ class Page:
         else:
             self.Widgets['Name']['UpDown'].configure(text='▼', fg=Col_blue)
 
-    def __init__(self, parent, IL, FavPage):
+    def __init__(self, parent, IL, FavPage, AutoPage):
         self.IL = IL
         self.Frames = dict()
         self.Widgets = {'Name': dict(), 'Graph': dict(), 'Daily': dict(), 'Compare': dict(), 'Functions': dict()}
@@ -134,6 +134,9 @@ class Page:
         self.LoadDailyFrame()
         self.LoadCompareFrame()
         self.LoadFuncFrame()
+
+        self.FavPage = FavPage
+        self.AutoPage = AutoPage
 
     def LoadFont(self):
         self.Fonts = dict()
@@ -300,8 +303,10 @@ class Page:
             self.Auto = not self.Auto
             if self.Auto:
                 str = tag + '_On'
+                self.AutoPage.Add('stock', self.CurrStock.name)
             else:
                 str = tag + '_Off'
+                self.AutoPage.Delete('stock', self.CurrStock.name)
 
         if tag is 'Graph':
             self.AniGraph = not self.AniGraph
@@ -317,8 +322,12 @@ class Page:
     def ResetFunction(self):
         D = self.W('Functions')
 
-        self.Auto = False
-        D['Auto']['image'] = self.I('Auto_Off')
+        if self.AutoPage.Find('bitcoin', self.CurrStock.name) is False:
+            self.Auto = False
+            D['Auto']['image'] = self.I('Auto_Off')
+        else:
+            self.Auto = True
+            D['Auto']['image'] = self.I('Auto_On')
 
         if self.FavPage.Find('stock', self.CurrStock.code) is False:
             self.Fav = False
