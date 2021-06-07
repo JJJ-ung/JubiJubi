@@ -113,6 +113,7 @@ class AutoStockTrade():
         self.sellOrder = None
 
         self.buy = False
+        print(self.price * self.per * 0.01)
 
         StockInfo.KIWOOM.ocx.OnReceiveChejanData.connect(self._handler_chejan)
 
@@ -129,7 +130,6 @@ class AutoStockTrade():
         if self.GetChejanData(913) == '체결' and not self.buy:
             self.buy = True
             self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 구매 완료")
-
         elif self.GetChejanData(913) == '체결' and self.buy:
             self.buy = False
             self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 판매 완료")
