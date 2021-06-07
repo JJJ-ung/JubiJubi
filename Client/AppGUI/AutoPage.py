@@ -204,8 +204,8 @@ class Page:
             for var in self.AutoStock:
                 if var == name:
                     return
-            index = len(self.AutoCoin)
-            self.AutoCoin.append(name)
+            index = len(self.AutoStock)
+            self.AutoStock.append(name)
             self.Widgets['StockLabel' + str(index)].configure(text=name)
             self.Widgets['StockLabel' + str(index)].place(relx = 0.1, rely = 0.5, anchor = W)
             self.Widgets['StockRadio' + str(index)].place(relx = 0.05, rely = 0.5, anchor = W)

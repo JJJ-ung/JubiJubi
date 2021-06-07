@@ -322,7 +322,7 @@ class Page:
     def ResetFunction(self):
         D = self.W('Functions')
 
-        if self.AutoPage.Find('bitcoin', self.CurrStock.name) is False:
+        if self.AutoPage.Find('stock', self.CurrStock.name) is False:
             self.Auto = False
             D['Auto']['image'] = self.I('Auto_Off')
         else:
