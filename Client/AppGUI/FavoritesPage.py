@@ -25,7 +25,7 @@ class Info:
 
 class Page:
     def Add(self, tag, item):
-        if tag is 'bitcoin':
+        if tag == 'bitcoin':
             if len(self.BitcoinFav) > 14:
                 return
             info = Info(item.koreanName, item.ticker)
@@ -36,7 +36,7 @@ class Page:
             self.Widgets['Bitcoin']['Label' + str(index)].configure(text=info.Name + '  ' + info.Ticker)
             self.Widgets['Bitcoin']['Radio' + str(index)].place(relx=0.05, rely=0.5, anchor=W)
             self.Widgets['Bitcoin']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
-        if tag is 'stock':
+        if tag == 'stock':
             if len(self.StockFav) > 14:
                 return
             info = Info(item.name, item.code)
@@ -49,16 +49,16 @@ class Page:
             self.Widgets['Stock']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
 
     def Delete(self, tag, ticker):
-        if tag is 'bitcoin':
+        if tag == 'bitcoin':
             L = self.BitcoinFav
             D = self.Widgets['Bitcoin']
-        if tag is 'stock':
+        if tag == 'stock':
             L = self.StockFav
             D = self.Widgets['Stock']
         if not self.Find(tag, ticker): return
         index = -1
         for i in range(0, len(L)):
-            if L[i].Ticker is ticker:
+            if L[i].Ticker == ticker:
                 index = i
                 break
         if index is -1: return
@@ -112,12 +112,12 @@ class Page:
 
     def Setup(self, type, P, D):
         MenuFrame = UIMaker.PackFix(Frame(P, width=481, height=77, bg=Col_Title), BOTTOM, NONE, False)
-        if type is 'Bitcoin':
+        if type == 'Bitcoin':
             Button(MenuFrame, text='  저장', font=self.FontMain, width=100, height=30, bd=0, highlightthickness=0,
                    activebackground=Col_Title,
                    bg=Col_Title, fg='white', activeforeground=Col_red, image=self.IL.Get('favorites_on'),
                    compound=LEFT, command = lambda : self.SaveCoin()).pack(side=LEFT)
-        if type is 'Stock':
+        if type == 'Stock':
             Button(MenuFrame, text='  저장', font=self.FontMain, width=100, height=30, bd=0, highlightthickness=0,
                    activebackground=Col_Title,
                    bg=Col_Title, fg='white', activeforeground=Col_red, image=self.IL.Get('favorites_on'),
@@ -126,13 +126,13 @@ class Page:
             Col = Col_Main
             if i % 2 == 1: Col = Col_Sub
             Pa = self.Frames[type + str(i)] = UIMaker.PackFix(Frame(P, height=38, bg=Col), TOP, X, False)
-            if type is 'Bitcoin':
+            if type == 'Bitcoin':
                 D['Radio' + str(i)] = Radiobutton(Pa, image=self.IL.Get('bookmark'),
                                                   selectimage=self.IL.Get('bookmarksel'), value=i,
                                                   variable=self.BitcoinIndex,
                                                   bg=Col, activebackground=Col, selectcolor=Col, bd=0, indicatoron=0,
                                                   command=lambda: self.SetCoin())
-            if type is 'Stock':
+            if type == 'Stock':
                 D['Radio' + str(i)] = Radiobutton(Pa, image=self.IL.Get('bookmark'),
                                                   selectimage=self.IL.Get('bookmarksel'), value=i,
                                                   variable=self.BitcoinIndex,
