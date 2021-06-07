@@ -22,7 +22,6 @@ class Info:
         self.Name = name
         self.Ticker = ticker
 
-
 class Page:
     def Add(self, tag, item):
         if tag == 'bitcoin':
@@ -149,9 +148,9 @@ class Page:
             CoinPage.SetCurr(CurrCoin)
 
     def SetStock(self):
-        Stock = self.StockFav[self.StockIndex.get()]
+        st = self.StockFav[self.StockIndex.get()]
         StockPage = self.MainUI.Pages['stock']
-        result = Stock.StockInfo.SearchStock(Stock.Ticker)
+        result = Stock.StockInfo.SearchStock(st.Ticker)
         if result is not None:
             CurrStock = Stock.Stock(result)
             StockPage.SetCurr(CurrStock)
