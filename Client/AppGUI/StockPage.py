@@ -282,7 +282,7 @@ class Page:
         D['DiceComment'].place(relx=0.9, rely=0.5, anchor=NE)
 
     def ChangeFunction(self, tag):
-        if self.CurrCoin is None:
+        if self.CurrStock is None:
             return
 
         D = self.W('Functions')
@@ -358,22 +358,6 @@ class Page:
             D['DiceResult']['text'] = '6이 나왔네요!'
             D['DiceResult']['fg'] = Col_red
             D['DiceComment']['text'] = '극-락'
-
-    def ResetFunction(self):
-        D = self.W('Functions')
-
-        self.Auto = False
-        D['Auto']['image'] = self.I('Auto_Off')
-        self.Fav = False
-        D['Fav']['image'] = self.I('Fav_Off')
-
-        # if self.FavPage.Find_Bitcoin(self.CurrCoin) is False :
-        # else :
-        #    self.Fav = True
-        #    D['Fav']['image'] = self.I('Fav_On')
-
-        self.AniGraph = False
-        D['Graph']['image'] = self.I('Graph1_Off')
 
     def SetGraph(self):
         # 하루당
@@ -460,10 +444,10 @@ class Page:
         self.SetCurr(stock)
 
     def AddFav(self):
-        self.FavPage.Add('bitcoin', self.CurrStock)
+        self.FavPage.Add('stock', self.CurrStock)
 
     def DelFav(self):
-        self.FavPage.Delete('bitcoin', self.CurrStock.code)
+        self.FavPage.Delete('stock', self.CurrStock.code)
 
     def Fo(self, name):
         return self.Fonts[name]
