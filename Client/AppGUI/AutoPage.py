@@ -222,10 +222,15 @@ class Page:
             self.Widgets['StockRadio' + str(index)].place(relx = 0.05, rely = 0.5, anchor = W)
 
     def Delete(self, tag, name):
-        if self.Find(tag, name) is False :
-            return
+        #if self.Find(tag, name) is False :
+        #    return
         if tag == 'bitcoin':
-            index = self.AutoCoin.index(name)
+            index = 0
+            for var in self.AutoCoin:
+                if var.coin.koreanName == name :
+                    break
+                ++index
+            #index = self.AutoCoin.index(name)
             del self.AutoCoin[index]
             self.Widgets['CoinRadio'+str(len(self.AutoCoin))].place_forget()
             self.Widgets['CoinLabel' + str(len(self.AutoCoin))].place_forget()
@@ -242,11 +247,14 @@ class Page:
     def Find(self, tag, name):
         if tag == 'bitcoin':
             L = self.AutoCoin
+            for var in L :
+                if var.coin.koreanName == name :
+                    return True
         if tag == 'stock':
             L = self.AutoStock
-        for var in L :
-            if var == name :
-                return True
+            for var in L :
+                if var == name :
+                    return True
         return False
 
     def Update(self):
