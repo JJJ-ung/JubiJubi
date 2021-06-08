@@ -173,9 +173,6 @@ class Page:
             self.AddStockLog('- 수익률 : ' + str(Percent) + "%")
             self.AddStockLog('- 구매가격 : ' + str(Price) + '\n')
 
-            Stock.StockInfo.Auto.append(Stock.AutoStockTrade(Stock.Stock(Stock.StockInfo.SearchStock('삼성전자')), Price, Percent, Hando, self))
-
-
     def AddCoinLog(self, message):
         # 로그에 한줄 추가하는거
         self.CoinLog.insert(CURRENT, message + '\n')
@@ -190,10 +187,10 @@ class Page:
                 return
             # 중복검사
             for var in self.AutoCoin:
-                if var == name:
+                if var.koreanName == name:
                     return
             index = len(self.AutoCoin)
-            self.AutoCoin.append(name)
+            self.AutoCoin.append(Bitcoin.AutoCoinTrade(Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchStock(name))))
             self.Widgets['CoinLabel' + str(index)].configure(text=name)
             self.Widgets['CoinLabel' + str(index)].place(relx = 0.1, rely = 0.5, anchor = W)
             self.Widgets['CoinRadio' + str(index)].place(relx = 0.05, rely = 0.5, anchor = W)
@@ -205,7 +202,7 @@ class Page:
                 if var == name:
                     return
             index = len(self.AutoStock)
-            self.AutoStock.append(name)
+            self.AutoStock.append(Stock.AutoStockTrade(Stock.Stock(Stock.StockInfo.SearchStock(name))))
             self.Widgets['StockLabel' + str(index)].configure(text=name)
             self.Widgets['StockLabel' + str(index)].place(relx = 0.1, rely = 0.5, anchor = W)
             self.Widgets['StockRadio' + str(index)].place(relx = 0.05, rely = 0.5, anchor = W)
@@ -238,10 +235,14 @@ class Page:
                 return True
         return False
 
+    def Update(self):
+        for coin in self.AutoCoin:
+            coin.update()
+
     def SelCoin(self):
         # 옆에 버튼 눌렀을때 밑에 옵션 뜨도록 하는 기능들
-        self.AddCoinLog(self.AutoCoin[self.BitcoinIndex.get()])
+        self.AddCoinLog(self.AutoCoin[self.BitcoinIndex.get()].coin.koreanName)
 
     def SelStock(self):
         # 옆에 버튼 눌렀을때 밑에 옵션 뜨도록 하는 기능들
-        self.AddCoinLog(self.AutoStock[self.StockIndex.get()])
+        self.AddStockLog(self.AutoStock[self.StockIndex.get()].stock.name)

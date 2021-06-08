@@ -43,6 +43,9 @@
     <Compile Include="Bitcoin.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Mail.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainData.py">
       <SubType>Code</SubType>
     </Compile>

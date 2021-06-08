@@ -30,8 +30,7 @@ class MainData(object):
 
     def UpdateAuto(self):
         if Stock.StockInfo.login == True:
-            for s in Stock.StockInfo.Auto:
-                s.Update()
+            pass
 
 
     # 검색기능

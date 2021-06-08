@@ -134,7 +134,7 @@ class Page:
             if type == 'Stock':
                 D['Radio' + str(i)] = Radiobutton(Pa, image=self.IL.Get('bookmark'),
                                                   selectimage=self.IL.Get('bookmarksel'), value=i,
-                                                  variable=self.BitcoinIndex,
+                                                  variable=self.StockIndex,
                                                   bg=Col, activebackground=Col, selectcolor=Col, bd=0, indicatoron=0,
                                                   command=lambda: self.SetStock())
             D['Label' + str(i)] = Label(Pa, font=self.FontSub, bg=Col, fg='white', bd=0)

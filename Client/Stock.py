@@ -9,8 +9,6 @@ class StockInfo():
     etf = None
     accno = None
 
-    Auto = []
-
     Code2Name = {}
     Name2Code = {}
 
@@ -103,35 +101,40 @@ class Stock():
         return int(self.High[0])
 
 class AutoStockTrade():
-    def __init__(self, stock, price, per, balance, log):
+    def __init__(self, stock):
         self.stock = stock
+        self.price = None
+        self.per = None
+        self.balance = None
+        self.log = None
+
+        self.buy = False
+        self.order = False
+
+        StockInfo.KIWOOM.ocx.OnReceiveChejanData.connect(self._handler_chejan)
+
+    def Setting(self, price, per, balance, log):
         self.price = price
         self.per = per
         self.balance = balance
         self.log = log
-        self.buyOrder = None
-        self.sellOrder = None
-
-        self.buy = False
-        print(self.price * self.per * 0.01)
-
-        StockInfo.KIWOOM.ocx.OnReceiveChejanData.connect(self._handler_chejan)
 
     def Update(self):
-        if self.buyOrder == None and not self.buy:
+        if not self.order and not self.buy:
             self.BuyOrder()
-
-        if self.SellOrder != None and self.buy:
+        elif not self.order and self.buy:
             if self.stock.getPrice() > self.price + (self.price * self.per * 0.01):
-                print(self.price * self.per * 0.01)
+                self.order = True
                 self.SellOrder()
         
     def _handler_chejan(self, gubun, item_cnt, fid_list):
         if self.GetChejanData(913) == '체결' and not self.buy:
             self.buy = True
+            self.order = False
             self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 구매 완료")
         elif self.GetChejanData(913) == '체결' and self.buy:
             self.buy = False
+            self.order = False
             self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 판매 완료")
         
     def GetChejanData(self, fid):
@@ -141,9 +144,11 @@ class AutoStockTrade():
     def BuyOrder(self):
         if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 1, self.stock.code, self.balance//self.price, self.price, "00", ""):
             self.log.AddStockLog(self.stock.name + " 주문 실패")
-        pass
+        else:
+            self.order = False
 
     def SellOrder(self):
         if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 2, self.stock.code, self.balance//self.price, self.price + (self.price * (self.per/100)), "00", ""):
             self.log.AddStockLog(self.stock.name + " 주문 실패")
-        pass
+        else:
+            self.order = False

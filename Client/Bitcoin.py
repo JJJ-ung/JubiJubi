@@ -65,43 +65,54 @@ class Bitcoin():
     def getGraphData(self):
         return list(self.graphData['close'])
 
-
 class AutoStockTrade():
     def __init__(self, coin, price, per, balance, log):
-        self.coin = coin
+        self.stock = coin
+        self.price = None
+        self.per = None
+        self.balance = None
+        self.log = None
+
+        self.UUID = None
+
+        self.buy = False
+        self.order = False
+        print(self.price * self.per * 0.01)
+
+    def Setting(self, price, per, balance, log):
         self.price = price
         self.per = per
         self.balance = balance
         self.log = log
-        self.buyOrder = None
-        self.sellOrder = None
-
-        self.buy = False
-        print(self.price * self.per * 0.01)
 
     def Update(self):
-        if self.buyOrder == None and not self.buy:
+        if not self.order and not self.buy:
             self.BuyOrder()
-
-        if self.SellOrder != None and self.buy:
+        elif not self.order and self.buy:
             if self.coin.getPrice() > self.price + (self.price * self.per * 0.01):
-                print(self.price * self.per * 0.01)
                 self.SellOrder()
         
     def Update(self):
-        if self.GetChejanData(913) == '체결' and not self.buy:
+        Response = self.CoinInfo.acount.get_individual_order(self.UUID)
+        if Response['state'] == 'done' and not self.buy:
             self.buy = True
-            self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 구매 완료")
-        elif self.GetChejanData(913) == '체결' and self.buy:
+            self.order = False
+            self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 구매 완료")
+        elif Response['state'] == 'done' and self.buy:
             self.buy = False
-            self.log.AddStockLog(self.stock.name + " 체결량 " + self.GetChejanData(911) + " 체결가 " + self.GetChejanData(910) + " 판매 완료")
+            self.order = False
+            self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 판매 완료")
 
     def BuyOrder(self):
-        if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 1, self.stock.code, self.balance//self.price, self.price, "00", ""):
-            self.log.AddStockLog(self.stock.name + " 주문 실패")
-        pass
+        self.UUID = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.balance)
+        if self.UUID.get('error') != None:
+            self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
+        else:
+            self.order = True
 
     def SellOrder(self):
-        if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 2, self.stock.code, self.balance//self.price, self.price + (self.price * (self.per/100)), "00", ""):
-            self.log.AddStockLog(self.stock.name + " 주문 실패")
-        pass
+        self.UUID = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.balance)
+        if self.UUID.get('error') != None:
+            self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
+        else:
+            self.order = True
