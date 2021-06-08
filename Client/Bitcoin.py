@@ -89,24 +89,23 @@ class AutoCoinTrade():
             if not self.order and not self.buy:
                 self.BuyOrder()
             elif not self.order and self.buy:
-                if self.coin.getPrice() > self.price + (self.price * self.per * 0.01):
-                    self.SellOrder()
+                self.SellOrder()
 
             if self.UUID != None:
                 Response = CoinInfo.acount.get_individual_order(self.UUID)
-                print(Response)
                 if Response['state'] == 'done' and not self.buy:
                     self.buy = True
                     self.order = False
-                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 구매 완료")
+                    self.UUID = None
+                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 매수 완료")
                 elif Response['state'] == 'done' and self.buy:
                     self.buy = False
                     self.order = False
-                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 판매 완료")
+                    self.UUID = None
+                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 매도 완료")
 
     def BuyOrder(self):
         tr = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.price)
-        print(self.UUID)
         if tr.get('error') != None:
             self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
             print(tr)
@@ -114,10 +113,12 @@ class AutoCoinTrade():
         else:
             self.order = True
             self.UUID = tr['uuid']
+            self.log.AddCoinLog(self.coin.koreanName + " 매수 주문 성공")
 
 
     def SellOrder(self):
-        tr = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.price)['uuid']
+        tr = CoinInfo.acount.sell_limit_order(self.coin.ticker, self.price + round(self.price * 0.01 * self.per), self.balance/self.price)
+        print(self.price + self.price * 0.01 * self.per)
         if tr.get('error') != None:
             self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
             print(tr)
@@ -125,3 +126,4 @@ class AutoCoinTrade():
         else:
             self.order = True
             self.UUID = tr['uuid']
+            self.log.AddCoinLog(self.coin.koreanName + " 매도 주문 성공")

@@ -145,7 +145,7 @@ class Page:
             self.Widgets['CoinJangoEntry']['text'] = Bitcoin.CoinInfo.getBalance()
 
     def SetCoin(self):
-        if Bitcoin.CoinInfo.acount != None:
+        if Bitcoin.CoinInfo.acount != None and len(self.AutoCoin):
             Jango = self.Widgets['CoinJangoEntry']['text']
             if self.CoinHando.get() == "":
                 Hando = Jango-1
@@ -170,7 +170,7 @@ class Page:
             self.Widgets['StockJangoEntry']['text'] = Stock.StockInfo.getBalance()
 
     def SetStock(self):
-        if Stock.StockInfo.login:
+        if Stock.StockInfo.login and len(self.AutoStock):
             Jango = self.Widgets['StockJangoEntry']['text']
             if self.StockHando.get() == "":
                 Hando = Jango
