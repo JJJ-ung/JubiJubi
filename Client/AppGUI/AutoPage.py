@@ -75,7 +75,7 @@ class Page:
         self.CoinHando = StringVar()
         self.CoinPercent = StringVar()
         self.CoinPrice = StringVar()
-        W['CoinJangoEntry'] = Label(Pa, bg= Col_Title, bd = 0, fg = 'white', width = 40, anchor="w")
+        W['CoinJangoEntry'] = Label(Pa, bg= Col_Title, bd = 0,font = self.FontMain, fg = 'white', width = 40, anchor="w")
         W['CoinJangoEntry'].place(relx = 0.36, rely = 0.15, anchor = 'w')
         W['CoinHandoEntry'] = Entry(Pa, bd = 0, textvariable = self.CoinHando, width = 40)
         W['CoinHandoEntry'].place(relx = 0.36, rely = 0.3, anchor = 'w')
@@ -126,7 +126,7 @@ class Page:
         self.StockHando = StringVar()
         self.StockPercent = StringVar()
         self.StockPrice = StringVar()
-        W['StockJangoEntry'] = Entry(Pa, bg=Col_Title, bd=0, fg = 'white', width=40)
+        W['StockJangoEntry'] = Label(Pa, bg=Col_Title, bd=0, font = self.FontMain, fg = 'white', width=40, anchor="w")
         W['StockJangoEntry'].place(relx=0.36, rely=0.15, anchor='w')
         W['StockHandoEntry'] = Entry(Pa, bd=0, textvariable=self.StockHando, width=40)
         W['StockHandoEntry'].place(relx=0.36, rely=0.3, anchor='w')
@@ -136,33 +136,46 @@ class Page:
         W['StockPriceEntry'].place(relx=0.36, rely=0.65, anchor='w')
 
         W['StockSetButton'] = Button(Pa, bd=0, text='설정완료', bg=Col_Main, fg='white', font=self.FontMain,
-                                    command=self.SetCoin)
+                                    command=self.SetStock)
         W['StockSetButton'].place(relx=0.5, rely=0.85, anchor=CENTER)
         
-    def SetCoinBalance(self, balance):
-        self.Widgets['CoinJangoEntry']['text'] = balance
+    def SetCoinBalance(self):
+        if Bitcoin.CoinInfo.acount != None:
+            print(Bitcoin.CoinInfo.getBalance())
+            self.Widgets['CoinJangoEntry']['text'] = Bitcoin.CoinInfo.getBalance()
 
     def SetCoin(self):
-        Jango = self.Widgets['CoinJangoEntry']['text']
-        Hando = int(self.CoinHando.get())
-        Percent = int(self.CoinPercent.get())
-        Price = int(self.CoinPrice.get())
-        # 이게 entry 값들이니 알아서 사용
+        if Bitcoin.CoinInfo.acount != None:
+            Jango = self.Widgets['CoinJangoEntry']['text']
+            if self.CoinHando.get() == "":
+                Hando = Jango-1
+            else:
+                Hando = int(self.CoinHando.get())
+            Percent = float(self.CoinPercent.get())
+            Price = int(self.CoinPrice.get())
+            # 이게 entry 값들이니 알아서 사용
 
-        self.AddCoinLog('옵션 설정 완료\n')
-        self.AddCoinLog('- 잔고 : ' + str(Jango))
-        self.AddCoinLog('- 한도 : ' + str(Hando))
-        self.AddCoinLog('- 수익률 : ' + str(Percent))
-        self.AddCoinLog('- 구매가격 : ' + str(Price) + '\n')
+            self.AddCoinLog('옵션 설정 완료\n')
+            self.AddCoinLog('- 잔고 : ' + str(Jango))
+            self.AddCoinLog('- 한도 : ' + str(Hando))
+            self.AddCoinLog('- 수익률 : ' + str(Percent))
+            self.AddCoinLog('- 구매가격 : ' + str(Price) + '\n')
 
-    def SetStockBalance(self, balance):
+            print(Hando)
+
+            self.AutoCoin[self.BitcoinIndex.get()].Setting(Price, Percent, Hando, self)
+
+    def SetStockBalance(self):
         if Stock.StockInfo.login:
-            self.Widgets['StockJangoEntry']['text'] = balance
+            self.Widgets['StockJangoEntry']['text'] = Stock.StockInfo.getBalance()
 
     def SetStock(self):
         if Stock.StockInfo.login:
-            Jango = self.Widgets['CoinJangoEntry']['text']
-            Hando = int(self.StockHando.get())
+            Jango = self.Widgets['StockJangoEntry']['text']
+            if self.StockHando.get() == "":
+                Hando = Jango
+            else:
+                Hando = int(self.StockHando.get())
             Percent = float(self.StockPercent.get())
             Price = int(self.StockPrice.get())
             # 이게 entry 값들이니 알아서 사용
@@ -173,6 +186,7 @@ class Page:
             self.AddStockLog('- 수익률 : ' + str(Percent) + "%")
             self.AddStockLog('- 구매가격 : ' + str(Price) + '\n')
 
+            self.AutoStock[self.StockIndex.get()].Setting(Price, Percent, Hando, self)
     def AddCoinLog(self, message):
         # 로그에 한줄 추가하는거
         self.CoinLog.insert(CURRENT, message + '\n')
@@ -190,7 +204,7 @@ class Page:
                 if var.koreanName == name:
                     return
             index = len(self.AutoCoin)
-            self.AutoCoin.append(Bitcoin.AutoCoinTrade(Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchStock(name))))
+            self.AutoCoin.append(Bitcoin.AutoCoinTrade(Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(name))))
             self.Widgets['CoinLabel' + str(index)].configure(text=name)
             self.Widgets['CoinLabel' + str(index)].place(relx = 0.1, rely = 0.5, anchor = W)
             self.Widgets['CoinRadio' + str(index)].place(relx = 0.05, rely = 0.5, anchor = W)
@@ -237,7 +251,11 @@ class Page:
 
     def Update(self):
         for coin in self.AutoCoin:
-            coin.update()
+            coin.Update()
+        for stock in self.AutoStock:
+            stock.Update()
+        self.SetCoinBalance()
+        self.SetStockBalance()
 
     def SelCoin(self):
         # 옆에 버튼 눌렀을때 밑에 옵션 뜨도록 하는 기능들

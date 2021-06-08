@@ -14,9 +14,9 @@ class CoinInfo():
             print(access, secret)
             CoinInfo.accessKey = access
             CoinInfo.secretKey = secret
-            acount = pyupbit.Upbit(CoinInfo.accessKey, CoinInfo.secretKey)
-            if acount.get_balance() == None:
-                acount = None
+            CoinInfo.acount = pyupbit.Upbit(CoinInfo.accessKey, CoinInfo.secretKey)
+            if CoinInfo.acount.get_balance() == None:
+                CoinInfo.acount = None
                 print("Login Error")
             else:
                 print("Login success")
@@ -28,7 +28,7 @@ class CoinInfo():
                     return coin
 
     def getBalance():
-        return int(acount.get_balance()['balance'])
+        return int(CoinInfo.acount.get_balance())
 
 class Bitcoin():
     intervalTable = ["minute1", "minute3", "minute5", "minute10", "minute15", "minute30", "minute60", "minute240", "day", "week", "month"]
@@ -65,9 +65,9 @@ class Bitcoin():
     def getGraphData(self):
         return list(self.graphData['close'])
 
-class AutoStockTrade():
-    def __init__(self, coin, price, per, balance, log):
-        self.stock = coin
+class AutoCoinTrade():
+    def __init__(self, coin):
+        self.coin = coin
         self.price = None
         self.per = None
         self.balance = None
@@ -77,42 +77,51 @@ class AutoStockTrade():
 
         self.buy = False
         self.order = False
-        print(self.price * self.per * 0.01)
 
     def Setting(self, price, per, balance, log):
         self.price = price
         self.per = per
         self.balance = balance
         self.log = log
-
-    def Update(self):
-        if not self.order and not self.buy:
-            self.BuyOrder()
-        elif not self.order and self.buy:
-            if self.coin.getPrice() > self.price + (self.price * self.per * 0.01):
-                self.SellOrder()
         
     def Update(self):
-        Response = self.CoinInfo.acount.get_individual_order(self.UUID)
-        if Response['state'] == 'done' and not self.buy:
-            self.buy = True
-            self.order = False
-            self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 구매 완료")
-        elif Response['state'] == 'done' and self.buy:
-            self.buy = False
-            self.order = False
-            self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 판매 완료")
+        if self.price != None:
+            if not self.order and not self.buy:
+                self.BuyOrder()
+            elif not self.order and self.buy:
+                if self.coin.getPrice() > self.price + (self.price * self.per * 0.01):
+                    self.SellOrder()
+
+            if self.UUID != None:
+                Response = CoinInfo.acount.get_individual_order(self.UUID)
+                print(Response)
+                if Response['state'] == 'done' and not self.buy:
+                    self.buy = True
+                    self.order = False
+                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 구매 완료")
+                elif Response['state'] == 'done' and self.buy:
+                    self.buy = False
+                    self.order = False
+                    self.log.AddCoinLog(self.coin.koreanName + " 체결량 " + Response['volume'] + " 체결가 " + Response['price'] + " 판매 완료")
 
     def BuyOrder(self):
-        self.UUID = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.balance)
-        if self.UUID.get('error') != None:
+        tr = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.price)
+        print(self.UUID)
+        if tr.get('error') != None:
             self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
+            print(tr)
+            self.UUID=None
         else:
             self.order = True
+            self.UUID = tr['uuid']
+
 
     def SellOrder(self):
-        self.UUID = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.balance)
-        if self.UUID.get('error') != None:
+        tr = CoinInfo.acount.buy_limit_order(self.coin.ticker, self.price, self.balance/self.price)['uuid']
+        if tr.get('error') != None:
             self.log.AddCoinLog(self.coin.koreanName + " 주문 실패")
+            print(tr)
+            self.UUID=None
         else:
             self.order = True
+            self.UUID = tr['uuid']

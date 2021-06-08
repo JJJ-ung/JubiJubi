@@ -39,11 +39,11 @@ class Page:
         Label(parent, text='Gmail  ', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=25, y=220)
         Entry(parent, textvariable = self.GmailAddress, width = 15).place(x = 100, y = 220)
         Label(parent, text='@gmail.com  ', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=220, y=220)
-        Button(parent, image=IL.Get('email1'), bd=0, bg=Col_back, command = self.SendEmail()).place(x=330, y=220)
+        Button(parent, image=IL.Get('email1'), bd=0, bg=Col_back, command = self.SendEmail).place(x=330, y=220)
 
         Label(parent, text='Telegram  ', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=500, y=220)
         Label(parent, text='봇이름어쩌구저쩌구', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=580, y=220)
-        Button(parent, image=IL.Get('telegram'), bd=0, bg=Col_back, command = self.SendTelegram()).place(x=730, y=215)
+        Button(parent, image=IL.Get('telegram'), bd=0, bg=Col_back, command = self.SendTelegram).place(x=730, y=215)
 
     def StockLogin(self):
         Stock.StockInfo.Login()

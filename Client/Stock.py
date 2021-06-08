@@ -45,7 +45,7 @@ class StockInfo():
             return [str, StockInfo.Code2Name[str]]
 
     def getBalance():
-        return int(StockInfo.KIWOOM.block_request("opw00001", 계좌번호=accno, next=1, output="예수금상세현황")['출금가능금액'])
+        return int(StockInfo.KIWOOM.block_request("opw00001", 계좌번호=StockInfo.accno, next=1, output="예수금상세현황")['출금가능금액'])
 
 class Stock():
     def __init__(self, info):
@@ -120,13 +120,14 @@ class AutoStockTrade():
         self.log = log
 
     def Update(self):
-        if not self.order and not self.buy:
-            self.BuyOrder()
-        elif not self.order and self.buy:
-            if self.stock.getPrice() > self.price + (self.price * self.per * 0.01):
-                self.order = True
-                self.SellOrder()
-        
+        if self.price != None:
+            if not self.order and not self.buy:
+                self.BuyOrder()
+            elif not self.order and self.buy:
+                if self.stock.getPrice() > self.price + (self.price * self.per * 0.01):
+                    self.order = True
+                    self.SellOrder()
+            
     def _handler_chejan(self, gubun, item_cnt, fid_list):
         if self.GetChejanData(913) == '체결' and not self.buy:
             self.buy = True

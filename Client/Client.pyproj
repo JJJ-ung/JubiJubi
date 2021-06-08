@@ -79,6 +79,9 @@
     <Compile Include="Stock.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TeleBot.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AppGUI\" />

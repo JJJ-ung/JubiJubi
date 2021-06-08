@@ -29,9 +29,7 @@ class MainData(object):
         self.UI.Pages['news'].messageLoopWork()
 
     def UpdateAuto(self):
-        if Stock.StockInfo.login == True:
-            pass
-
+        self.UI.Pages['auto'].Update()
 
     # 검색기능
     def Search(self, event):
