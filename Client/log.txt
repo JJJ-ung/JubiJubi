@@ -817,3 +817,1252 @@ Traceback (most recent call last):
   File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
     raise KeyError(key) from err
 KeyError: 'ÇöÀç°¡'
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 46, in echo
+    if Stock.StockInfo.SearchStock(s.code) != None:
+AttributeError: 'Info' object has no attribute 'code'
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running

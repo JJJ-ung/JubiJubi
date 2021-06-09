@@ -2,6 +2,8 @@ import pyupbit
 import requests
 import json
 
+#5mXZyT5Gb1pNZUf5K05hxpcU4RxSXNAMQDTxi0ds
+
 class CoinInfo():
     data = requests.get("https://api.upbit.com/v1/market/all").json()
 

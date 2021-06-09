@@ -11,17 +11,17 @@ class Mail():
     subject = '주비주비 거래 정보'
     fav = None
 
-    msg = EmailMessage()
-
-    msg['From'] = sender
-    msg['Subject'] = subject
 
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     smtp.starttls()
     smtp.login(sender, password)
 
     def SendEmail(target, fav):
-        Mail.msg['To'] = target + "@gmail.com"
+        msg = EmailMessage()
+
+        msg['From'] = Mail.sender
+        msg['Subject'] = Mail.subject
+        msg['To'] = target + "@gmail.com"
         content = []
         
         text = "코인 즐겨찾기\n"
@@ -34,7 +34,7 @@ class Mail():
                 text += " 현재가 : " + str(coin.getPrice())
                 text += "\n 거래량 : " + str(coin.lstDailyVolume[5]) + "\n"
                 content.append(text)
-                time.sleep(0.1)
+                time.sleep(0.3)
         else:
             text = " 비어있음"
             content.append(text)
@@ -43,8 +43,8 @@ class Mail():
         if Stock.StockInfo.login:
             if len(fav.StockFav):
                 for s in fav.StockFav:
-                    if Stock.StockInfo.SearchStock(s.code) != None:
-                        result = Stock.StockInfo.SearchStock(s.code)
+                    if Stock.StockInfo.SearchStock(s.Name) != None:
+                        result = Stock.StockInfo.SearchStock(s.Name)
                         text = result[0] + " " + result[1] + " 정보\n"
                         text += " 현재가 : " + str(Stock.StockInfo.getPrice(result[0]))
                         text += "\n 거래량 : " + str(Stock.StockInfo.getVolume(result[0]))
@@ -53,6 +53,6 @@ class Mail():
                 text = " 비어있음"
                 content.append(text)
 
-        Mail.msg.set_content("".join(content))
+        msg.set_content("".join(content))
 
-        Mail.smtp.send_message(Mail.msg)
+        Mail.smtp.send_message(msg)

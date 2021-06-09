@@ -1,5 +1,3 @@
-비트코인
-KRW-BTC
 아크
 KRW-ARK
 보라
@@ -8,7 +6,7 @@ KRW-BORA
 KRW-DOGE
 이더리움클래식
 KRW-ETC
-이더리움
-KRW-ETH
 에이다
 KRW-ADA
+비트코인
+KRW-BTC

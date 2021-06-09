@@ -43,8 +43,8 @@ class TeleBot():
             if Stock.StockInfo.login:
                 if len(TeleBot.fav.StockFav):
                     for s in TeleBot.fav.StockFav:
-                        if Stock.StockInfo.SearchStock(s.code) != None:
-                            result = Stock.StockInfo.SearchStock(s.code)
+                        if Stock.StockInfo.SearchStock(s.Name) != None:
+                            result = Stock.StockInfo.SearchStock(s.Name)
                             text = result[0] + " " + result[1] + " 정보\n"
                             text += " 현재가 : " + str(Stock.StockInfo.getPrice(result[0]))
                             text += "\n 거래량 : " + str(Stock.StockInfo.getVolume(result[0]))
