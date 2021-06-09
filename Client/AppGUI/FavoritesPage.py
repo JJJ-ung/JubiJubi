@@ -47,6 +47,7 @@ class Page:
             self.Widgets['Stock']['Radio' + str(index)].place(relx=0.05, rely=0.5, anchor=W)
             self.Widgets['Stock']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
 
+        self.MainUI.Pages['profile'].SetTelegram(fav)
     def Delete(self, tag, ticker):
         if tag == 'bitcoin':
             L = self.BitcoinFav
@@ -67,6 +68,7 @@ class Page:
         for i in range(index, len(L)):
             D['Label' + str(i)].configure(text=L[i].Name + '  ' + L[i].Ticker)
 
+        self.MainUI.Pages['profile'].SetTelegram(fav)
     def Find(self, tag, ticker):
         if tag is 'bitcoin':
             for var in self.BitcoinFav:
@@ -108,7 +110,6 @@ class Page:
 
         self.LoadCoin()
         self.LoadStock()
-
     def Setup(self, type, P, D):
         MenuFrame = UIMaker.PackFix(Frame(P, width=481, height=77, bg=Col_Title), BOTTOM, NONE, False)
         if type == 'Bitcoin':

@@ -1,0 +1,819 @@
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 47, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 30, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 30, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 61, in echo
+    context.bot.send_message(chat_id=user_id, text=text)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 507, in send_message
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 206, in _message
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 331, in _message
+    result = self._post(endpoint, data, timeout=timeout, api_kwargs=api_kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 279, in _request_wrapper
+    raise BadRequest(message)
+telegram.error.BadRequest: Message text is empty
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 31, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 31, in echo
+    text += str(coin) + "\n"
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    if len(TeleBot.fav.BitCoinFav):
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 29, in echo
+    print(TeleBot.fav.BitCoinFav)
+AttributeError: 'Page' object has no attribute 'BitCoinFav'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 61, in echo
+    print(text)
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 64, in echo
+    print(text)
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 53, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 53, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 48, in echo
+    text += " 현재가 : " + coin.getPrice()
+TypeError: can only concatenate str (not "float") to str
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 48, in echo
+    text += " 현재가 : " + coin.getPrice()
+TypeError: can only concatenate str (not "float") to str
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 48, in echo
+    text += " 현재가 : " + coin.getPrice()
+TypeError: can only concatenate str (not "float") to str
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 34, in echo
+    coin = Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(c.Name))
+  File "D:\Users\Desktop\jubijubi\Client\Bitcoin.py", line 43, in __init__
+    self.chartData = list(pyupbit.get_ohlcv(self.ticker, interval=self.interval)['close'])
+TypeError: 'NoneType' object is not subscriptable
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 34, in echo
+    coin = Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(c.Name))
+  File "D:\Users\Desktop\jubijubi\Client\Bitcoin.py", line 45, in __init__
+    self.Low = list(self.graphData['low'])
+TypeError: 'NoneType' object is not subscriptable
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 34, in echo
+    coin = Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(c.Name))
+  File "D:\Users\Desktop\jubijubi\Client\Bitcoin.py", line 42, in __init__
+    self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
+TypeError: 'NoneType' object is not subscriptable
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 33, in echo
+    coin = Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(c.Name))
+  File "D:\Users\Desktop\jubijubi\Client\Bitcoin.py", line 42, in __init__
+    self.lstDailyVolume = list(pyupbit.get_ohlcv(self.ticker, count=6, interval=self.interval)['volume'])
+TypeError: 'NoneType' object is not subscriptable
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 76, in echo
+    print(text)
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 64, in echo
+    stock = Stock.StockInfo(Stock.StockInfo.SearchStock(user_text))
+TypeError: StockInfo() takes no arguments
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 64, in echo
+    print(s)
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 64, in echo
+    text = s.name + " " + s.code + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 64, in echo
+    text = s.name + " " + s.code + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    text = s.code + " " + s.name + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    text = s.code + " " + s.name + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 62, in echo
+    text = s.code + " " + s.name + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 76, in echo
+    print(text)
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 76, in echo
+    print(text)
+UnboundLocalError: local variable 'text' referenced before assignment
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+    text = str(s.code) + " " + str(s.name) + " 정보\n"
+UnboundLocalError: local variable 's' referenced before assignment
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+    s = Stock.Stock(Stock.StockInfo.SearchStock(result))
+  File "D:\Users\Desktop\jubijubi\Client\Stock.py", line 41, in SearchStock
+    if str in StockInfo.Name2Code:
+TypeError: unhashable type: 'list'
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.updater:Error while getting Updates: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 646, in _network_loop_retry
+    if not action_cb():
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\updater.py", line 601, in polling_action_cb
+    allowed_updates=allowed_updates,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\extbot.py", line 227, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 129, in decorator
+    result = func(*args, **kwargs)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 2819, in get_updates
+    api_kwargs=api_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\bot.py", line 295, in _post
+    f'{self.base_url}/{endpoint}', data=data, timeout=effective_timeout
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 361, in post
+    **urlopen_kwargs,
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\utils\request.py", line 283, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+ERROR:telegram.ext.dispatcher:No error handlers are registered, logging exception.
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\pandas\core\indexes\base.py", line 3080, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas\_libs\index.pyx", line 70, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\index.pyx", line 101, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4554, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas\_libs\hashtable_class_helper.pxi", line 4562, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: '현재가'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\dispatcher.py", line 555, in process_update
+    handler.handle_update(update, self, check, context)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\telegram\ext\handler.py", line 198, in handle_update
+    return self.callback(update, context)
+  File "D:\Users\Desktop\jubijubi\Client\TeleBot.py", line 63, in echo
+    s = Stock.Stock(result)
+  File "D:\Users\Desktop\jubijubi\Client\Stock.py", line 74, in __init__
+    self.Refresh()
+  File "D:\Users\Desktop\jubijubi\Client\Stock.py", line 83, in Refresh
+    self.lstDailyData = [int(list(dailyData['현재가'])[i]) for i in range(6, 0, -1)] # 종가
+  File "D:\Users\Desktop\jubijubi\Client\Stock.py", line 83, in <listcomp>
+    self.lstDailyData = [int(list(dailyData['현재가'])[i]) for i in range(6, 0, -1)] # 종가
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\pandas\core\frame.py", line 3024, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "D:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_86\lib\site-packages\pandas\core\indexes\base.py", line 3082, in get_loc
+    raise KeyError(key) from err
+KeyError: '현재가'

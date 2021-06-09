@@ -45,7 +45,17 @@ class StockInfo():
             return [str, StockInfo.Code2Name[str]]
 
     def getBalance():
-        return int(StockInfo.KIWOOM.block_request("opw00001", 계좌번호=StockInfo.accno, next=1, output="예수금상세현황")['출금가능금액'])
+        return abs(int(StockInfo.KIWOOM.block_request("opw00001", 계좌번호=StockInfo.accno, next=0, output="예수금상세현황")['출금가능금액']))
+
+    def getPrice(target):
+        print(target)
+        cur = abs(int(StockInfo.KIWOOM.block_request("opt10003", 종목코드=target, output="주식기본정보", next=0)['현재가'][0]))
+        return cur
+
+    def getVolume(target):
+        print(target)
+        return StockInfo.KIWOOM.block_request("opt10081", 종목코드=target, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=1, next=0, output="주식차트조회")['거래량'][6]
+
 
 class Stock():
     def __init__(self, info):
@@ -68,7 +78,7 @@ class Stock():
         self.Save = False
 
     def Refresh(self):
-        df = StockInfo.KIWOOM.block_request("opt10082", 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=30, next=0, output="주식차트조회")
+        df = StockInfo.KIWOOM.block_request("opt10082", 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=1, next=0, output="주식차트조회")
         
         dailyData = StockInfo.KIWOOM.block_request("opt10081", 종목코드=self.code, 기준일자=time.strftime('%Y%m%d', time.localtime(time.time())), 수정주가구분=1, next=0, output="주식차트조회")
         
@@ -91,7 +101,7 @@ class Stock():
         self.Refresh()
 
     def getPrice(self):
-        cur = int(StockInfo.KIWOOM.block_request("opt10003", 종목코드=self.code, output="주식기본정보", next=0)['현재가'][0][1:])
+        cur = abs(int(StockInfo.KIWOOM.block_request("opt10003", 종목코드=self.code, output="주식기본정보", next=0)['현재가'][0]))
         return cur
         
     def getLow(self):
@@ -124,7 +134,8 @@ class AutoStockTrade():
             if not self.order and not self.buy:
                 self.BuyOrder()
             elif not self.order and self.buy:
-                if self.stock.getPrice() > self.price + (self.price * self.per * 0.01):
+                print(self.stock.getPrice())
+                if self.stock.getPrice() >= self.price + (self.price * self.per * 0.01):
                     self.order = True
                     self.SellOrder()
             
@@ -146,12 +157,12 @@ class AutoStockTrade():
         if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 1, self.stock.code, self.balance//self.price, self.price, "00", ""):
             self.log.AddStockLog(self.stock.name + " 매수 주문 실패")
         else:
-            self.order = False
+            self.order = True
             self.log.AddStockLog(self.stock.name + " 매수 주문 성공")
 
     def SellOrder(self):
         if StockInfo.KIWOOM.SendOrder("주문주문", "0101", StockInfo.accno, 2, self.stock.code, self.balance//self.price, self.price + (self.price * (self.per/100)), "00", ""):
             self.log.AddStockLog(self.stock.name + " 매도 주문 실패")
         else:
-            self.order = False
+            self.order = True
             self.log.AddStockLog(self.stock.name + " 매도 주문 성공")

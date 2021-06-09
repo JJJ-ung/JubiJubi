@@ -1,10 +1,15 @@
 import smtplib
 from email.message import EmailMessage
 
+import Bitcoin
+import Stock
+import time
+
 class Mail():
-    sender = '2021JubiJubi@gmail.com'
-    password = 'qwer1324!@#$'
+    sender = '2021jubijubi@gmail.com'
+    password = 'qwer1234!@#$'
     subject = '주비주비 거래 정보'
+    fav = None
 
     msg = EmailMessage()
 
@@ -15,16 +20,39 @@ class Mail():
     smtp.starttls()
     smtp.login(sender, password)
 
-    def SendEmail(target):
-        Mail.msg['To'] = target
+    def SendEmail(target, fav):
+        Mail.msg['To'] = target + "@gmail.com"
+        content = []
+        
+        text = "코인 즐겨찾기\n"
+        content.append(text)
+        if len(fav.BitcoinFav):
+            for c in fav.BitcoinFav:
+                print(c.Name)
+                coin = Bitcoin.Bitcoin(Bitcoin.CoinInfo.SearchCoin(c.Name))
+                text = coin.koreanName + " " + coin.ticker + " 정보\n"
+                text += " 현재가 : " + str(coin.getPrice())
+                text += "\n 거래량 : " + str(coin.lstDailyVolume[5]) + "\n"
+                content.append(text)
+                time.sleep(0.1)
+        else:
+            text = " 비어있음"
+            content.append(text)
+        text = "주식 즐겨찾기\n"
+        content.append(text)
+        if Stock.StockInfo.login:
+            if len(fav.StockFav):
+                for s in fav.StockFav:
+                    if Stock.StockInfo.SearchStock(s.code) != None:
+                        result = Stock.StockInfo.SearchStock(s.code)
+                        text = result[0] + " " + result[1] + " 정보\n"
+                        text += " 현재가 : " + str(Stock.StockInfo.getPrice(result[0]))
+                        text += "\n 거래량 : " + str(Stock.StockInfo.getVolume(result[0]))
+                        content.append(text)
+            else:
+                text = " 비어있음"
+                content.append(text)
 
-        # 즐찾에 있는 리스트 다 보내기
-        # 코인 티커 이름 영문이름
-        # 주식 코드 이름
-        # 고가/저가/현재가/최근 5일 종가/거래량
-
-        content = ""
-
-        Mail.msg.set_content(content)
+        Mail.msg.set_content("".join(content))
 
         Mail.smtp.send_message(Mail.msg)

@@ -40,7 +40,8 @@ class MainGUI :
         self.Pages['bitcoin'] = BitcoinPage.Page(self.Frames['bitcoin'], self.IL, self.Pages['favorites'], self.Pages['auto'])
         self.Pages['stock'] = StockPage.Page(self.Frames['stock'], self.IL, self.Pages['favorites'], self.Pages['auto'])
         self.Pages['news'] = NewsPage.Page(self.Frames['news'], self.IL)
-        self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'], self.IL)
+        self.Pages['profile'] = ProfilePage.Page(self.Frames['profile'], self.IL, self.Pages['favorites'])
+        self.Pages['profile'].SetTelegram(self.Pages['favorites'])
 
         self.MenuGUI = MenuFrame.Menu(self.menu, self, self.IL)
         self.StatusGUI = StatusFrame.Status(self.status, self, self.IL)

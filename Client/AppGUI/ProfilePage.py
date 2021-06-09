@@ -5,11 +5,16 @@ from . import ImageLoader
 import Stock
 import Bitcoin
 
+import Mail
+import TeleBot
+
 Col_back = '#333333'
 
 
 class Page:
-    def __init__(self, parent, IL):
+    def __init__(self, parent, IL, fav):
+        self.fav = fav
+
         self.Font1 = tkinter.font.Font(family='NanumSquareEB', size=12, weight='bold')
         self.Font2 = tkinter.font.Font(family='나눔스퀘어', size=20, weight='bold')
         self.Font3 = tkinter.font.Font(family='나눔스퀘어', size=12, weight='normal')
@@ -42,8 +47,8 @@ class Page:
         Button(parent, image=IL.Get('email1'), bd=0, bg=Col_back, command = self.SendEmail).place(x=330, y=220)
 
         Label(parent, text='Telegram  ', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=500, y=220)
-        Label(parent, text='봇이름어쩌구저쩌구', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=580, y=220)
-        Button(parent, image=IL.Get('telegram'), bd=0, bg=Col_back, command = self.SendTelegram).place(x=730, y=215)
+        Label(parent, text='주비주비', bg=Col_back, fg='white', bd=0, font = self.Font1).place(x=580, y=220)
+        Button(parent, image=IL.Get('telegram'), bd=0, bg=Col_back).place(x=730, y=215)
 
     def StockLogin(self):
         Stock.StockInfo.Login()
@@ -52,9 +57,9 @@ class Page:
         Bitcoin.CoinInfo.setKey(self.access.get(), self.secret.get())
 
     def SendEmail(self):
-        #이메일 보내는 코드
+        Mail.Mail.SendEmail(self.GmailAddress.get(), self.fav)
         pass
 
-    def SendTelegram(self):
-        #텔레그램
+    def SetTelegram(self, fav):
+        TeleBot.TeleBot.SetFav(fav)
         pass
