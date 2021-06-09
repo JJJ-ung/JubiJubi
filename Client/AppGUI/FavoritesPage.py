@@ -10,6 +10,8 @@ import Bitcoin
 sys.path.append('/Stock.py')
 import Stock
 
+import spam
+
 Col_Title = '#4e4e4e'
 Col_Main = '#333333'
 Col_Sub = '#393939'
@@ -24,7 +26,7 @@ class Info:
 
 class Page:
     def Add(self, tag, item):
-        if tag == 'bitcoin':
+        if spam.strlen(tag,'bitcoin'):
             if len(self.BitcoinFav) > 14:
                 return
             info = Info(item.koreanName, item.ticker)
@@ -35,7 +37,7 @@ class Page:
             self.Widgets['Bitcoin']['Label' + str(index)].configure(text=info.Name + '  ' + info.Ticker)
             self.Widgets['Bitcoin']['Radio' + str(index)].place(relx=0.05, rely=0.5, anchor=W)
             self.Widgets['Bitcoin']['Label' + str(index)].place(relx=0.15, rely=0.5, anchor=W)
-        if tag == 'stock':
+        if spam.strlen(tag,'stock'):
             if len(self.StockFav) > 14:
                 return
             info = Info(item.name, item.code)
@@ -49,10 +51,10 @@ class Page:
 
         self.MainUI.Pages['profile'].SetTelegram(self)
     def Delete(self, tag, ticker):
-        if tag == 'bitcoin':
+        if spam.strlen(tag,'bitcoin'):
             L = self.BitcoinFav
             D = self.Widgets['Bitcoin']
-        if tag == 'stock':
+        if spam.strlen(tag,'stock'):
             L = self.StockFav
             D = self.Widgets['Stock']
         if not self.Find(tag, ticker): return
